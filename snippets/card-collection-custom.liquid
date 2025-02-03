@@ -98,12 +98,12 @@
       <button
         class="custom-card-button button {{ style }}-style"
       >
-        SEE MORE
-        {% comment %}
-          <span class="custom-icon-wrap">
-            {{- 'icon-arrow.svg' | inline_asset_content -}}
-          </span>
-        {% endcomment %}
+        <a
+          href="{{ card_collection.url }}"
+          class="full-unstyled-link"
+        >
+          SEE MORE
+        </a>
       </button>
     </div>
   </div>
