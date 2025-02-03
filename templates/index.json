@@ -110,7 +110,7 @@
         "show_view_all": false,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-2",
         "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -129,28 +129,18 @@
         "row_MdYHKi": {
           "type": "row",
           "settings": {
-            "caption": "Caption",
-            "heading": "Row",
+            "caption": "Partner",
+            "heading": "Unika",
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "button_label": "Button label",
             "button_link": ""
           }
         },
-        "row_gJakA9": {
+        "row_aaHNBk": {
           "type": "row",
           "settings": {
-            "caption": "Caption",
-            "heading": "Row",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "button_label": "Button label",
-            "button_link": ""
-          }
-        },
-        "row_iGXhG8": {
-          "type": "row",
-          "settings": {
-            "caption": "Caption",
-            "heading": "Row",
+            "caption": "Partner",
+            "heading": "Beauty Craft Surfaces",
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "button_label": "Button label",
             "button_link": ""
@@ -159,8 +149,7 @@
       },
       "block_order": [
         "row_MdYHKi",
-        "row_gJakA9",
-        "row_iGXhG8"
+        "row_aaHNBk"
       ],
       "settings": {
         "image_height": "medium",
