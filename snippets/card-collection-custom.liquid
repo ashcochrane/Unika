@@ -11,35 +11,48 @@
     color: black;
   }
 
-  .custom-card-button.primary-style {
-    font-weight: 600;
-    color: white;
-    background-color: blue;
-  }
-
   .secondary-card {
     background-color: hsl(0, 100%, 50%);
-    color: darkslategray;
+    color: white;
   }
 
-  .custom-card-button.secondary-style {
+  .button.primary-style {
     font-weight: 600;
     color: white;
-    background-color: darkred;
+    background-color: hsl(0, 100%, 50%);
+    --border-offset: unset;
+    --buttons-border-opacity: unset;
+  }
+
+  .button.secondary-style {
+    font-weight: 600;
+    color: hsl(0, 100%, 50%);
+    background-color: hsl(0, 0%, 95%);
+    --border-offset: unset;
+    --buttons-border-opacity: unset;
   }
 
   .custom-card-title {
-    padding-left: 8px;
-    border-left: 5px solid red;
+    padding-left: 20px;
     font-weight: bold;
   }
 
+  .custom-card-title.primary-style {
+    border-left: 5px solid hsl(0, 100%, 50%);
+    color: black;
+  }
+
+  .custom-card-title.secondary-style {
+    border-left: 5px solid hsl(0, 0%, 95%);
+    color: hsl(0, 0%, 95%);
+  }
+
   .custom-card-body {
-    padding-left: 8px;
+    padding-left: 20px;
   }
 
   .custom-card-footer {
-    padding-left: 8px;
+    padding-left: 18px;
   }
 {%- endstyle -%}
 
@@ -55,7 +68,7 @@
     "
   >
     <div class="custom-card-header">
-      <h2 class="custom-card-title">
+      <h2 class="custom-card-title {{ style }}-style">
         {% if card_collection.title != blank %}
           {% assign words = card_collection.title | escape | upcase | split: ' ' %}
           <span class="title-wrapper">
@@ -74,19 +87,14 @@
     </div>
     <div class="custom-card-footer animate arrow">
       <button
-        class="
-          custom-card-button button
-          {% if style == 'secondary' %}
-            secondary-style
-          {% else %}
-            primary-style
-          {% endif %}
-        "
+        class="custom-card-button button {{ style }}-style"
       >
         SEE MORE
-        <span class="custom-icon-wrap">
-          {{- 'icon-arrow.svg' | inline_asset_content -}}
-        </span>
+        {% comment %}
+          <span class="custom-icon-wrap">
+            {{- 'icon-arrow.svg' | inline_asset_content -}}
+          </span>
+        {% endcomment %}
       </button>
     </div>
   </div>

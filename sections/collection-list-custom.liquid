@@ -64,7 +64,10 @@
       -%}
       {%- for block in section.blocks limit: 3 -%}
         <li>
-          {% render 'card-collection-custom', card_collection: block.settings.collection, style: block.settings.style %}
+          {% render 'card-collection-custom',
+            card_collection: block.settings.collection,
+            style: block.settings.style_type
+          %}
         </li>
       {%- endfor -%}
     </ul>
