@@ -95,16 +95,12 @@
       <span class="custom-card-description">{{ card_collection.description }}</span>
     </div>
     <div class="custom-card-footer animate arrow">
-      <button
-        class="custom-card-button button {{ style }}-style"
+      <a
+        href="{{ card_collection.url }}"
+        class="custom-card-button button {{ style }}-style full-unstyled-link"
       >
-        <a
-          href="{{ card_collection.url }}"
-          class="full-unstyled-link"
-        >
-          SEE MORE
-        </a>
-      </button>
+        SEE MORE
+      </a>
     </div>
   </div>
 </div>
