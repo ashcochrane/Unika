@@ -63,19 +63,22 @@
         "featured_collection_8zn49J": {
           "type": "featured_collection",
           "settings": {
-            "collection": "rapid-adhesives"
+            "collection": "rapid-adhesives",
+            "style_type": "primary"
           }
         },
         "featured_collection_Wem7Hr": {
           "type": "featured_collection",
           "settings": {
-            "collection": "benchtop-installation"
+            "collection": "benchtop-installation",
+            "style_type": "primary"
           }
         },
         "featured_collection_7xtzKp": {
           "type": "featured_collection",
           "settings": {
-            "collection": "benchtop-care"
+            "collection": "benchtop-care",
+            "style_type": "secondary"
           }
         }
       },
