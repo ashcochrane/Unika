@@ -20,9 +20,9 @@
 
     .collection-list-wrapper .collection-list-title {
       text-align: center;
+      font-weight: bold;
     }
 
-    /* Remove padding-left on <ul> */
     .collection-list-wrapper ul {
       display: flex;
       flex-wrap: wrap;
@@ -64,7 +64,7 @@
       -%}
       {%- for block in section.blocks limit: 3 -%}
         <li>
-          {% render 'card-collection-custom', card_collection: block.settings.collection, style: 's' %}
+          {% render 'card-collection-custom', card_collection: block.settings.collection, style: block.settings.style %}
         </li>
       {%- endfor -%}
     </ul>
@@ -156,6 +156,15 @@
           "type": "collection",
           "id": "collection",
           "label": "t:sections.collection-list.blocks.featured_collection.settings.collection.label"
+        },
+        {
+          "type": "select",
+          "id": "style_type",
+          "label": "Style Type",
+          "options": [
+            { "value": "primary", "label": "Primary" },
+            { "value": "secondary", "label": "Secondary" }
+          ]
         }
       ]
     }

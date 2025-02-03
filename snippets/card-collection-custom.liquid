@@ -1,31 +1,31 @@
-{% comment %}
-  Renders a collection card
-
-  Accepts:
-  - card_collection: {Object} Collection Liquid object
-  - style: {String} Default, Secondary
-
-  Usage:
-  {% render 'card-collection-custom' %}
-{% endcomment %}
-
-{% comment %}
-  Renders a collection card
-
-  Accepts:
-  - card_collection: {Object} Collection Liquid object
-  - style: {String} Default, Secondary
-
-  Usage:
-  {% render 'card-collection-custom' %}
-{% endcomment %}
-
 {%- style -%}
   .custom_card_inner {
     padding: 20px;
     display: flex;
-    flex-direction: column; /* Ensures content stacks vertically */
+    flex-direction: column;
     justify-content: space-between;
+  }
+
+  .primary-card {
+    background-color: hsl(0, 0%, 95%);
+    color: black;
+  }
+
+  .custom-card-button.primary-style {
+    font-weight: 600;
+    color: white;
+    background-color: blue;
+  }
+
+  .secondary-card {
+    background-color: hsl(0, 100%, 50%);
+    color: darkslategray;
+  }
+
+  .custom-card-button.secondary-style {
+    font-weight: 600;
+    color: white;
+    background-color: darkred;
   }
 
   .custom-card-title {
@@ -41,17 +41,17 @@
   .custom-card-footer {
     padding-left: 8px;
   }
-
-  .custom-card-button {
-    font-weight: 600;
-  }
 {%- endstyle -%}
 
 <div class="custom-card-wrapper">
   <div
     class="
       card custom_card_inner
-      {% if style == 'secondary' %} secondary-card {% else %} color-{{ settings.card_color_scheme }} {% endif %} gradient
+      {% if style == 'secondary' %}
+        secondary-card
+      {% else %}
+        primary-card
+      {% endif %}
     "
   >
     <div class="custom-card-header">
@@ -75,9 +75,12 @@
     <div class="custom-card-footer animate arrow">
       <button
         class="
-          custom-card-button
-          button
-          {% if style == 'default' %} default-style {% else %} secondary-style {% endif %}
+          custom-card-button button
+          {% if style == 'secondary' %}
+            secondary-style
+          {% else %}
+            primary-style
+          {% endif %}
         "
       >
         SEE MORE
