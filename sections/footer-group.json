@@ -42,7 +42,7 @@
         "footer-2"
       ],
       "settings": {
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-3",
         "newsletter_enable": false,
         "newsletter_heading": "Subscribe to our emails",
         "enable_follow_on_shop": true,
@@ -51,7 +51,7 @@
         "enable_language_selector": false,
         "payment_enable": true,
         "show_policy": true,
-        "margin_top": 40,
+        "margin_top": 0,
         "padding_top": 20,
         "padding_bottom": 8
       }
