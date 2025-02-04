@@ -48,14 +48,14 @@
         ".button:hover {background-color: black; color: white;}"
       ],
       "settings": {
-        "image": "shopify://shop_images/Asset_7.svg",
+        "image": "shopify://shop_images/Asset_8.svg",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "desktop_content_position": "bottom-center",
         "show_text_box": false,
         "desktop_content_alignment": "left",
         "color_scheme": "scheme-1",
-        "image_behavior": "ambient",
+        "image_behavior": "none",
         "mobile_content_alignment": "left",
         "stack_images_on_mobile": false,
         "show_text_below": false
