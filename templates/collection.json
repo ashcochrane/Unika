@@ -11,6 +11,9 @@
   "sections": {
     "banner": {
       "type": "main-collection-banner",
+      "custom_css": [
+        "h1 {font-weight: bold; text-transform: uppercase; /* padding-left: 20px; border-left: 5px solid hsl(0, 100%, 50%); */}"
+      ],
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
