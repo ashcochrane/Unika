@@ -101,6 +101,7 @@
     },
     "featured_collection": {
       "type": "featured-collection",
+      "custom_css": [],
       "settings": {
         "title": "<strong>POPULAR PRODUCTS</strong>",
         "heading_size": "h2",
@@ -123,8 +124,61 @@
         "quick_add": "none",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 28,
+        "padding_top": 48,
         "padding_bottom": 36
+      }
+    },
+    "multicolumn_T4hjmM": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_Fghznf": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>COLORFILL</strong>",
+            "text": "<p>\"Such a great product! Would highly recommend\"</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_qCVR36": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>PRODUCT</strong>",
+            "text": "<p>\"Another product review\"</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Qhrz8q": {
+          "type": "column",
+          "settings": {
+            "title": "<strong>MITREPEN</strong>",
+            "text": "<p>\"One of the best adhesives on the market, quick setting and application.\"</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_Fghznf",
+        "column_qCVR36",
+        "column_Qhrz8q"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-b751e485-1d62-4e94-96cd-3da726c59787",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 24
       }
     },
     "multirow_xq7dgf": {
@@ -135,8 +189,8 @@
           "settings": {
             "image": "shopify://shop_images/test.jpg",
             "caption": "Partner",
-            "heading": "UNIKA",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "heading": "<strong>UNIKA</strong>",
+            "text": "<p>Unika offers a full range of colour matched Adhesives, Sealants and speciality cleaners, for the fabrication, installation and aftercare of every kind of work surface.  Surfaces include: Quartz, Granite, Laminate, Solid Wood, Solid Surface, Composite, Ceramic and Porcelain.</p>",
             "button_label": "SEE MORE",
             "button_link": ""
           }
@@ -144,10 +198,10 @@
         "row_JeE3nj": {
           "type": "row",
           "settings": {
-            "caption": "Caption",
-            "heading": "Row",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "button_label": "Button label",
+            "caption": "Partner",
+            "heading": "<strong>BEAUTY CRAFT SURFACES</strong>",
+            "text": "<p>Beauty Craft specialises in the use of both high pressure laminate and compact laminate, giving complete solutions for benchtops, surfaces and cubicles, for domestic and commercial applications. With over 30 years of industry experience Beauty Craft is now one of New Zealand’s largest independent fabricators, providing interior solutions that extend nationwide.</p>",
+            "button_label": "SEE MORE",
             "button_link": ""
           }
         }
@@ -156,7 +210,6 @@
         "row_MdYHKi",
         "row_JeE3nj"
       ],
-      "disabled": true,
       "settings": {
         "image_height": "medium",
         "desktop_image_width": "medium",
@@ -172,67 +225,13 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "multicolumn_T4hjmM": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_GnQEPw": {
-          "type": "column",
-          "settings": {
-            "title": "Review One",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_Fghznf": {
-          "type": "column",
-          "settings": {
-            "title": "Review Two",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_qCVR36": {
-          "type": "column",
-          "settings": {
-            "title": "Review Three",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        }
-      },
-      "block_order": [
-        "column_GnQEPw",
-        "column_Fghznf",
-        "column_qCVR36"
-      ],
-      "disabled": true,
-      "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "primary",
-        "button_label": "Button label",
-        "button_link": "",
-        "color_scheme": "scheme-2",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
     }
   },
   "order": [
     "image_banner",
     "collection_list_A9kwyr",
     "featured_collection",
-    "multirow_xq7dgf",
-    "multicolumn_T4hjmM"
+    "multicolumn_T4hjmM",
+    "multirow_xq7dgf"
   ]
 }
