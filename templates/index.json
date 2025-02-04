@@ -156,6 +156,7 @@
         "row_MdYHKi",
         "row_JeE3nj"
       ],
+      "disabled": true,
       "settings": {
         "image_height": "medium",
         "desktop_image_width": "medium",
