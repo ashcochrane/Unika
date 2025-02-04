@@ -48,7 +48,7 @@
         ".button:hover {background-color: black; color: white;}"
       ],
       "settings": {
-        "image": "shopify://shop_images/Asset_1_1.svg",
+        "image": "shopify://shop_images/Asset_7.svg",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "desktop_content_position": "bottom-center",
