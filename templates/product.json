@@ -120,7 +120,7 @@
       ],
       "settings": {
         "enable_sticky_info": true,
-        "color_scheme": "",
+        "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
         "media_size": "large",
         "constrain_to_viewport": true,
         "media_fit": "contain",
@@ -131,62 +131,16 @@
         "hide_variants": true,
         "enable_video_looping": false,
         "padding_top": 36,
-        "padding_bottom": 12
-      }
-    },
-    "image-with-text": {
-      "type": "image-with-text",
-      "blocks": {
-        "image-with-text-0": {
-          "type": "heading",
-          "settings": {
-            "heading": "Image with text",
-            "heading_size": "h1"
-          }
-        },
-        "image-with-text-1": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "image-with-text-0",
-        "image-with-text-1"
-      ],
-      "settings": {
-        "height": "small",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "desktop_content_position": "top",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "scheme-2",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_bottom": 40
       }
     },
     "multicolumn": {
       "type": "multicolumn",
       "blocks": {
-        "column-0": {
-          "type": "column",
-          "settings": {
-            "title": "Free Shipping",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
         "column-1": {
           "type": "column",
           "settings": {
-            "title": "Hassle-Free Exchanges",
+            "title": "Technical Document",
             "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
             "link_label": "",
             "link": ""
@@ -194,7 +148,6 @@
         }
       },
       "block_order": [
-        "column-0",
         "column-1"
       ],
       "settings": {
@@ -207,7 +160,7 @@
         "background_style": "none",
         "button_label": "",
         "button_link": "",
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-fd1c7669-a453-43d7-9d7b-6a8b1b16b933",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -221,7 +174,7 @@
         "heading_size": "h2",
         "products_to_show": 4,
         "columns_desktop": 4,
-        "color_scheme": "scheme-1",
+        "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -235,7 +188,6 @@
   },
   "order": [
     "main",
-    "image-with-text",
     "multicolumn",
     "related-products"
   ]
