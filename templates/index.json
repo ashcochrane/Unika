@@ -211,7 +211,8 @@
         "row_JeE3nj"
       ],
       "custom_css": [
-        ".button {font-weight: 600; /* background-color: hsl(73 37% 24%); */ background-color: hsl(64, 37.9%, 47.4%); background-color: hsl(0, 100%, 50%); --border-offset: unset; --buttons-border-opacity: unset;}"
+        ".button {font-weight: 600; /* background-color: hsl(73 37% 24%); */ background-color: hsl(64, 37.9%, 47.4%); --border-offset: unset; --buttons-border-opacity: unset;}",
+        ".button:hover {background-color: black;}"
       ],
       "settings": {
         "image_height": "medium",
