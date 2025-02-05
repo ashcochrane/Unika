@@ -44,7 +44,7 @@
         "button"
       ],
       "custom_css": [
-        ".button {font-weight: bold; --border-offset: unset; --buttons-border-opacity: unset;}",
+        ".button {/* background-color: hsl(73 37% 24%); */ background-color: hsl(64, 37.9%, 47.4%); font-weight: bold; --border-offset: unset; --buttons-border-opacity: unset;}",
         ".button:hover {background-color: black; color: white;}"
       ],
       "settings": {
@@ -115,7 +115,7 @@
         "show_view_all": false,
         "view_all_style": "solid",
         "enable_desktop_slider": false,
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
         "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
@@ -174,7 +174,7 @@
         "background_style": "primary",
         "button_label": "",
         "button_link": "",
-        "color_scheme": "scheme-b751e485-1d62-4e94-96cd-3da726c59787",
+        "color_scheme": "scheme-b489dc64-9a52-4eae-be42-7f76c4b8242e",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -209,6 +209,9 @@
       "block_order": [
         "row_MdYHKi",
         "row_JeE3nj"
+      ],
+      "custom_css": [
+        "button {}"
       ],
       "settings": {
         "image_height": "medium",
