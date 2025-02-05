@@ -12,12 +12,12 @@
     "banner": {
       "type": "main-collection-banner",
       "custom_css": [
-        "h1 {font-weight: bold; text-transform: uppercase; /* padding-left: 20px; border-left: 5px solid hsl(0, 100%, 50%); */}"
+        "h1 {/*color: hsl(64, 37.9%, 47.4%); */ color: hsl(64, 37.9%, 47.4%); font-weight: bold; text-transform: uppercase;}"
       ],
       "settings": {
         "show_collection_description": true,
         "show_collection_image": false,
-        "color_scheme": "scheme-2"
+        "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e"
       }
     },
     "product-grid": {
@@ -25,7 +25,7 @@
       "settings": {
         "products_per_page": 16,
         "columns_desktop": 4,
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
         "image_ratio": "adapt",
         "image_shape": "default",
         "show_secondary_image": false,
