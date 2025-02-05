@@ -44,7 +44,7 @@
         "button"
       ],
       "custom_css": [
-        ".button {font-weight: bold; background-color: hsl(64, 37.9%, 47.4%); --border-offset: unset; --buttons-border-opacity: unset;}",
+        ".button {font-weight: bold; --border-offset: unset; --buttons-border-opacity: unset;}",
         ".button:hover {background-color: black; color: white;}"
       ],
       "settings": {
