@@ -15,14 +15,14 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "Unika Australasia",
-            "heading_size": "h0"
+            "heading": "HIGH QUALITY, CUSTOM MADE",
+            "heading_size": "h2"
           }
         },
         "text": {
           "type": "text",
           "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text": "Our stocked Unika brand of products offer a full range of colour matched Adhesives, Sealants and speciality cleaners, for the fabrication, installation and aftercare of Laminate benchtop surfaces.",
             "text_style": "body"
           }
         },
@@ -48,7 +48,7 @@
         ".button:hover {background-color: black; color: white;}"
       ],
       "settings": {
-        "image": "shopify://shop_images/Asset_8.svg",
+        "image": "shopify://shop_images/hero-eggshell.svg",
         "image_overlay_opacity": 0,
         "image_height": "adapt",
         "desktop_content_position": "bottom-center",
