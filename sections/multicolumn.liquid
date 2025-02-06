@@ -118,6 +118,22 @@
                   </div>
                 </div>
               {%- endif -%}
+
+              {%- if block.settings.video_id != blank -%}
+                <div class="multicolumn-card__video-wrapper">
+                  <iframe
+                    src="https://player.vimeo.com/video/{{ block.settings.video_id }}"
+                    width="100%"
+                    height="100%"
+                    frameborder="0"
+                    allow="autoplay; fullscreen; picture-in-picture"
+                    allowfullscreen
+                    style="max-width: 100%; aspect-ratio: 16 / 9;"
+                  >
+                  </iframe>
+                </div>
+              {%- endif -%}
+
               <div class="multicolumn-card__info">
                 {%- if block.settings.title != blank -%}
                   <h3 class="inline-richtext">{{ block.settings.title }}</h3>
@@ -395,6 +411,11 @@
           "type": "image_picker",
           "id": "image",
           "label": "t:sections.multicolumn.blocks.column.settings.image.label"
+        },
+        {
+          "type": "text",
+          "id": "video_id",
+          "label": "t:sections.multicolumn.blocks.column.settings.video_id.label"
         },
         {
           "type": "inline_richtext",
