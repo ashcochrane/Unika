@@ -49,7 +49,6 @@
       ],
       "settings": {
         "image": "shopify://shop_images/hero-eggshell.svg",
-        "image_2": "shopify://shop_images/unika-hero-image.png",
         "image_overlay_opacity": 0,
         "image_height": "small",
         "desktop_content_position": "bottom-center",
