@@ -11,9 +11,53 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
+      }
+    },
+    "rich_text_EPCCi3": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_wJKNtx": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>RESOURCES</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_NpEJQ9": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our product videos have been made to show how quick and easy Unika can make your kitchen installation and care. You can also find our latest PDF brochures on this page.</p>"
+          }
+        },
+        "button_tE3cPd": {
+          "type": "button",
+          "settings": {
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_wJKNtx",
+        "text_NpEJQ9",
+        "button_tE3cPd"
+      ],
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "multicolumn_9D6JGK": {
@@ -22,8 +66,9 @@
         "column_DtLw7w": {
           "type": "column",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "video_id": "151621886",
+            "title": "TopSeal",
+            "text": "<p>Fitters Guide</p>",
             "link_label": "",
             "link": ""
           }
@@ -31,8 +76,9 @@
         "column_aRUTtY": {
           "type": "column",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "video_id": "151621479",
+            "title": "TopSeal",
+            "text": "<p>Panel Adhesive</p>",
             "link_label": "",
             "link": ""
           }
@@ -40,8 +86,59 @@
         "column_Gzdcdy": {
           "type": "column",
           "settings": {
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "video_id": "251807556",
+            "title": "ColorFill",
+            "text": "<p>WorkTop Installation</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Tddf7b": {
+          "type": "column",
+          "settings": {
+            "video_id": "53317994",
+            "title": "ColorFill",
+            "text": "<p>Flooring Application</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_jCNdMk": {
+          "type": "column",
+          "settings": {
+            "video_id": "580192346",
+            "title": "Contact Adhesive",
+            "text": "<p>Fitters Guide</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_R7GbNq": {
+          "type": "column",
+          "settings": {
+            "video_id": "151528741",
+            "title": "EasiBolt",
+            "text": "<p>Fitters Guide</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_AtxPaW": {
+          "type": "column",
+          "settings": {
+            "video_id": "151377048",
+            "title": "MitrePen",
+            "text": "<p>With MitreBond Applicator</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Rxqi4G": {
+          "type": "column",
+          "settings": {
+            "video_id": "62877996",
+            "title": "Worktop Rods",
+            "text": "<p>Features and Installation</p>",
             "link_label": "",
             "link": ""
           }
@@ -50,7 +147,12 @@
       "block_order": [
         "column_DtLw7w",
         "column_aRUTtY",
-        "column_Gzdcdy"
+        "column_Gzdcdy",
+        "column_Tddf7b",
+        "column_jCNdMk",
+        "column_R7GbNq",
+        "column_AtxPaW",
+        "column_Rxqi4G"
       ],
       "settings": {
         "title": "",
@@ -62,7 +164,7 @@
         "background_style": "primary",
         "button_label": "",
         "button_link": "",
-        "color_scheme": "",
+        "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -72,6 +174,7 @@
   },
   "order": [
     "main",
+    "rich_text_EPCCi3",
     "multicolumn_9D6JGK"
   ]
 }
