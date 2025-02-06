@@ -49,8 +49,9 @@
       ],
       "settings": {
         "image": "shopify://shop_images/hero-eggshell.svg",
+        "image_2": "shopify://shop_images/unika-hero-image.png",
         "image_overlay_opacity": 0,
-        "image_height": "adapt",
+        "image_height": "small",
         "desktop_content_position": "bottom-center",
         "show_text_box": false,
         "desktop_content_alignment": "left",
@@ -134,6 +135,7 @@
         "column_Fghznf": {
           "type": "column",
           "settings": {
+            "video_id": "",
             "title": "<strong>COLORFILL</strong>",
             "text": "<p>\"Such a great product! Would highly recommend\"</p>",
             "link_label": "",
@@ -143,6 +145,7 @@
         "column_qCVR36": {
           "type": "column",
           "settings": {
+            "video_id": "",
             "title": "<strong>PRODUCT</strong>",
             "text": "<p>\"Another product review\"</p>",
             "link_label": "",
@@ -152,6 +155,7 @@
         "column_Qhrz8q": {
           "type": "column",
           "settings": {
+            "video_id": "",
             "title": "<strong>MITREPEN</strong>",
             "text": "<p>\"One of the best adhesives on the market, quick setting and application.\"</p>",
             "link_label": "",
