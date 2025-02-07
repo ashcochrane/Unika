@@ -10,12 +10,19 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .collection-tag-filter-wrapper {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 100%;
+  }
 {%- endstyle -%}
 
 {% assign unique_tags = '' | split: '' %}
 
 <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
-  <div class="tag-button-container">
+  <div class="collection-tag-filter-wrapper page-width">
     {% assign all_tags = '' | split: '' %}
     {% for product in collection.products %}
       {% assign all_tags = all_tags | concat: product.tags %}
