@@ -23,7 +23,7 @@
         "heading_wJKNtx": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>RESOURCES</strong>",
+            "heading": "<strong>TEST</strong>",
             "heading_size": "h1"
           }
         },
@@ -50,7 +50,6 @@
         "text_NpEJQ9",
         "button_tE3cPd"
       ],
-      "disabled": true,
       "settings": {
         "desktop_content_position": "left",
         "content_alignment": "left",
@@ -154,7 +153,6 @@
         "column_AtxPaW",
         "column_Rxqi4G"
       ],
-      "disabled": true,
       "settings": {
         "title": "",
         "heading_size": "h1",

@@ -37,8 +37,8 @@
         "button_tE3cPd": {
           "type": "button",
           "settings": {
-            "button_label": "",
-            "button_link": "",
+            "button_label": "Technical Documents",
+            "button_link": "shopify://pages/technical-documents",
             "button_style_secondary": false,
             "button_label_2": "",
             "button_link_2": "",
