@@ -101,7 +101,7 @@
         "custom_liquid_4RLkn8": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<p><a target=\"_blank\" \nhref={{ product.metafields.custom.technical_document | file_url }}\n>Document</a>\n<p>"
+            "custom_liquid": "<p><a target=\"_blank\" \nhref={{ product.metafields.custom.technical_document | file_url }}\n>{{ product.metafields.custom.technical_document.name }} Document</a>\n<p>"
           }
         }
       },
