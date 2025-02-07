@@ -1,0 +1,63 @@
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{% assign unique_tags = '' | split: '' %}
+
+<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+  <div class="tag-button-container">
+    {% assign all_tags = '' | split: '' %}
+    {% for product in collection.products %}
+      {% assign all_tags = all_tags | concat: product.tags %}
+    {% endfor %}
+    {% assign unique_tags = all_tags | uniq %}
+
+    {% for tag in unique_tags %}
+      <a
+        href="{{ collection.url }}?filter.p.tag={{ tag }}"
+        class="button button--primary"
+      >
+        {{- tag -}}
+      </a>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "t:sections.collection-tag-filter.name",
+  "class": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ]
+}
+{% endschema %}

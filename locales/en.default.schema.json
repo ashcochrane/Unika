@@ -1845,6 +1845,10 @@
         }
       }
     },
+    "collection-tag-filter": {
+      "name": "Collection tag filter",
+      "settings": {}
+    },
     "main-collection-product-grid": {
       "name": "Product grid",
       "settings": {
