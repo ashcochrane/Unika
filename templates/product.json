@@ -97,6 +97,12 @@
           "settings": {
             "share_label": "Share"
           }
+        },
+        "custom_liquid_4RLkn8": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<p><a target=\"_blank\" \nhref={{ product.metafields.custom.technical_document | file_url }}\n>Document</a>\n<p>"
+          }
         }
       },
       "block_order": [
@@ -112,7 +118,8 @@
         "collapsible-row-0",
         "collapsible-row-1",
         "collapsible-row-2",
-        "share"
+        "share",
+        "custom_liquid_4RLkn8"
       ],
       "custom_css": [
         "h1 {font-weight: bold; text-transform: uppercase;}",
