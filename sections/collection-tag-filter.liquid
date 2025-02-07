@@ -20,6 +20,9 @@
 
   .button:hover {
     background-color: black;
+    font-weight: bold;
+    --border-offset: unset;
+    --buttons-border-opacity: unset;
   }
 {%- endstyle -%}
 
@@ -38,7 +41,7 @@
         href="{{ collection.url }}?filter.p.tag={{ tag }}"
         class="button button--primary"
       >
-        {{- tag -}}
+        {{- tag | upcase -}}
       </a>
     {% endfor %}
   </div>
