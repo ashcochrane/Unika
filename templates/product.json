@@ -56,6 +56,15 @@
           "type": "description",
           "settings": {}
         },
+        "collapsible-row-3": {
+          "type": "collapsible_tab",
+          "settings": {
+            "heading": "Technical Documents",
+            "icon": "clipboard",
+            "content": "",
+            "page": ""
+          }
+        },
         "collapsible-row-0": {
           "type": "collapsible_tab",
           "settings": {
@@ -83,15 +92,6 @@
             "page": ""
           }
         },
-        "collapsible-row-3": {
-          "type": "collapsible_tab",
-          "settings": {
-            "heading": "Care Instructions",
-            "icon": "heart",
-            "content": "",
-            "page": ""
-          }
-        },
         "share": {
           "type": "share",
           "settings": {
@@ -108,10 +108,10 @@
         "quantity_selector",
         "buy_buttons",
         "description",
+        "collapsible-row-3",
         "collapsible-row-0",
         "collapsible-row-1",
         "collapsible-row-2",
-        "collapsible-row-3",
         "share"
       ],
       "custom_css": [
