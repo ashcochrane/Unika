@@ -42,7 +42,7 @@
     "featured-collection": {
       "type": "featured-collection",
       "settings": {
-        "title": "Featured collection",
+        "title": "<strong>FEATURED COLLECTION</strong>",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
