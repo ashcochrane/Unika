@@ -16,7 +16,7 @@
           "type": "heading",
           "settings": {
             "heading": "<strong>HIGH QUALITY, CUSTOM MADE INSTALLATION AND CARE SOLUTIONS FOR BENCHTOPS</strong>",
-            "heading_size": "h2"
+            "heading_size": "h1"
           }
         },
         "text": {
@@ -45,7 +45,8 @@
       ],
       "custom_css": [
         ".button {/* background-color: hsl(73 37% 24%); */ background-color: hsl(64, 37.9%, 47.4%); font-weight: bold; --border-offset: unset; --buttons-border-opacity: unset;}",
-        ".button:hover {background-color: black; color: white;}"
+        ".button:hover {background-color: black; color: white;}",
+        ".banner__buttons {padding-top: 20px;}"
       ],
       "settings": {
         "image": "shopify://shop_images/hero-new-white.svg",
