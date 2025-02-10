@@ -148,8 +148,8 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "Technical Document",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "title": "<strong>TECHNICAL DOCUMENTS</strong>",
+            "text": "<ul><li><a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_ColorFill_FS.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_ColorFill_FS.pdf\">ColorFill Feature Sheet</a></li><li><a href=\"https://NZ_Unika_ColorFill_TechnicalSheet.pdf\" target=\"_blank\" title=\"https://NZ_Unika_ColorFill_TechnicalSheet.pdf\">ColorFill Technical Sheet</a></li></ul>",
             "link_label": "",
             "link": ""
           }
