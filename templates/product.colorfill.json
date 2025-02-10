@@ -61,7 +61,7 @@
           "settings": {
             "heading": "Technical Documents",
             "icon": "clipboard",
-            "content": "",
+            "content": "<ul><li>ColorFill Tube Feature Sheet</li></ul>",
             "page": ""
           }
         },
