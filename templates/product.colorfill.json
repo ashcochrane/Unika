@@ -151,6 +151,7 @@
       "block_order": [
         "column-1"
       ],
+      "disabled": true,
       "settings": {
         "title": "",
         "heading_size": "h1",
@@ -171,11 +172,11 @@
     "related-products": {
       "type": "related-products",
       "settings": {
-        "heading": "You may also like",
+        "heading": "<strong>SIMILAR PRODUCTS</strong>",
         "heading_size": "h2",
         "products_to_show": 4,
         "columns_desktop": 4,
-        "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
+        "color_scheme": "scheme-3",
         "image_ratio": "square",
         "image_shape": "default",
         "show_secondary_image": true,
