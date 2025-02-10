@@ -37,7 +37,9 @@
     },
     "header": {
       "type": "header",
-      "custom_css": [],
+      "custom_css": [
+        ".header__menu-item {font-weight: bold;}"
+      ],
       "settings": {
         "logo_position": "middle-left",
         "menu": "main-menu",
