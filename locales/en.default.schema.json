@@ -1243,6 +1243,9 @@
         "image_2": {
           "label": "Second image"
         },
+        "image_overlay": {
+          "label": "Image overlay"
+        },
         "image_overlay_opacity": {
           "label": "Image overlay opacity"
         },
