@@ -355,7 +355,6 @@
   .banner--desktop-transparent .banner__box {
     padding: 4rem 0;
     background: transparent;
-    max-width: 89rem;
     border: none;
     border-radius: 0;
     box-shadow: none;
@@ -415,9 +414,7 @@
 
 @media screen and (min-width: 750px) {
   .banner__box {
-    width: auto;
-    max-width: 71rem;
-    min-width: 45rem;
+    width: 100%;
   }
 }
 
@@ -499,4 +496,19 @@
   width: 100%;
   height: auto;
   object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+  .grid-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .banner__image-section {
+    display: none;
+  }
+
+  .banner__text-section {
+    width: 100%;
+    padding-right: 0;
+  }
 }
