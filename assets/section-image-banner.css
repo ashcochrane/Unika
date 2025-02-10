@@ -33,12 +33,6 @@
   .banner--content-align-left .banner__box {
     text-align: left;
   }
-
-  .banner--content-align-left.banner--desktop-transparent .banner__box,
-  .banner--content-align-right.banner--desktop-transparent .banner__box,
-  .banner--medium.banner--desktop-transparent .banner__box {
-    max-width: 68rem;
-  }
 }
 
 .banner__media.animate--zoom-in {
@@ -489,4 +483,20 @@
   .banner--desktop-transparent .rte a:hover {
     color: currentColor;
   }
+}
+
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.banner__text-section {
+  padding-right: 1rem;
+}
+
+.banner__image-section img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
