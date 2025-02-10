@@ -37,7 +37,7 @@
         "button_tE3cPd": {
           "type": "button",
           "settings": {
-            "button_label": "Technical Documents",
+            "button_label": "TECHNICAL DOCUMENTS",
             "button_link": "shopify://pages/technical-documents",
             "button_style_secondary": false,
             "button_label_2": "",
@@ -50,6 +50,9 @@
         "heading_wJKNtx",
         "text_NpEJQ9",
         "button_tE3cPd"
+      ],
+      "custom_css": [
+        ".button {font-weight: bold;}"
       ],
       "settings": {
         "desktop_content_position": "left",
