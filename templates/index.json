@@ -124,7 +124,7 @@
         "show_vendor": false,
         "show_rating": true,
         "quick_add": "none",
-        "columns_mobile": "1",
+        "columns_mobile": "2",
         "swipe_on_mobile": false,
         "padding_top": 48,
         "padding_bottom": 36
@@ -147,7 +147,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<strong>PRODUCT</strong>",
+            "title": "<strong>COLORFILL</strong>",
             "text": "<p>\"Dries quick, easy to use, and has made my worktop look new again\"</p>",
             "link_label": "",
             "link": ""
