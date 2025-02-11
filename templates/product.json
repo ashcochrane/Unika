@@ -48,7 +48,7 @@
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
           }
         },
@@ -70,7 +70,7 @@
           "settings": {
             "heading": "Shipping & Returns",
             "icon": "truck",
-            "content": "",
+            "content": "<p>Will be calculated upon checkout</p>",
             "page": ""
           }
         }
