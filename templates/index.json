@@ -189,6 +189,17 @@
     "multirow_xq7dgf": {
       "type": "multirow",
       "blocks": {
+        "row_JeE3nj": {
+          "type": "row",
+          "settings": {
+            "image": "shopify://shop_images/logo.png",
+            "caption": "",
+            "heading": "<strong>BEAUTY CRAFT SURFACES</strong>",
+            "text": "<p>Beauty Craft specialises in the use of both high pressure laminate and compact laminate, giving complete solutions for benchtops, surfaces and cubicles, for domestic and commercial applications. With over 30 years of industry experience Beauty Craft is now one of New Zealand’s largest independent fabricators, providing interior solutions that extend nationwide.</p>",
+            "button_label": "SEE MORE",
+            "button_link": "https://www.beautycraft.co.nz"
+          }
+        },
         "row_MdYHKi": {
           "type": "row",
           "settings": {
@@ -199,22 +210,11 @@
             "button_label": "SEE MORE",
             "button_link": "https://www.unika.co.uk"
           }
-        },
-        "row_JeE3nj": {
-          "type": "row",
-          "settings": {
-            "image": "shopify://shop_images/logo.png",
-            "caption": "Partner",
-            "heading": "<strong>BEAUTY CRAFT SURFACES</strong>",
-            "text": "<p>Beauty Craft specialises in the use of both high pressure laminate and compact laminate, giving complete solutions for benchtops, surfaces and cubicles, for domestic and commercial applications. With over 30 years of industry experience Beauty Craft is now one of New Zealand’s largest independent fabricators, providing interior solutions that extend nationwide.</p>",
-            "button_label": "SEE MORE",
-            "button_link": "https://www.beautycraft.co.nz"
-          }
         }
       },
       "block_order": [
-        "row_MdYHKi",
-        "row_JeE3nj"
+        "row_JeE3nj",
+        "row_MdYHKi"
       ],
       "custom_css": [
         ".button {font-weight: 600; /* background-color: hsl(73 37% 24%); */ background-color: hsl(64, 37.9%, 47.4%); --border-offset: unset; --buttons-border-opacity: unset;}",
