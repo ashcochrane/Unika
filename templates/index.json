@@ -156,7 +156,7 @@
         "button_P3iact"
       ],
       "custom_css": [
-        ".button {font-weight: bold; --border-offset: unset; --buttons-border-opacity: unset;}",
+        ".button {font-weight: bold; --border-offset: unset; --border-opacity: unset;}",
         ".button:hover {background-color: black; color: white;}"
       ],
       "settings": {
