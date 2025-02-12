@@ -130,60 +130,41 @@
         "padding_bottom": 36
       }
     },
-    "multicolumn_T4hjmM": {
-      "type": "multicolumn",
+    "rich_text_ELCDbi": {
+      "type": "rich-text",
       "blocks": {
-        "column_Fghznf": {
-          "type": "column",
+        "text_67XbLL": {
+          "type": "text",
           "settings": {
-            "video_id": "",
-            "title": "<strong>COLORFILL</strong>",
-            "text": "<p>\"Such a great product! Would highly recommend\"</p>",
-            "link_label": "",
-            "link": ""
+            "text": "<p><strong>WATCH OUR VIDEOS TO LEARN HOW THE UNIKA PRODUCTS CAN WORK FOR YOU</strong></p>"
           }
         },
-        "column_qCVR36": {
-          "type": "column",
+        "button_P3iact": {
+          "type": "button",
           "settings": {
-            "video_id": "",
-            "title": "<strong>COLORFILL</strong>",
-            "text": "<p>\"Dries quick, easy to use, and has made my worktop look new again\"</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_Qhrz8q": {
-          "type": "column",
-          "settings": {
-            "video_id": "",
-            "title": "<strong>MITREPEN</strong>",
-            "text": "<p>\"One of the best adhesives on the market, quick setting and application.\"</p>",
-            "link_label": "",
-            "link": ""
+            "button_label": "OUR VIDEOS",
+            "button_link": "shopify://pages/resources",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
-        "column_Fghznf",
-        "column_qCVR36",
-        "column_Qhrz8q"
+        "text_67XbLL",
+        "button_P3iact"
+      ],
+      "custom_css": [
+        ".button {font-weight: bold;}"
       ],
       "settings": {
-        "title": "",
-        "heading_size": "h1",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "center",
-        "background_style": "primary",
-        "button_label": "",
-        "button_link": "",
+        "desktop_content_position": "left",
+        "content_alignment": "left",
         "color_scheme": "scheme-fd1c7669-a453-43d7-9d7b-6a8b1b16b933",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 24
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "multirow_xq7dgf": {
@@ -241,7 +222,7 @@
     "image_banner",
     "collection_list_A9kwyr",
     "featured_collection",
-    "multicolumn_T4hjmM",
+    "rich_text_ELCDbi",
     "multirow_xq7dgf"
   ]
 }
