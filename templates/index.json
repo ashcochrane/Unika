@@ -159,8 +159,8 @@
         ".button {font-weight: bold;}"
       ],
       "settings": {
-        "desktop_content_position": "left",
-        "content_alignment": "left",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
         "color_scheme": "scheme-fd1c7669-a453-43d7-9d7b-6a8b1b16b933",
         "full_width": true,
         "padding_top": 40,
