@@ -156,8 +156,8 @@
         "button_P3iact"
       ],
       "custom_css": [
-        ".button {font-weight: bold; --border-offset: unset; --border-opacity: unset !important;}",
-        ".button:hover {background-color: black; color: white;}"
+        ".button {font-weight: bold; --border-offset: unset !important; --border-opacity: unset !important;}",
+        ".button:hover {background-color: black; color: white; --border-offset: unset !important; --border-opacity: unset !important;}"
       ],
       "settings": {
         "desktop_content_position": "left",
