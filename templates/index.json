@@ -142,7 +142,7 @@
         "button_P3iact": {
           "type": "button",
           "settings": {
-            "button_label": "OUR VIDEOS",
+            "button_label": "VIDEOS",
             "button_link": "shopify://pages/resources",
             "button_style_secondary": false,
             "button_label_2": "",
