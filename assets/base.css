@@ -3599,3 +3599,7 @@ details-disclosure > details {
 .MsoListParagraph {
   list-style: outside !important;
 }
+
+.MsoNormal {
+  list-style: outside !important;
+}
