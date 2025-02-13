@@ -3597,5 +3597,5 @@ details-disclosure > details {
 }
 
 .MsoListParagraph {
-  list-style: outside;
+  list-style: outside !important;
 }
