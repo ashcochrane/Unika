@@ -351,7 +351,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "Technical Sheet",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/MitreBond-TDS.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/MitreBond-TDS.pdf\">Technical Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -361,7 +361,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "Feature Sheet",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/MITREBOND-FEATURE-SHEET_02.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/MITREBOND-FEATURE-SHEET_02.pdf\">Feature Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -371,7 +371,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "Safety Sheet",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_MITREBOND_ACTIVATOR.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_MITREBOND_ACTIVATOR.pdf\">Safety Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
