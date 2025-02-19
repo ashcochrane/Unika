@@ -70,8 +70,8 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_ColorFill_FS.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_ColorFill_FS.pdf\">Feature Sheet</a>",
+            "text": "",
             "link_label": "",
             "link": ""
           }
@@ -80,18 +80,8 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
-        "column_73PrGq": {
-          "type": "column",
-          "settings": {
-            "video_id": "",
-            "title": "Column",
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_ColorFill_TechnicalSheet.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_ColorFill_TechnicalSheet.pdf\">Technical Sheet</a>",
+            "text": "",
             "link_label": "",
             "link": ""
           }
@@ -99,12 +89,11 @@
       },
       "block_order": [
         "column_JEaDjb",
-        "column_JW9d44",
-        "column_73PrGq"
+        "column_JW9d44"
       ],
       "settings": {
-        "title": "",
-        "heading_size": "h1",
+        "title": "<strong>COLORFILL</strong>",
+        "heading_size": "h2",
         "image_width": "full",
         "image_ratio": "adapt",
         "columns_desktop": 3,
@@ -115,14 +104,71 @@
         "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "multicolumn_QmPm9N": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_PxrXVE": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/TopSeal-FeatureSheet.pdf?v=1739964144\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/TopSeal-FeatureSheet.pdf?v=1739964144\">Feature Sheet</a>",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_RekNE6": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/TopSeal-TechnidalDataSheet.pdf?v=1739964143\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/TopSeal-TechnidalDataSheet.pdf?v=1739964143\">Technical Sheet</a>",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_cJ7d9W": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_TOPSEAL.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_TOPSEAL.pdf\">Safety Sheet</a>",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_PxrXVE",
+        "column_RekNE6",
+        "column_cJ7d9W"
+      ],
+      "settings": {
+        "title": "<strong>TOPSEAL</strong>",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 8,
+        "padding_bottom": 8
       }
     }
   },
   "order": [
     "main",
     "rich_text_EPCCi3",
-    "multicolumn_pde7iR"
+    "multicolumn_pde7iR",
+    "multicolumn_QmPm9N"
   ]
 }
