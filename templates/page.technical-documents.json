@@ -351,7 +351,17 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "",
+            "title": "Technical Sheet",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_mFyfi9": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "Feature Sheet",
             "text": "",
             "link_label": "",
             "link": ""
@@ -361,7 +371,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "",
+            "title": "Safety Sheet",
             "text": "",
             "link_label": "",
             "link": ""
@@ -370,10 +380,11 @@
       },
       "block_order": [
         "column_jBq8Pc",
+        "column_mFyfi9",
         "column_4aWFnT"
       ],
       "settings": {
-        "title": "<strong>MITREBOND & MITREPEN</strong>",
+        "title": "<strong>MITREBOND & ACTIVATOR</strong>",
         "heading_size": "h2",
         "image_width": "full",
         "image_ratio": "adapt",
