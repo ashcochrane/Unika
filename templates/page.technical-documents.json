@@ -343,6 +343,51 @@
         "padding_top": 8,
         "padding_bottom": 8
       }
+    },
+    "multicolumn_wbkxtj": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_jBq8Pc": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_4aWFnT": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_jBq8Pc",
+        "column_4aWFnT"
+      ],
+      "settings": {
+        "title": "<strong>MITREBOND & MITREPEN</strong>",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
     }
   },
   "order": [
@@ -353,6 +398,7 @@
     "multicolumn_qwpFxw",
     "multicolumn_7pzHQH",
     "multicolumn_iw8P4x",
-    "multicolumn_ERMqqE"
+    "multicolumn_ERMqqE",
+    "multicolumn_wbkxtj"
   ]
 }
