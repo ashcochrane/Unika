@@ -171,7 +171,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/TopSeal-FeatureSheet.pdf?v=1739964144\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/EasiBolt-FeatureSheet.pdf\">Feature Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/TopSeal-FeatureSheet.pdf?v=1739964144\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/EasiBolt-FeatureSheet.pdf)\">Feature Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
