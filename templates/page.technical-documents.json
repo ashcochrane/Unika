@@ -163,12 +163,196 @@
         "padding_top": 8,
         "padding_bottom": 8
       }
+    },
+    "multicolumn_qwpFxw": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_mUt9Nk": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/TopSeal-FeatureSheet.pdf?v=1739964144\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/EasiBolt-FeatureSheet.pdf\">Feature Sheet</a>",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_ftGtEQ": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_mUt9Nk",
+        "column_ftGtEQ"
+      ],
+      "settings": {
+        "title": "<strong>EASIBOLT</strong>",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "multicolumn_7pzHQH": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_ywRP4w": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/TopSeal-FeatureSheet.pdf?v=1739964144\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/UniversalJig-FeatureSheet.pdf\">Feature Sheet</a>",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_gtzpGn": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_ywRP4w",
+        "column_gtzpGn"
+      ],
+      "settings": {
+        "title": "<strong>UNIVERSAL WORKTOP JIG</strong>",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "multicolumn_iw8P4x": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_tacfgU": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/TopSeal-FeatureSheet.pdf?v=1739964144\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/DrainerJig-FeatureSheet.pdf\">Feature Sheet</a>",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_YhEXpc": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_tacfgU",
+        "column_YhEXpc"
+      ],
+      "settings": {
+        "title": "<strong>DRAINER JIG</strong>",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
+    },
+    "multicolumn_ERMqqE": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_apDKRa": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/SDS_Contact_Adhesive.pdf\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/SDS_Contact_Adhesive.pdf\">Safety Sheet</a>",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_getc3A": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_apDKRa",
+        "column_getc3A"
+      ],
+      "settings": {
+        "title": "<strong>CONTACT ADHESIVE</strong>",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
     }
   },
   "order": [
     "main",
     "rich_text_EPCCi3",
     "multicolumn_pde7iR",
-    "multicolumn_QmPm9N"
+    "multicolumn_QmPm9N",
+    "multicolumn_qwpFxw",
+    "multicolumn_7pzHQH",
+    "multicolumn_iw8P4x",
+    "multicolumn_ERMqqE"
   ]
 }
