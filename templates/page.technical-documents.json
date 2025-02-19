@@ -399,6 +399,51 @@
         "padding_top": 8,
         "padding_bottom": 8
       }
+    },
+    "multicolumn_6xxdnK": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_iMxaqn": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/MITREPEN-FEATURE-SHEET_02.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/MITREPEN-FEATURE-SHEET_02.pdf\">Feature Sheet</a>",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_WeyQRp": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_MITREPEN.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_MITREPEN.pdf\">Safety Sheet</a>",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_iMxaqn",
+        "column_WeyQRp"
+      ],
+      "settings": {
+        "title": "<strong>MITREPEN</strong>",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 8,
+        "padding_bottom": 8
+      }
     }
   },
   "order": [
@@ -410,6 +455,7 @@
     "multicolumn_7pzHQH",
     "multicolumn_iw8P4x",
     "multicolumn_ERMqqE",
-    "multicolumn_wbkxtj"
+    "multicolumn_wbkxtj",
+    "multicolumn_6xxdnK"
   ]
 }
