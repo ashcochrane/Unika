@@ -272,7 +272,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/TopSeal-FeatureSheet.pdf?v=1739964144\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/EasiBolt-FeatureSheet.pdf)\">Feature Sheet</a>",
+            "title": "",
             "text": "",
             "link_label": "",
             "link": ""
@@ -317,7 +317,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/UniversalJig-FeatureSheet.pdf\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/UniversalJig-FeatureSheet.pdf\">Feature Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/UniversalJig-FeatureSheet.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/UniversalJig-FeatureSheet.pdf\">Feature Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -362,7 +362,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/DrainerJig-FeatureSheet.pdf\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/DrainerJig-FeatureSheet.pdf\">Feature Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/DrainerJig-FeatureSheet.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/DrainerJig-FeatureSheet.pdf\">Feature Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -407,7 +407,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/SDS_Contact_Adhesive.pdf\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/SDS_Contact_Adhesive.pdf\">Safety Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/SDS_Contact_Adhesive.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/SDS_Contact_Adhesive.pdf\">Safety Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
