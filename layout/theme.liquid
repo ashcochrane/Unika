@@ -16,9 +16,9 @@
     {%- endunless -%}
 
     <title>
-      {{ page_title }}
-      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
-      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- if page_title == 'Unika Australasia' %}Home {% else %}{{ page_title }} {% endif %}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}
       &ndash; Unika
     </title>
 
