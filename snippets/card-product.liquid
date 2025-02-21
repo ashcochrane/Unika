@@ -120,7 +120,7 @@
                 class="full-unstyled-link"
                 aria-labelledby="StandardCardNoMediaLink-{{ section_id }}-{{ card_product.id }} NoMediaStandardBadge-{{ section_id }}-{{ card_product.id }}"
               >
-                {{ card_product.title | escape }}
+                {{ card_product.title | escape }} A
               </a>
             </h3>
           </div>
@@ -203,8 +203,8 @@
                 </span>
               </p>
             {%- endif -%}
-
             {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+            <span class="caption">GST Incl.</span>
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants.size == 1 and quick_add == 'bulk' %}
                 {% liquid
