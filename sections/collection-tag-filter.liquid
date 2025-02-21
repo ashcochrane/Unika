@@ -22,6 +22,7 @@
 
   .button {
     font-weight: bold;
+    font-size: 14px; /* Adjust the font size here */
     --border-offset: unset;
     --border-opacity: unset;
   }
@@ -33,26 +34,24 @@
 
 {% assign unique_tags = '' | split: '' %}
 
-{% if collection.handle != 'all' %}
-  <div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
-    <div class="collection-tag-filter-wrapper page-width">
-      {% assign all_tags = '' | split: '' %}
-      {% for product in collection.all_products %}
-        {% assign all_tags = all_tags | concat: product.tags %}
-      {% endfor %}
-      {% assign unique_tags = all_tags | uniq %}
+<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+  <div class="collection-tag-filter-wrapper page-width">
+    {% assign all_tags = '' | split: '' %}
+    {% for product in collection.all_products %}
+      {% assign all_tags = all_tags | concat: product.tags %}
+    {% endfor %}
+    {% assign unique_tags = all_tags | uniq %}
 
-      {% for tag in unique_tags %}
-        <a
-          href="{{ collection.url }}?filter.p.tag={{ tag }}"
-          class="button button--primary"
-        >
-          {{- tag | upcase -}}
-        </a>
-      {% endfor %}
-    </div>
+    {% for tag in unique_tags %}
+      <a
+        href="{{ collection.url }}?filter.p.tag={{ tag }}"
+        class="button button--primary"
+      >
+        {{- tag | upcase -}}
+      </a>
+    {% endfor %}
   </div>
-{% endif %}
+</div>
 
 {% schema %}
 {
