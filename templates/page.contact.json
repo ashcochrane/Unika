@@ -50,7 +50,7 @@
     "form": {
       "type": "contact-form",
       "custom_css": [
-        ".button {text-transform: uppercase; background-color: hsl(64, 37.9%, 47.4%); font-weight: bold; --border-offset: unset; --buttons-border-opacity: unset;}"
+        ".button {text-transform: uppercase; font-weight: bold; --border-offset: unset; --buttons-border-opacity: unset;}"
       ],
       "settings": {
         "heading": "",
