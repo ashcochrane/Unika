@@ -11,7 +11,10 @@
   "sections": {
     "cart-items": {
       "type": "main-cart-items",
-      "custom_css": [],
+      "custom_css": [
+        ".button {text-transform: uppercase; background-color: hsl(64, 37.9%, 47.4%); font-weight: bold; --border-offset: unset; --buttons-border-opacity: unset;}",
+        ".button:hover {background-color: black; color: white;}"
+      ],
       "settings": {
         "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
         "padding_top": 36,
