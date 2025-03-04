@@ -70,7 +70,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_ColorFill_FS.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_ColorFill_FS.pdf\">Feature Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_ColorFill_FS.pdf\" target=\"_blank\" title=\"ColorFill Tube product feature sheet\">Feature Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -80,7 +80,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_ColorFill_TechnicalSheet.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_ColorFill_TechnicalSheet.pdf\">Technical Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_ColorFill_TechnicalSheet.pdf\" target=\"_blank\" title=\"ColorFill Tube product technical sheet\">Technical Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -115,7 +115,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/TopSeal-FeatureSheet.pdf?v=1739964144\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/TopSeal-FeatureSheet.pdf?v=1739964144\">Feature Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/TopSeal-FeatureSheet.pdf?v=1739964144\" target=\"_blank\" title=\"TopSeal Cartridge product feature sheet\">Feature Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -125,7 +125,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/TopSeal-TechnicalDataSheet.pdf?v=1739966003\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/TopSeal-TechnicalDataSheet.pdf?v=1739966003\">Technical Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/TopSeal-TechnicalDataSheet.pdf?v=1739966003\" target=\"_blank\" title=\"TopSeal Cartridge product technical sheet\">Technical Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -135,7 +135,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_TOPSEAL.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_TOPSEAL.pdf\">Safety Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_TOPSEAL.pdf\" target=\"_blank\" title=\"TopSeal Cartridge product safety sheet\">Safety Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -171,7 +171,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/MitreBond-TDS.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/MitreBond-TDS.pdf\">Technical Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/MitreBond-TDS.pdf\" target=\"_blank\" title=\"MitreBond product technical sheet\">Technical Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -181,7 +181,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/MITREBOND-FEATURE-SHEET_02.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/MITREBOND-FEATURE-SHEET_02.pdf\">Feature Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/MITREBOND-FEATURE-SHEET_02.pdf\" target=\"_blank\" title=\"MitreBond product feature sheet\">Feature Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -191,7 +191,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_MITREBOND_ACTIVATOR.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_MITREBOND_ACTIVATOR.pdf\">Safety Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_MITREBOND_ACTIVATOR.pdf\" target=\"_blank\" title=\"MitreBond product safety sheet\">Safety Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -227,7 +227,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/MITREPEN-FEATURE-SHEET_02.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/MITREPEN-FEATURE-SHEET_02.pdf\">Feature Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/MITREPEN-FEATURE-SHEET_02.pdf\" target=\"_blank\" title=\"MitrePen product feature sheet\">Feature Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -237,7 +237,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_MITREPEN.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_MITREPEN.pdf\">Safety Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_MITREPEN.pdf\" target=\"_blank\" title=\"MitrePen product safety sheet\">Safety Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -272,7 +272,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/EasiBolt-FeatureSheet.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/EasiBolt-FeatureSheet.pdf\">Feature Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/EasiBolt-FeatureSheet.pdf\" target=\"_blank\" title=\"EasiBolt product technical sheet\">Feature Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -317,7 +317,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/UniversalJig-FeatureSheet.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/UniversalJig-FeatureSheet.pdf\">Feature Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/UniversalJig-FeatureSheet.pdf\" target=\"_blank\" title=\"Universal Worktop Jig product feature sheet\">Feature Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -362,7 +362,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/DrainerJig-FeatureSheet.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/DrainerJig-FeatureSheet.pdf\">Feature Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/DrainerJig-FeatureSheet.pdf\" target=\"_blank\" title=\"Drainer Jig product feature sheet\">Feature Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -407,7 +407,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/SDS_Contact_Adhesive.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/SDS_Contact_Adhesive.pdf\">Safety Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/SDS_Contact_Adhesive.pdf\" target=\"_blank\" title=\"Contact Adhesive product safety sheet\">Safety Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -452,7 +452,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/WorktopProtectorRods-FeatureSheet.pdf?v=1739962035\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/WorktopProtectorRods-FeatureSheet.pdf?v=1739962035\">Feature Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/WorktopProtectorRods-FeatureSheet.pdf?v=1739962035\" target=\"_blank\" title=\"Worktop Protector Rods product feature sheet\">Feature Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -497,7 +497,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/EasiBolt-FeatureSheet.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/EasiBolt-FeatureSheet.pdf\">Feature Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/EasiBolt-FeatureSheet.pdf\" target=\"_blank\" title=\"Magic Eraser product feature sheet\">Feature Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -542,7 +542,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/GlossCleaner-FeatureSheet.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/GlossCleaner-FeatureSheet.pdf\">Feature Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/GlossCleaner-FeatureSheet.pdf\" target=\"_blank\" title=\"Non Aresol Gloss Cleaner product feature sheet\">Feature Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -587,7 +587,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/SuperMatteCleaner-FeatureSheet.pdf?v=1739964015\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/SuperMatteCleaner-FeatureSheet.pdf?v=1739964015\">Feature Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/SuperMatteCleaner-FeatureSheet.pdf?v=1739964015\" target=\"_blank\" title=\"SuperMatte Laminate Cleaner product feature sheet\">Feature Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
@@ -632,7 +632,7 @@
           "type": "column",
           "settings": {
             "video_id": "",
-            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_LAMINATE_WORKTOP_CLEANER.pdf\" target=\"_blank\" title=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_LAMINATE_WORKTOP_CLEANER.pdf\">Safety Sheet</a>",
+            "title": "<a href=\"https://cdn.shopify.com/s/files/1/0563/9346/5953/files/NZ_Unika_LAMINATE_WORKTOP_CLEANER.pdf\" target=\"_blank\" title=\"Laminate Daily Worktop Cleaner product safety sheet\">Safety Sheet</a>",
             "text": "",
             "link_label": "",
             "link": ""
