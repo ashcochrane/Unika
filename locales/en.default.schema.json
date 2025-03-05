@@ -621,6 +621,18 @@
         "name": "Collage"
       }
     },
+    "metaobject-datatable": {
+      "name": "Metaobject",
+      "settings": {
+        "metaobject": {
+          "settings": {
+            "metaobject": {
+              "default": "Laminates"
+            }
+          }
+        }
+      }
+    },
     "collection-list-custom": {
       "name": "Collection List Custom",
       "settings": {

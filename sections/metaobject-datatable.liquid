@@ -1,0 +1,60 @@
+{% assign metaobject_handle = section.settings.metaobject | handleize %}
+{% assign metaobjects = metaobjects[metaobject_handle] %}
+
+<!-- DataTables CSS -->
+{{ 'datatables.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'datatables.js' | asset_url }}" defer="defer"></script>
+
+<p>Hello</p>
+
+<table id="metaobject-table" class="display">
+  <thead>
+    <tr>
+      {% if metaobjects and metaobjects.size > 0 %}
+        <!-- Dynamic headers for the metaobject -->
+        {% for field in metaobjects[0] %}
+          <th>{{ field | capitalize }}</th>
+        {% endfor %}
+        <!-- Dynamic headers for the referenced metaobject -->
+        {% if metaobjects[0].reference %}
+          {% for field in metaobjects[0].reference %}
+            <th>{{ field | capitalize }}</th>
+          {% endfor %}
+        {% endif %}
+      {% endif %}
+    </tr>
+  </thead>
+  <tbody>
+    {% if metaobjects and metaobjects.size > 0 %}
+      {% for metaobject in metaobjects %}
+        <tr>
+          <!-- Display metaobject fields -->
+          {% for field in metaobject %}
+            <td>{{ field[1] }}</td>
+          {% endfor %}
+          <!-- Display referenced metaobject fields -->
+          {% if metaobject.reference %}
+            {% for field in metaobject.reference %}
+              <td>{{ field[1] }}</td>
+            {% endfor %}
+          {% endif %}
+        </tr>
+      {% endfor %}
+    {% endif %}
+  </tbody>
+</table>
+
+{% schema %}
+{
+  "name": "t:sections.metaobject-datatable.name",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "metaobject",
+      "label": "Metaobject Handle"
+    }
+  ]
+}
+{% endschema %}
