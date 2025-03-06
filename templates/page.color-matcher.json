@@ -11,46 +11,34 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "custom_css": [],
       "settings": {
         "padding_top": 28,
-        "padding_bottom": 28
+        "padding_bottom": 0
       }
     },
-    "rich_text_EPCCi3": {
+    "rich_text_TgQqnm": {
       "type": "rich-text",
       "blocks": {
-        "heading_wJKNtx": {
+        "heading_K8qG9p": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>TECHNICAL DOCUMENTS</strong>",
+            "heading": "<strong>COLOUR MATCHER</strong>",
             "heading_size": "h1"
           }
         },
-        "text_NpEJQ9": {
+        "text_yqbh6Y": {
           "type": "text",
           "settings": {
-            "text": "<p>Please view our techincal documents related to each of our products.</p>"
-          }
-        },
-        "button_tE3cPd": {
-          "type": "button",
-          "settings": {
-            "button_label": "",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "text": "<p>Our unika colour matcher matches any New Zealand laminates to the Unika ColorFill and TopSeal range.</p>"
           }
         }
       },
       "block_order": [
-        "heading_wJKNtx",
-        "text_NpEJQ9",
-        "button_tE3cPd"
+        "heading_K8qG9p",
+        "text_yqbh6Y"
       ],
-      "disabled": true,
       "settings": {
         "desktop_content_position": "left",
         "content_alignment": "left",
@@ -71,7 +59,7 @@
   },
   "order": [
     "main",
-    "rich_text_EPCCi3",
+    "rich_text_TgQqnm",
     "metaobject_datatable_CttVx9"
   ]
 }
