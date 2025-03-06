@@ -50,6 +50,11 @@
     },
     "metaobject_datatable_CttVx9": {
       "type": "metaobject-datatable",
+      "custom_css": [
+        ".button {/* background-color: hsl(73 37% 24%); */ background-color: hsl(64, 37.9%, 47.4%); font-weight: bold; --border-offset: unset; --buttons-border-opacity: unset;}",
+        ".button:hover {background-color: black; color: white;}",
+        ".banner__buttons {padding-top: 20px;}"
+      ],
       "settings": {
         "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
         "padding_top": 40,
