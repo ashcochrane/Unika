@@ -1,5 +1,5 @@
 {% assign metaobject_handle = section.settings.metaobject | handleize %}
-{% assign metaobjects = metaobjects[metaobject_handle] %}
+{% assign metaobjects = shop.metaobjects[metaobject_handle].values %}
 
 <!-- DataTables CSS -->
 {{ 'datatables.css' | asset_url | stylesheet_tag }}
@@ -13,12 +13,12 @@
       {% if metaobjects and metaobjects.size > 0 %}
         <!-- Dynamic headers for the metaobject -->
         {% for field in metaobjects[0] %}
-          <th>{{ field | capitalize }}</th>
+          <th>{{ field.name | capitalize }}</th>
         {% endfor %}
         <!-- Dynamic headers for the referenced metaobject -->
         {% if metaobjects[0].reference %}
           {% for field in metaobjects[0].reference %}
-            <th>{{ field | capitalize }}</th>
+            <th>{{ field.name | capitalize }}</th>
           {% endfor %}
         {% endif %}
       {% endif %}
@@ -30,12 +30,12 @@
         <tr>
           <!-- Display metaobject fields -->
           {% for field in metaobject %}
-            <td>{{ field[1] }}</td>
+            <td>{{ field.value }}</td>
           {% endfor %}
           <!-- Display referenced metaobject fields -->
           {% if metaobject.reference %}
             {% for field in metaobject.reference %}
-              <td>{{ field[1] }}</td>
+              <td>{{ field.value }}</td>
             {% endfor %}
           {% endif %}
         </tr>
@@ -54,6 +54,11 @@
       "type": "text",
       "id": "metaobject",
       "label": "Metaobject Handle"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Metaobject Datatable"
     }
   ]
 }
