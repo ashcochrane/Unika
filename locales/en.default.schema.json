@@ -623,15 +623,6 @@
     },
     "metaobject-datatable": {
       "name": "Metaobject",
-      "settings": {
-        "metaobject": {
-          "settings": {
-            "metaobject": {
-              "default": "laminates"
-            }
-          }
-        }
-      }
     },
     "collection-list-custom": {
       "name": "Collection List Custom",

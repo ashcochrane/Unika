@@ -1,59 +1,108 @@
-{% assign metaobject_handle = section.settings.metaobject | handleize %}
-{% assign metaobjects = shop.metaobjects[metaobject_handle].values %}
+{% assign metaobjects = shop.metaobjects.laminates.values %}
+{% assign count = shop.metaobjects.laminates.values_count %}
+
+{%- style -%}
+  .colour-matcher-wrapper {
+    display: flex;
+  }
+  .color-box {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+  }
+{%- endstyle -%}
 
 <!-- DataTables CSS -->
 {{ 'datatables.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'datatables.js' | asset_url }}" defer="defer"></script>
 
-<p>Hello</p>
-
-<table id="metaobject-table" class="display">
-  <thead>
-    <tr>
-      {% if metaobjects and metaobjects.size > 0 %}
-        <!-- Dynamic headers for the metaobject -->
-        {% for field in metaobjects[0] %}
-          <th>{{ field.name | capitalize }}</th>
-        {% endfor %}
-        <!-- Dynamic headers for the referenced metaobject -->
-        {% if metaobjects[0].reference %}
-          {% for field in metaobjects[0].reference %}
-            <th>{{ field.name | capitalize }}</th>
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="colour-matcher-wrapper page-width section-{{ section.id }}-padding">
+    {% if metaobjects and count > 0 %}
+      <table id="colour-matcher-table" class="display">
+        <thead>
+          <tr>
+            <th>Range</th>
+            <th>Finish</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th>ColorFill Code</th>
+            <th>ColorFill Colour</th>
+            <th>TopSeal Code</th>
+            <th>TopSeal Colour</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for metaobject in metaobjects %}
+            <tr>
+              <td>
+                {{ metaobject.range.value }}
+              </td>
+              <td>
+                {{ metaobject.decor_finish.value }}
+              </td>
+              <td>
+                {{ metaobject.decor_code.value }}
+              </td>
+              <td>
+                {{ metaobject.decor_name.value }}
+              </td>
+              {% if metaobject.reference %}
+                {% assign referenced_metaobject = metaobject.reference.value %}
+                <td>{{ referenced_metaobject.colorfill_code }}</td>
+                <td style="background-color: {{ referenced_metaobject.colorfill_hex | strip }}" />
+                <td>{{ referenced_metaobject.topseal_code }}</td>
+                <td style="background-color: {{ referenced_metaobject.topseal_hex | strip }}" />
+              {% endif %}
+            </tr>
           {% endfor %}
-        {% endif %}
-      {% endif %}
-    </tr>
-  </thead>
-  <tbody>
-    {% if metaobjects and metaobjects.size > 0 %}
-      {% for metaobject in metaobjects %}
-        <tr>
-          <!-- Display metaobject fields -->
-          {% for field in metaobject %}
-            <td>{{ field.value }}</td>
-          {% endfor %}
-          <!-- Display referenced metaobject fields -->
-          {% if metaobject.reference %}
-            {% for field in metaobject.reference %}
-              <td>{{ field.value }}</td>
-            {% endfor %}
-          {% endif %}
-        </tr>
-      {% endfor %}
+        </tbody>
+      </table>
     {% endif %}
-  </tbody>
-</table>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    $('#colour-matcher-table').DataTable();
+  });
+</script>
 
 {% schema %}
 {
   "name": "t:sections.metaobject-datatable.name",
   "tag": "section",
   "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
   "settings": [
     {
-      "type": "text",
-      "id": "metaobject",
-      "label": "Metaobject Handle"
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
     }
   ],
   "presets": [
