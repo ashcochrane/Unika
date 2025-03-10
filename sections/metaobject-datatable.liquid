@@ -23,6 +23,10 @@
 
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <div class="colour-matcher-wrapper page-width section-{{ section.id }}-padding">
+    <!-- Debugging: Display the count and metaobjects -->
+    <p><strong>Count:</strong> {{ count }}</p>
+    <p><strong>Metaobjects:</strong> {{ metaobjects | json }}</p>
+
     {% if metaobjects and count > 0 %}
       <table id="colour-matcher-table" class="display">
         <thead>
