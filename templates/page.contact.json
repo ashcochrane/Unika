@@ -60,12 +60,6 @@
         "padding_bottom": 36
       }
     },
-    // "metaobject_datatable": {
-    //   "type": "metaobject-datatable",
-    //   "settings": {
-    //     "metaobject": "Laminates"
-    //   }
-    // }
   },
   "order": [
     "main",

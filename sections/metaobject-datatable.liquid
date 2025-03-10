@@ -10,6 +10,11 @@
     height: 40px;
     border-radius: 4px;
   }
+  @media (max-width: 768px) {
+    .hide-on-mobile {
+      display: none;
+    }
+  }
 {%- endstyle -%}
 
 <!-- DataTables CSS -->
@@ -23,13 +28,15 @@
         <thead>
           <tr>
             <th>Range</th>
-            <th>Finish</th>
-            <th>Code</th>
+            <th class="hide-on-mobile">Finish</th>
+            <th class="hide-on-mobile">Code</th>
             <th>Name</th>
             <th>ColorFill Code</th>
-            <th>ColorFill Colour</th>
+            <th class="hide-on-mobile">ColorFill Colour</th>
+            <th>In Stock</th>
             <th>TopSeal Code</th>
-            <th>TopSeal Colour</th>
+            <th class="hide-on-mobile">TopSeal Colour</th>
+            <th>In Stock</th>
           </tr>
         </thead>
         <tbody>
@@ -38,10 +45,10 @@
               <td>
                 {{ metaobject.range.value }}
               </td>
-              <td>
+              <td class="hide-on-mobile">
                 {{ metaobject.decor_finish.value }}
               </td>
-              <td>
+              <td class="hide-on-mobile">
                 {{ metaobject.decor_code.value }}
               </td>
               <td>
@@ -50,9 +57,25 @@
               {% if metaobject.reference %}
                 {% assign referenced_metaobject = metaobject.reference.value %}
                 <td>{{ referenced_metaobject.colorfill_code }}</td>
-                <td style="background-color: {{ referenced_metaobject.colorfill_hex | strip }}" />
+                <td
+                  class="hide-on-mobile"
+                  style="background-color: {{ referenced_metaobject.colorfill_hex | strip }}"
+                />
+                {% if referenced_metaobject.colorfill_in_stock %}
+                  <td>&check;</td>
+                {% else %}
+                  <td />
+                {% endif %}
                 <td>{{ referenced_metaobject.topseal_code }}</td>
-                <td style="background-color: {{ referenced_metaobject.topseal_hex | strip }}" />
+                <td
+                  class="hide-on-mobile"
+                  style="background-color: {{ referenced_metaobject.topseal_hex | strip }}"
+                />
+                {% if referenced_metaobject.topseal_in_stock %}
+                  <td>&check;</td>
+                {% else %}
+                  <td />
+                {% endif %}
               {% endif %}
             </tr>
           {% endfor %}
