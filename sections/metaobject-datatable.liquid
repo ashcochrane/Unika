@@ -6,6 +6,10 @@
     .colour-matcher-wrapper {
       display: flex;
     }
+    .colour-matcher-tick {
+      text-align: center;
+      vertical-align: middle;
+    }
     .color-box {
       width: 40px;
       height: 40px;
@@ -28,10 +32,12 @@
         <table id="colour-matcher-table" class="display">
           <thead>
             <tr>
-              <th>Range</th>
-              <th class="hide-on-mobile">Finish</th>
-              <th class="hide-on-mobile">Code</th>
-              <th>Name</th>
+              <th>Manufacturer</th>
+              {% comment %}
+                <th class="hide-on-mobile">Finish</th>
+                <th class="hide-on-mobile">Code</th>
+              {% endcomment %}
+              <th>Sheet Name</th>
               <th>ColorFill Code</th>
               <th class="hide-on-mobile">ColorFill Colour</th>
               <th>In Stock</th>
@@ -46,12 +52,14 @@
                 <td>
                   {{ metaobject.range.value }}
                 </td>
-                <td class="hide-on-mobile">
-                  {{ metaobject.finish.value }}
-                </td>
-                <td class="hide-on-mobile">
-                  {{ metaobject.code.value }}
-                </td>
+                {% comment %}
+                  <td class="hide-on-mobile">
+                    {{ metaobject.finish.value }}
+                  </td>
+                  <td class="hide-on-mobile">
+                    {{ metaobject.code.value }}
+                  </td>
+                {% endcomment %}
                 <td>
                   {{ metaobject.name.value }}
                 </td>
@@ -63,7 +71,7 @@
                     style="background-color: {{ referenced_metaobject.colorfill_hex | strip }}"
                   />
                   {% if referenced_metaobject.colorfill_in_stock %}
-                    <td>&check;</td>
+                    <td class="colour-matcher-tick">&#10004;</td>
                   {% else %}
                     <td />
                   {% endif %}
@@ -73,7 +81,7 @@
                     style="background-color: {{ referenced_metaobject.topseal_hex | strip }}"
                   />
                   {% if referenced_metaobject.topseal_in_stock %}
-                    <td>&check;</td>
+                    <td class="colour-matcher-tick">&#10004;</td>
                   {% else %}
                     <td />
                   {% endif %}
