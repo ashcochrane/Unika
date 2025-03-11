@@ -1,95 +1,97 @@
-{% assign metaobjects = shop.metaobjects.laminates.values %}
-{% assign count = shop.metaobjects.laminates.values_count %}
+{% paginate shop.metaobjects.laminates.values by 300 %}
+  {% assign metaobjects = shop.metaobjects.laminates.values %}
+  {% assign count = shop.metaobjects.laminates.values_count %}
 
-{%- style -%}
-  .colour-matcher-wrapper {
-    display: flex;
-  }
-  .color-box {
-    width: 40px;
-    height: 40px;
-    border-radius: 4px;
-  }
-  @media (max-width: 768px) {
-    .hide-on-mobile {
-      display: none;
+  {%- style -%}
+    .colour-matcher-wrapper {
+      display: flex;
     }
-  }
-{%- endstyle -%}
+    .color-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+    }
+    @media (max-width: 768px) {
+      .hide-on-mobile {
+        display: none;
+      }
+    }
+  {%- endstyle -%}
 
-<!-- DataTables CSS -->
-{{ 'datatables.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'datatables.js' | asset_url }}" defer="defer"></script>
+  <!-- DataTables CSS -->
+  {{ 'datatables.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'datatables.js' | asset_url }}" defer="defer"></script>
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="colour-matcher-wrapper page-width section-{{ section.id }}-padding">
-    {% if metaobjects and count > 0 %}
-      <table id="colour-matcher-table" class="display">
-        <thead>
-          <tr>
-            <th>Range</th>
-            <th class="hide-on-mobile">Finish</th>
-            <th class="hide-on-mobile">Code</th>
-            <th>Name</th>
-            <th>ColorFill Code</th>
-            <th class="hide-on-mobile">ColorFill Colour</th>
-            <th>In Stock</th>
-            <th>TopSeal Code</th>
-            <th class="hide-on-mobile">TopSeal Colour</th>
-            <th>In Stock</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for metaobject in metaobjects %}
+  <div class="color-{{ section.settings.color_scheme }} gradient">
+    <div class="colour-matcher-wrapper page-width section-{{ section.id }}-padding">
+      {% if metaobjects and count > 0 %}
+        <table id="colour-matcher-table" class="display">
+          <thead>
             <tr>
-              <td>
-                {{ metaobject.range.value }}
-              </td>
-              <td class="hide-on-mobile">
-                {{ metaobject.finish.value }}
-              </td>
-              <td class="hide-on-mobile">
-                {{ metaobject.code.value }}
-              </td>
-              <td>
-                {{ metaobject.name.value }}
-              </td>
-              {% if metaobject.reference %}
-                {% assign referenced_metaobject = metaobject.reference.value %}
-                <td>{{ referenced_metaobject.colorfill_code }}</td>
-                <td
-                  class="hide-on-mobile"
-                  style="background-color: {{ referenced_metaobject.colorfill_hex | strip }}"
-                />
-                {% if referenced_metaobject.colorfill_in_stock %}
-                  <td>&check;</td>
-                {% else %}
-                  <td />
-                {% endif %}
-                <td>{{ referenced_metaobject.topseal_code }}</td>
-                <td
-                  class="hide-on-mobile"
-                  style="background-color: {{ referenced_metaobject.topseal_hex | strip }}"
-                />
-                {% if referenced_metaobject.topseal_in_stock %}
-                  <td>&check;</td>
-                {% else %}
-                  <td />
-                {% endif %}
-              {% endif %}
+              <th>Range</th>
+              <th class="hide-on-mobile">Finish</th>
+              <th class="hide-on-mobile">Code</th>
+              <th>Name</th>
+              <th>ColorFill Code</th>
+              <th class="hide-on-mobile">ColorFill Colour</th>
+              <th>In Stock</th>
+              <th>TopSeal Code</th>
+              <th class="hide-on-mobile">TopSeal Colour</th>
+              <th>In Stock</th>
             </tr>
-          {% endfor %}
-        </tbody>
-      </table>
-    {% endif %}
+          </thead>
+          <tbody>
+            {% for metaobject in metaobjects %}
+              <tr>
+                <td>
+                  {{ metaobject.range.value }}
+                </td>
+                <td class="hide-on-mobile">
+                  {{ metaobject.finish.value }}
+                </td>
+                <td class="hide-on-mobile">
+                  {{ metaobject.code.value }}
+                </td>
+                <td>
+                  {{ metaobject.name.value }}
+                </td>
+                {% if metaobject.reference %}
+                  {% assign referenced_metaobject = metaobject.reference.value %}
+                  <td>{{ referenced_metaobject.colorfill_code }}</td>
+                  <td
+                    class="hide-on-mobile"
+                    style="background-color: {{ referenced_metaobject.colorfill_hex | strip }}"
+                  />
+                  {% if referenced_metaobject.colorfill_in_stock %}
+                    <td>&check;</td>
+                  {% else %}
+                    <td />
+                  {% endif %}
+                  <td>{{ referenced_metaobject.topseal_code }}</td>
+                  <td
+                    class="hide-on-mobile"
+                    style="background-color: {{ referenced_metaobject.topseal_hex | strip }}"
+                  />
+                  {% if referenced_metaobject.topseal_in_stock %}
+                    <td>&check;</td>
+                  {% else %}
+                    <td />
+                  {% endif %}
+                {% endif %}
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% endif %}
+    </div>
   </div>
-</div>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    $('#colour-matcher-table').DataTable();
-  });
-</script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      $('#colour-matcher-table').DataTable();
+    });
+  </script>
+{% endpaginate %}
 
 {% schema %}
 {
