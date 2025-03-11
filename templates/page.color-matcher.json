@@ -56,11 +56,34 @@
         "padding_top": 40,
         "padding_bottom": 20
       }
+    },
+    "rich_text_YLrzLN": {
+      "type": "rich-text",
+      "blocks": {
+        "text_QgzffL": {
+          "type": "text",
+          "settings": {
+            "text": ""
+          }
+        }
+      },
+      "block_order": [
+        "text_QgzffL"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
     "main",
     "rich_text_TgQqnm",
-    "metaobject_datatable_CttVx9"
+    "metaobject_datatable_CttVx9",
+    "rich_text_YLrzLN"
   ]
 }
