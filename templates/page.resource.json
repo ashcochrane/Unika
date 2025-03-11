@@ -66,16 +66,6 @@
     "multicolumn_9D6JGK": {
       "type": "multicolumn",
       "blocks": {
-        "column_DtLw7w": {
-          "type": "column",
-          "settings": {
-            "video_id": "151621886",
-            "title": "TopSeal",
-            "text": "<p>Fitters Guide</p>",
-            "link_label": "",
-            "link": ""
-          }
-        },
         "column_aRUTtY": {
           "type": "column",
           "settings": {
@@ -148,7 +138,6 @@
         }
       },
       "block_order": [
-        "column_DtLw7w",
         "column_aRUTtY",
         "column_Gzdcdy",
         "column_Tddf7b",
