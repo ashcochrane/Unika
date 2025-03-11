@@ -60,17 +60,15 @@
         "padding_bottom": 36
       }
     },
-    // "metaobject_datatable": {
-    //   "type": "metaobject-datatable",
-    //   "settings": {
-    //     "metaobject": "Laminates"
-    //   }
-    // }
+    "metaobject_datatable": {
+      "type": "metaobject-datatable",
+      "settings": {}
+    }
   },
   "order": [
-    // "metaobject_datatable",
+    "metaobject_datatable",
     "main",
     "rich_text_9tjmhk",
-    "form",
+    "form"
   ]
 }
