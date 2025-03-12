@@ -47,12 +47,12 @@
   <div class="collection-list-wrapper page-width  section-{{ section.id }}-padding">
     {%- unless section.settings.title == blank -%}
       <div class="title-wrapper-with-link title-wrapper--self-padded-mobile title-wrapper--no-top-margin">
-        <h4
+        <h3
           id="SectionHeading-{{ section.id }}"
           class="collection-list-title inline-richtext {{ section.settings.heading_size }}{%  if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
         >
           {{ section.settings.title | upcase }}
-        </h4>
+        </h3>
       </div>
     {%- endunless -%}
     <ul>
