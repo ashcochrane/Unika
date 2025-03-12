@@ -11,6 +11,9 @@
   "sections": {
     "main": {
       "type": "main-search",
+      "custom_css": [
+        ".center {text-transform: uppercase; font-weight: bold;}"
+      ],
       "settings": {
         "columns_desktop": 4,
         "image_ratio": "adapt",
