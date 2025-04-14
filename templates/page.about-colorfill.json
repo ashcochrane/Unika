@@ -13,56 +13,51 @@
       "type": "main-page",
       "custom_css": [],
       "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
-    "rich_text_EPCCi3": {
-      "type": "rich-text",
+    "image_with_text_kFJNTL": {
+      "type": "image-with-text",
       "blocks": {
-        "heading_wJKNtx": {
+        "heading_TLXD6h": {
           "type": "heading",
           "settings": {
-            "heading": "<strong>TECHNICAL DOCUMENTS</strong>",
-            "heading_size": "h1"
+            "heading": "The original laminate worktop joint sealant and repairer",
+            "heading_size": "h2"
           }
         },
-        "text_NpEJQ9": {
+        "text_g7jrDe": {
           "type": "text",
           "settings": {
-            "text": "<p>Please view our techincal documents related to each of our products.</p>"
-          }
-        },
-        "button_tE3cPd": {
-          "type": "button",
-          "settings": {
-            "button_label": "",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "text": "<p>First on the market – ColorFill worktop joint sealant and worktop <br/>joint repairer has been used by tradesmen since its formation 26 years <br/>ago. It is the de facto standard for Joiners and Worktop Fitters.</p><p>ColorFill has been scientifically formulated and tested to resist <br/>moisture, detergent and other household products.  It will withstand <br/>heat and direct sunlight.</p><p>ColorFill is manufactured in the UK by Unika Color Products Ltd.</p><p>ColorFill was first manufactured in Australia in 1987 as a worktop <br/>joint sealant to match Formica worktops and laminated products sold in <br/>the region and in New Zealand. ColorFill was first brought into Europe <br/>with Formica in 1990 and was demonstrated to the trade on their <br/>exhibition stand at KBB Alexandra Palace.</p><p>The initial feedback couldn’t have been better and the founder of <br/>Unika Paul Rogers seized the opportunity and set up a company in Glasgow<br/> Scotland to market the worktop joint sealant products.</p><p></p>",
+            "text_style": "body"
           }
         }
       },
       "block_order": [
-        "heading_wJKNtx",
-        "text_NpEJQ9",
-        "button_tE3cPd"
+        "heading_TLXD6h",
+        "text_g7jrDe"
       ],
-      "disabled": true,
       "settings": {
-        "desktop_content_position": "left",
-        "content_alignment": "left",
-        "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
+        "image": "shopify://shop_images/colorfill-box-tube-aplicator.jpg",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
   "order": [
     "main",
-    "rich_text_EPCCi3"
+    "image_with_text_kFJNTL"
   ]
 }
