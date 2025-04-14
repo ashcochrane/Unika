@@ -156,11 +156,25 @@
         "columns_desktop": 3,
         "column_alignment": "center",
         "background_style": "primary",
-        "button_label": "Button label",
+        "button_label": "",
         "button_link": "",
         "color_scheme": "",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "video_iAyLD7": {
+      "type": "video",
+      "settings": {
+        "heading": "<strong>INSTRUCTIONAL VIDEO</strong>",
+        "heading_size": "h2",
+        "enable_video_looping": false,
+        "video_url": "https://player.vimeo.com/video/251807556?dnt=1&app_id=122963",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
       }
@@ -171,6 +185,7 @@
     "rich_text_QJhBDq",
     "image_with_text_kFJNTL",
     "rich_text_Ka6mxr",
-    "multicolumn_zcqUnH"
+    "multicolumn_zcqUnH",
+    "video_iAyLD7"
   ]
 }
