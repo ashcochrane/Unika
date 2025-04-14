@@ -47,7 +47,7 @@
         "heading_TLXD6h": {
           "type": "heading",
           "settings": {
-            "heading": "The original laminate worktop joint sealant and repairer",
+            "heading": "<strong>THE ORIGINAL LAMINATE WORKTOP JOINT SEALANT AND REPAIRER</strong>",
             "heading_size": "h2"
           }
         },
@@ -76,13 +76,101 @@
         "image_behavior": "none",
         "mobile_content_alignment": "left",
         "padding_top": 0,
-        "padding_bottom": 20
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_Ka6mxr": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_BMKzBD": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>WATERPROOF WORKTOP JOIN SEALANT</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_adLWmG": {
+          "type": "text",
+          "settings": {
+            "text": "<p>ColorFill is 100% Waterproof – no amount of water will break ColorFill  down. This makes ColorFill perfect for laminate worktop joints. We are more than happy for you test ColorFill’s waterproof properties. Now that’s what you need in a worktop joint</p><p><strong>TECHNICAL TEST:</strong></p><ul><li>Squeeze out a liberal amount of ColorFill onto a laminate off cut.</li><li>Wait for it to dry – leave for 24 hours</li><li>Place ColorFill in a glass of water and leave there for as long as you like from a day to a year!</li></ul><p>ColorFill with its hydrophobic base polymer structure and lack of additives such as surfactants and coalescing solvents as used with emulsion polymers, is impervious to water.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_BMKzBD",
+        "text_adLWmG"
+      ],
+      "settings": {
+        "desktop_content_position": "right",
+        "content_alignment": "left",
+        "color_scheme": "scheme-fd1c7669-a453-43d7-9d7b-6a8b1b16b933",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_zcqUnH": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_VpzJWd": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "<strong>NO MORE BLOWN JOINTS</strong>",
+            "text": "<p>Water-based Worktop Sealants, when dried out and immersed in water, pick up moisture. This causes the swelling of the cured polymer structure. These sealants will allow moisture to migrate into the worktop joint and diffuse into the chipboard core resulting in the opening of the joint and potential swelling of the core.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_BEacGg": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "<strong>LARGE COLOUR RANGE</strong>",
+            "text": "<p>ColorFill has the widest colour range of all Worktop Joint Sealants – 449 Colours to be exact and this number is increasing all the time as new laminate decors hit the market.</p><p></p><p>You can view the ColorFill range available in New Zealand and the Laminates they match in our <a href=\"/pages/colour-matcher\" target=\"_blank\" title=\"Colour Matcher\">Colour-Matcher</a></p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Xd9pfJ": {
+          "type": "column",
+          "settings": {
+            "video_id": "",
+            "title": "<strong>COLORFILL GAURANTEE</strong>",
+            "text": "<p>ColorFill can guarantee that when used correctly there will be no joint ingress this means there will be no snagging for the fitter and 100% customer satisfaction.</p><p>With such high performance, a wide colour range and a 100% customer satisfaction guarantee, why choose anything else?</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_VpzJWd",
+        "column_BEacGg",
+        "column_Xd9pfJ"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "Button label",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
   "order": [
     "main",
     "rich_text_QJhBDq",
-    "image_with_text_kFJNTL"
+    "image_with_text_kFJNTL",
+    "rich_text_Ka6mxr",
+    "multicolumn_zcqUnH"
   ]
 }
