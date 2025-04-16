@@ -219,7 +219,7 @@
           "settings": {
             "image": "shopify://shop_images/worktop-colorfill-step-one.jpg",
             "video_id": "",
-            "title": "Step 1",
+            "title": "<strong>STEP 1</strong>",
             "text": "<p>Use 1 tube of ColorFill per joint. Apply a thick bead of ColorFill <br/>around the leading edge of the joint to both the bottom and top of the <br/>exposed core taking care to ensure adequate sealant around the front and<br/> back edges and bolt slots.</p>",
             "link_label": "",
             "link": ""
@@ -230,7 +230,7 @@
           "settings": {
             "image": "shopify://shop_images/worktop-colorfill-step-2.jpg",
             "video_id": "",
-            "title": "Step 2",
+            "title": "<strong>STEP 2</strong>",
             "text": "<p>Quickly close the joint and allow excess sealant to squeeze out of the <br/>joint, align the two sides and tighten the bolts fully. Do not <br/>overstress joints. It is important that the joint is closed quickly as <br/>the sealant will start to set immediately.</p>",
             "link_label": "",
             "link": ""
@@ -241,7 +241,7 @@
           "settings": {
             "image": "shopify://shop_images/worktop-colorfill-step-3.jpg",
             "video_id": "",
-            "title": "Step 3",
+            "title": "<strong>STEP 3</strong>",
             "text": "<p>The excess sealant should be removed with a spatula which should be <br/>drawn towards the front edge from the back of the worktop applying <br/>pressure down and into the joint thus ensuring there are no air holes <br/>along the top of the joint.</p>",
             "link_label": "",
             "link": ""
