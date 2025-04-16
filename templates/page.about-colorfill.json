@@ -279,6 +279,7 @@
         "heading_size": "h2",
         "enable_video_looping": false,
         "video_url": "https://player.vimeo.com/video/251807556?dnt=1&app_id=122963",
+        "cover_image": "shopify://shop_images/colorfill-box_fecb3145-b39a-4c90-961c-caa7db054160.jpg",
         "description": "ColorFill worktop joints instructional video",
         "full_width": false,
         "color_scheme": "",
