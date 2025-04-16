@@ -158,7 +158,7 @@
         "background_style": "primary",
         "button_label": "",
         "button_link": "",
-        "color_scheme": "",
+        "color_scheme": "scheme-ecc84250-9cdb-4d5f-8cf0-d7f4c1e3ef5e",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 36,
@@ -167,6 +167,7 @@
     },
     "video_iAyLD7": {
       "type": "video",
+      "disabled": true,
       "settings": {
         "heading": "<strong>INSTRUCTIONAL VIDEO</strong>",
         "heading_size": "h2",
@@ -178,6 +179,97 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "rich_text_djhBED": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_6XKqGq": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>DIRECTIONS FOR USE: WORKTOP JOINTS</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_EzD9mD": {
+          "type": "text",
+          "settings": {
+            "text": "<p>There are a number of ways to choose the correct ColorFill worktop joint sealant for your laminate.</p><p>You can use the worktop manufacturer or retailer information, or choose by colour.  Visit our <a href=\"/pages/colour-matcher\" target=\"_blank\" title=\"Colour Matcher\">Colour Matcher</a> to find the right colour for your project.</p><ul><li>You will need 1 Tube of ColorFill per joint</li><li>ColorFill should not be mixed or combined with any other material in the joint</li><li>Do not overstress joints</li><li>Apply and finish immediately. Don’t delay or ColorFill will set and no longer be effective</li></ul><p></p><p></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_6XKqGq",
+        "text_EzD9mD"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "multicolumn_VTm8je": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_CaHztQ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/worktop-colorfill-step-one.jpg",
+            "video_id": "",
+            "title": "Step 1",
+            "text": "<p>Use 1 tube of ColorFill per joint. Apply a thick bead of ColorFill <br/>around the leading edge of the joint to both the bottom and top of the <br/>exposed core taking care to ensure adequate sealant around the front and<br/> back edges and bolt slots.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_6HMCC7": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/worktop-colorfill-step-2.jpg",
+            "video_id": "",
+            "title": "Step 2",
+            "text": "<p>Quickly close the joint and allow excess sealant to squeeze out of the <br/>joint, align the two sides and tighten the bolts fully. Do not <br/>overstress joints. It is important that the joint is closed quickly as <br/>the sealant will start to set immediately.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_EGUWaK": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/worktop-colorfill-step-3.jpg",
+            "video_id": "",
+            "title": "Step 3",
+            "text": "<p>The excess sealant should be removed with a spatula which should be <br/>drawn towards the front edge from the back of the worktop applying <br/>pressure down and into the joint thus ensuring there are no air holes <br/>along the top of the joint.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_CaHztQ",
+        "column_6HMCC7",
+        "column_EGUWaK"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
@@ -186,6 +278,8 @@
     "image_with_text_kFJNTL",
     "rich_text_Ka6mxr",
     "multicolumn_zcqUnH",
-    "video_iAyLD7"
+    "video_iAyLD7",
+    "rich_text_djhBED",
+    "multicolumn_VTm8je"
   ]
 }
