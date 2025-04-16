@@ -270,6 +270,37 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "rich_text_Gmn9XU": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_AFdtpq": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>DIRECTIONS FOR USE: LAMINATE REPAIR</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_76iDfh": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>STEP 1:</strong></p><ul><li>Clean the damaged area with a solvent moistened tissue to ensure there are no oil or grease residues on the surface.</li><li>Clean across the area with a spatula to remove any small chips or fragments.</li></ul><p></p><p><strong>STEP 2:</strong></p><ul><li>Select the correct colour and squeeze out a liberal amount onto the edge of the ColorFill spatula. Position the spatula behind the area to be repaired and press firmly down on the surface pulling the spatula towards you filling the area with ColorFill. Scrape off the overfill from around the damage and draw the spatula across the damage.</li></ul><p></p><p><strong>STEP 3:</strong></p><ul><li>Use a solvent moistened tissue to clean off the overfill around the repair taking care not to clean out the filled area.</li></ul><p></p><p><strong>STEP 4:</strong></p><ul><li>For final clean up allow 24 hours to fully harden and clean the area with household washing up liquid and warm water.<br/></li></ul>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_AFdtpq",
+        "text_76iDfh"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "left",
+        "content_alignment": "left",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
@@ -280,6 +311,7 @@
     "multicolumn_zcqUnH",
     "video_iAyLD7",
     "rich_text_djhBED",
-    "multicolumn_VTm8je"
+    "multicolumn_VTm8je",
+    "rich_text_Gmn9XU"
   ]
 }
