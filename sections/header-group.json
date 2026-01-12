@@ -14,13 +14,6 @@
     "announcement-bar": {
       "type": "announcement-bar",
       "blocks": {
-        "announcement-bar-0": {
-          "type": "announcement",
-          "settings": {
-            "text": "Shutdown period 18th December - 12th January - Anything purchased within these dates will not be shipped till 12th January",
-            "link": ""
-          }
-        },
         "announcement_wXW4f6": {
           "type": "announcement",
           "settings": {
@@ -30,7 +23,6 @@
         }
       },
       "block_order": [
-        "announcement-bar-0",
         "announcement_wXW4f6"
       ],
       "settings": {
