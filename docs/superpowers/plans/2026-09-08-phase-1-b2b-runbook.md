@@ -120,72 +120,56 @@ Consequence: `templates/customers/*.json` and `sections/main-account.liquid`
 are dead code today. Nothing renders them. They can be deleted, but that is a
 live change on merge, so do it deliberately rather than as a side effect.
 
-## Stage 3 — B2B configuration
+## Stage 3 — ✅ COMPLETE (2026-09-08)
 
-Additive and low risk. Nothing here is customer-visible until you attach a real
-customer to a company in Stage 5.
+Configured and verified against a live test order.
 
-### 3.1 Enable B2B
+| Item          | State                                                                                  |
+| ------------- | -------------------------------------------------------------------------------------- |
+| B2B enabled   | Companies available in admin                                                           |
+| Market        | **New Zealand (Trade)** — B2B type, includes all company locations in all regions, NZD |
+| Retail market | **New Zealand (Retail)** — untouched, still active                                     |
+| Catalog       | **New Zealand Trade** — all products, 5% adjustment. **Catalog 1 of 3.**               |
+| Test company  | Ash Test Company, approved, one location, one buyer                                    |
+| Payment terms | **Net 45**                                                                             |
+| Card payment  | **Blocked for B2B via PayRules**                                                       |
 
-- [ ] Confirm **Customers → Companies** now appears in the admin
+### The market must include _company locations_, not a country
 
-### 3.2 Market and catalog
+Setting `Includes` to New Zealand creates a duplicate **region** market, and Shopify
+warns it will draft the existing retail market. The B2B market is created by setting
+`Includes` to **Company locations**, then enabling _"Include all existing and future
+locations"_ so new trade accounts join automatically. The company list being empty at
+creation time is expected and irrelevant.
 
-- [ ] Create a **B2B market** for New Zealand
-- [ ] Create the **NZ Trade catalog** — this is **catalog 1 of 3**
-- [ ] Set trade pricing as a **percentage adjustment** against base prices
+### PayRules is how card payment is blocked
 
-> The trade percentage is a business decision, entered here, changeable any time
-> by staff without a developer. It does not need to be final to proceed.
+There is no native control (spec section 8). The rule is:
 
-- [ ] **Reserve catalog 2 for AU. Never spend catalog 3.** The cap is 3 across all
-      B2B markets on this plan.
+- Condition: **Company → Customer is company → If found** — matches any company,
+  not a named one
+- Action: **Hide**
+- Methods: Shopify Payments (Credit card), Stripe (Credit card), Google Pay
+  (express), Apple Pay (express), Shop Pay (express), Shop Pay Installments
 
-### 3.3 Payment terms
+The express wallets matter — they are card transactions at the same 2.45%.
 
-- [ ] Set terms on the company location — **Net 30**, or the 20th of the month
-      following, per NZ convention
-- [ ] Configure **payment reminders** — up to 5, at the due date and after
+**Do not add a free-text `Credit` entry.** With partial matching it also catches
+"Redeemable payment method - Store credit" and would silently disable store credit.
 
-### 3.4 🔴 Lock payment methods to bank transfer
+**Verified on both sides:** card absent for the trade account, still present for
+retail in an incognito session. A payment rule that is too broad fails silently, so
+the retail check is not optional.
 
-**Do this before any trade customer can reach a "Pay now" button.**
+### 🔴 Live bug found while testing: shipping charged $250
 
-Buyers can pay outstanding orders themselves from customer accounts. That button
-offers whatever payment methods are enabled. A card payment costs **2.45% +
-$0.30** — precisely the margin the bank-transfer strategy exists to protect.
+The Domestic zone's rate was named "Free" with the condition _orders $250 and up*
+and a **price of $250.00_* instead of $0.00. Every order over $250 — retail
+included — was charged $250 freight while the announcement bar promised free
+shipping. Corrected to $0.00 and verified.
 
-- [ ] Restrict B2B company-location payment methods to **bank transfer / manual**
-- [ ] Verify by opening an unpaid test order as the customer — confirm card is
-      **not** offered
-- [ ] Only once verified, note that **PayRules can be uninstalled** (Stage 5)
-
-### 3.5 Quantity rules
-
-- [ ] Set **increment 9** on ColorFill tubes (sold in 9-packs)
-- [ ] Set minimums per variant where required
-
-### 3.6 Bulk discount bands
-
-Volume price breaks are **per variant and do not combine across variants**, so a
-cart of eight different ColorFill colours would earn nothing from them.
-
-- [ ] Create **order-level automatic discounts**, scoped to the **B2B market** so
-      they never reach retail customers
-- [ ] Set bands on cart subtotal — e.g. $1,000 → 5%, $2,500 → 10%. Values are a
-      commercial decision; the mechanism does not depend on them.
-- [ ] Use volume price breaks **only** on single-SKU-depth products — MitreBond
-      cartons, TopSeal, cleaners, bolts. **Never on ColorFill colours.**
-
-### 3.7 Trade application flow
-
-- [ ] Build an application form with **Shopify Forms** (installed, free) —
-      business name, GST number, contact, trade references
-- [ ] Add a **tax registration metafield** on company for the GST number / ABN.
-      Cheap now, ugly to retrofit when AU arrives.
-- [ ] Use **Flow** to notify staff on submission
-
----
+This had nothing to do with B2B. It surfaced only because a full checkout was
+walked end to end, and is a reason to test real flows rather than reason about them.
 
 ## Stage 4 — End-to-end verification
 
