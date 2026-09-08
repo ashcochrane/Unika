@@ -40,68 +40,94 @@
           </div>
         </div>
 
-        {%- assign unpaid_count = 0 -%}
-        {%- for order in customer.orders limit: 20 -%}
-          {%- unless order.financial_status == 'paid' or order.financial_status == 'refunded' -%}
-            {%- assign unpaid_count = unpaid_count | plus: 1 -%}
-          {%- endunless -%}
-        {%- endfor -%}
+        {%- paginate customer.orders by 50 -%}
+          {%- liquid
+            assign unpaid_count = 0
+            for order in customer.orders
+              unless order.financial_status == 'paid' or order.financial_status == 'refunded'
+                assign unpaid_count = unpaid_count | plus: 1
+              endunless
+            endfor
+          -%}
 
-        {%- if unpaid_count > 0 -%}
-          <p class="trade-desk__flag">
-            <strong>{{ unpaid_count }}</strong>
-            {% if unpaid_count == 1 %}order awaits{% else %}orders await{% endif %} payment.
-            <a href="{{ routes.account_url }}">View and pay</a>
-          </p>
-        {%- endif -%}
+          {%- if unpaid_count > 0 -%}
+            <p class="trade-desk__flag">
+              <strong>{{ unpaid_count }}</strong>
+              {% if unpaid_count == 1 %}order is{% else %}orders are{% endif %} awaiting payment.
+              <a href="{{ routes.account_url }}">View and pay</a>
+            </p>
+          {%- endif -%}
 
-        {%- if customer.orders.size > 0 -%}
-          <div class="trade-desk__orders">
-            <div class="trade-desk__orders-head">
-              <h2 class="trade-desk__subtitle">Recent orders</h2>
-              <a href="{{ routes.account_url }}">{{ section.settings.orders_label }}</a>
-            </div>
+          {%- if customer.orders.size > 0 -%}
+            <div class="trade-desk__orders">
+              <div class="trade-desk__orders-head">
+                <h2 class="trade-desk__subtitle">Recent orders</h2>
+                <a href="{{ routes.account_url }}">{{ section.settings.orders_label }}</a>
+              </div>
 
-            <table class="trade-orders">
-              <thead>
-                <tr>
-                  <th scope="col">Order</th>
-                  <th scope="col">Date</th>
-                  <th scope="col">Payment</th>
-                  <th scope="col" class="trade-orders__hide-mobile">Delivery</th>
-                  <th scope="col" class="trade-orders__right">Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                {%- for order in customer.orders limit: 5 -%}
-                  <tr>
-                    <td data-label="Order">
-                      <a href="{{ order.customer_url }}">{{ order.name }}</a>
-                    </td>
-                    <td data-label="Date">{{ order.created_at | date: '%-d %b %Y' }}</td>
-                    <td data-label="Payment">
-                      {%- if order.financial_status == 'paid' -%}
-                        {{ order.financial_status_label }}
-                      {%- else -%}
-                        <span class="trade-orders__due">{{ order.financial_status_label }}</span>
-                      {%- endif -%}
-                    </td>
-                    <td data-label="Delivery" class="trade-orders__hide-mobile">
-                      {{ order.fulfillment_status_label }}
-                    </td>
-                    <td data-label="Total" class="trade-orders__right">
-                      {{ order.total_net_amount | money_with_currency }}
-                    </td>
+              <table role="table" class="trade-orders">
+                <caption class="visually-hidden">
+                  Your five most recent orders
+                </caption>
+                <thead role="rowgroup">
+                  <tr role="row">
+                    <th id="TradeColOrder" scope="col" role="columnheader">Order</th>
+                    <th id="TradeColDate" scope="col" role="columnheader">Date</th>
+                    <th id="TradeColPayment" scope="col" role="columnheader">Payment</th>
+                    <th
+                      id="TradeColDelivery"
+                      scope="col"
+                      role="columnheader"
+                      class="trade-orders__hide-mobile"
+                    >
+                      Delivery
+                    </th>
+                    <th id="TradeColTotal" scope="col" role="columnheader" class="trade-orders__right">Total</th>
                   </tr>
-                {%- endfor -%}
-              </tbody>
-            </table>
-          </div>
-        {%- else -%}
-          <p class="trade-desk__empty">
-            No orders yet. Match a laminate to find the codes you need, or browse the range.
-          </p>
-        {%- endif -%}
+                </thead>
+                <tbody role="rowgroup">
+                  {%- for order in customer.orders limit: 5 -%}
+                    <tr role="row">
+                      <td id="TradeRow{{ order.id }}" role="cell" headers="TradeColOrder" data-label="Order">
+                        <a href="{{ order.customer_url }}" aria-label="Order {{ order.name }}">{{ order.name }}</a>
+                      </td>
+                      <td role="cell" headers="TradeRow{{ order.id }} TradeColDate" data-label="Date">
+                        {{ order.created_at | time_tag: format: 'date' }}
+                      </td>
+                      <td role="cell" headers="TradeRow{{ order.id }} TradeColPayment" data-label="Payment">
+                        {%- if order.financial_status == 'paid' -%}
+                          {{ order.financial_status_label }}
+                        {%- else -%}
+                          <span class="trade-orders__due">{{ order.financial_status_label }}</span>
+                        {%- endif -%}
+                      </td>
+                      <td
+                        role="cell"
+                        headers="TradeRow{{ order.id }} TradeColDelivery"
+                        data-label="Delivery"
+                        class="trade-orders__hide-mobile"
+                      >
+                        {{ order.fulfillment_status_label }}
+                      </td>
+                      <td
+                        role="cell"
+                        headers="TradeRow{{ order.id }} TradeColTotal"
+                        data-label="Total"
+                        class="trade-orders__right"
+                      >
+                        {{ order.total_net_amount | money_with_currency }}
+                      </td>
+                    </tr>
+                  {%- endfor -%}
+                </tbody>
+              </table>
+            </div>
+          {%- else -%}
+            <p class="trade-desk__empty">
+              No orders yet. Match a laminate to find the codes you need, or browse the range.
+            </p>
+          {%- endif -%}
+        {%- endpaginate -%}
       </div>
     </div>
 
