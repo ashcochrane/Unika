@@ -622,7 +622,7 @@
       }
     },
     "metaobject-datatable": {
-      "name": "Metaobject",
+      "name": "Metaobject"
     },
     "collection-list-custom": {
       "name": "Collection List Custom",
@@ -630,7 +630,7 @@
         "title": {
           "default": "Should our categories",
           "label": "Heading"
-        },
+        }
       },
       "blocks": {
         "featured_collection": {
@@ -646,7 +646,6 @@
         "name": "Collection list"
       }
     },
-  
     "collection-list": {
       "name": "Collection list",
       "settings": {
@@ -2662,6 +2661,9 @@
           "settings": {
             "image": {
               "label": "Image"
+            },
+            "video_id": {
+              "label": "Video ID"
             },
             "title": {
               "label": "Heading",
