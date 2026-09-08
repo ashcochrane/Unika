@@ -321,3 +321,15 @@
   font-size: 2rem;
   line-height: 1.4;
 }
+
+.trade-apply__form {
+  padding-top: 2.8rem;
+  border-top: 0.2rem solid var(--trade-red);
+}
+
+.trade-apply__empty {
+  padding: 2.4rem;
+  border: 0.1rem dashed rgba(var(--color-foreground), 0.35);
+  color: rgba(var(--color-foreground), 0.75);
+  max-width: 60ch;
+}
