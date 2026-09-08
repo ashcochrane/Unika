@@ -1,2 +1,21 @@
+# Dev tooling — never upload to the theme
 package.json
 package-lock.json
+yarn.lock
+vite.config.mjs
+tailwind.config.js
+postcss.config.cjs
+.prettierrc.json
+.theme-check.yml
+shopify.theme.toml
+CLAUDE.md
+README.md
+LICENSE.md
+release-notes.md
+translation.yml
+node_modules/
+styles/
+.github/
+.husky/
+.vscode/
+docs/

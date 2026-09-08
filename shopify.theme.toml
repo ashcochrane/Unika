@@ -1,0 +1,12 @@
+# Shopify CLI theme environments.
+# Usage: shopify theme push -e development   (never pushes to live)
+#        shopify theme pull -e live          (pull current live state)
+
+[environments.development]
+store = "unika-nz.myshopify.com"
+# Set this to your unpublished dev theme ID once created:
+# theme = "123456789"
+
+[environments.live]
+store = "unika-nz.myshopify.com"
+live = true

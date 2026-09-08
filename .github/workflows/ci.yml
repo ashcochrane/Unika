@@ -1,26 +1,28 @@
 name: CI
-on: [push]
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [feature/**]
+
 jobs:
-  lhci:
-    name: Lighthouse
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Lighthouse
-        uses: shopify/lighthouse-ci-action@v1
-        with:
-          store: ${{ secrets.SHOP_STORE_OS2 }}
-          password: ${{ secrets.SHOP_PASSWORD_OS2 }}
-          access_token: ${{ secrets.SHOP_ACCESS_TOKEN }}
-          collection_handle: all
-          lhci_github_app_token: ${{ secrets.LHCI_GITHUB_TOKEN }}
-          pull_theme: ${{ secrets.SHOP_PULL_THEME }}
   theme-check:
     name: Theme Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Theme Check
-        uses: shopify/theme-check-action@v2
+      - uses: shopify/theme-check-action@v2
         with:
           token: ${{ github.token }}
+
+  format:
+    name: Prettier
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npx prettier --check "**/*.{js,css,json}"
