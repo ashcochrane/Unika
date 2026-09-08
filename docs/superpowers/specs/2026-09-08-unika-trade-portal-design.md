@@ -351,10 +351,33 @@ DataTables searches client-side over whatever Liquid rendered. **At 299/300 this
 one entry away from silently truncating.** Rework before adding laminates. jQuery
 is pulled in solely for DataTables here.
 
-### Implementation plan
+### Company location picker — added after review
 
-`docs/superpowers/plans/2026-09-08-colorfill-ordering-and-colour-matcher.md`
-covers the first two items. The remaining three need a follow-up plan.
+shopify.dev names a **company location picker** as a B2B theme requirement, and
+this spec had missed it. A buyer whose company has several sites must be able to
+choose which one they are purchasing for, because it drives both catalog pricing
+and delivery. Liquid provides `customer.company_available_locations`,
+`location.current?` and `location.url_to_set_as_current` — a link, no form needed.
+
+### Product pages carry no tax note at all
+
+Verified on the live store: `GST Excl.` exists in exactly one place,
+`snippets/card-product.liquid:207`, so it renders on collection pages (16 times on
+`/collections/all`) but **not on product pages**. A customer viewing a ColorFill
+product page has no indication whether GST is included. That is arguably worse
+than the label being wrong for retail.
+
+### Implementation plans
+
+| Plan                                                        | Covers                                                        |
+| ----------------------------------------------------------- | ------------------------------------------------------------- |
+| `plans/2026-09-08-colorfill-ordering-and-colour-matcher.md` | ColorFill grid, Colour Matcher → cart                         |
+| `plans/2026-09-08-trade-screens-and-onboarding.md`          | Location picker, trade hub, application, GST note, navigation |
+
+**Open question for the accountant:** whether retail prices should render
+GST-inclusive. The plans make the _label_ accurate but do not change prices —
+that is a tax-presentation decision with NZ consumer-law implications, and
+Shopify's native tax settings are a better lever than arithmetic in Liquid.
 
 ## 10. Phases
 
