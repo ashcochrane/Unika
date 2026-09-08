@@ -1,0 +1,32 @@
+{% comment %}
+  A band of real ColorFill colours, read from the laminate metaobjects that
+  power the Colour Matcher. Not decoration — these are the actual compounds
+  stocked, so the band is an honest index of the range.
+
+  Accepts:
+  - limit: {Number} how many swatches to render (default 60)
+
+  Usage:
+  {% render 'colorfill-swatch-band', limit: 60 %}
+{% endcomment %}
+
+{%- liquid
+  assign max = limit | default: 60
+  assign seen = ''
+  assign rendered = 0
+-%}
+<div class="swatch-band" role="img" aria-label="{{ 'ColorFill colour range' }}">
+  {%- for laminate in shop.metaobjects.laminates.values limit: 250 -%}
+    {%- if rendered >= max -%}{%- break -%}{%- endif -%}
+    {%- assign match = laminate.reference.value -%}
+    {%- assign hex = match.colorfill_hex | strip -%}
+    {%- if hex != blank -%}
+      {%- assign key = '|' | append: hex | append: '|' -%}
+      {%- unless seen contains key -%}
+        {%- assign seen = seen | append: key -%}
+        {%- assign rendered = rendered | plus: 1 -%}
+        <span class="swatch-band__chip" style="--chip: {{ hex }}"></span>
+      {%- endunless -%}
+    {%- endif -%}
+  {%- endfor -%}
+</div>

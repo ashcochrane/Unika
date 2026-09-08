@@ -14,63 +14,71 @@
   }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="page-width section-{{ section.id }}-padding">
-    {%- if customer.b2b? -%}
-      <div class="trade-hub trade-hub--account">
-        <h1 class="trade-hub__title">
+<div class="trade color-{{ section.settings.color_scheme }} gradient">
+  {%- if customer.b2b? -%}
+    {%- render 'colorfill-swatch-band', limit: 60 -%}
+
+    <div class="page-width section-{{ section.id }}-padding">
+      <div class="trade-welcome">
+        <h1 class="trade-welcome__title">
           {{ section.settings.signed_in_heading }}
-          {%- if customer.current_company.name %}, {{ customer.current_company.name }}{% endif -%}
+          {%- if customer.current_company.name -%}
+            <span class="trade-welcome__company">{{ customer.current_company.name }}</span>
+          {%- endif -%}
         </h1>
 
-        <ul class="trade-hub__actions" role="list">
-          <li>
-            <a class="button" href="{{ routes.account_url }}">{{ section.settings.orders_label }}</a>
-          </li>
-          <li>
-            <a class="button button--secondary" href="{{ section.settings.matcher_url }}">
-              {{ section.settings.matcher_label }}
-            </a>
-          </li>
-          <li>
-            <a class="button button--secondary" href="{{ section.settings.shop_url }}">
-              {{ section.settings.shop_label }}
-            </a>
-          </li>
-        </ul>
-
         {%- if section.settings.signed_in_note != blank -%}
-          <div class="trade-hub__note rte">{{ section.settings.signed_in_note }}</div>
-        {%- endif -%}
-      </div>
-    {%- else -%}
-      <div class="trade-hub trade-hub--marketing">
-        <h1 class="trade-hub__title">{{ section.settings.heading }}</h1>
-
-        {%- if section.settings.intro != blank -%}
-          <div class="trade-hub__intro rte">{{ section.settings.intro }}</div>
+          <div class="trade-welcome__note rte">{{ section.settings.signed_in_note }}</div>
         {%- endif -%}
 
-        {%- if section.blocks.size > 0 -%}
-          <ul class="trade-hub__benefits" role="list">
-            {%- for block in section.blocks -%}
-              <li class="trade-hub__benefit" {{ block.shopify_attributes }}>
-                <h2 class="trade-hub__benefit-title">{{ block.settings.title }}</h2>
-                <div class="rte">{{ block.settings.text }}</div>
-              </li>
-            {%- endfor -%}
-          </ul>
-        {%- endif -%}
-
-        <div class="trade-hub__actions">
-          <a class="button" href="{{ section.settings.apply_url }}">{{ section.settings.apply_label }}</a>
-          <a class="button button--secondary" href="{{ routes.account_login_url }}">
-            {{ section.settings.login_label }}
+        <div class="trade-actions">
+          <a class="button" href="{{ section.settings.matcher_url }}">{{ section.settings.matcher_label }}</a>
+          <a class="button button--secondary" href="{{ section.settings.shop_url }}">
+            {{- section.settings.shop_label -}}
           </a>
+          <a class="trade-actions__quiet" href="{{ routes.account_url }}">{{ section.settings.orders_label }}</a>
         </div>
       </div>
-    {%- endif -%}
-  </div>
+    </div>
+  {%- else -%}
+    {%- render 'colorfill-swatch-band', limit: 60 -%}
+
+    <div class="page-width section-{{ section.id }}-padding">
+      <div class="trade-lede">
+        <h1 class="trade-lede__title">{{ section.settings.heading }}</h1>
+
+        <div class="trade-lede__side">
+          {%- if section.settings.intro != blank -%}
+            <div class="trade-lede__intro rte">{{ section.settings.intro }}</div>
+          {%- endif -%}
+          <div class="trade-actions">
+            <a class="button" href="{{ section.settings.apply_url }}">{{ section.settings.apply_label }}</a>
+            <a class="trade-actions__quiet" href="{{ routes.account_login_url }}">
+              {{ section.settings.login_label }}
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {%- assign laminate_count = shop.metaobjects.laminates.values_count -%}
+      {%- if laminate_count > 0 -%}
+        <p class="trade-facts">
+          {{ laminate_count }} laminate sheets matched to a ColorFill and TopSeal code, updated as ranges change.
+        </p>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <dl class="trade-spec">
+          {%- for block in section.blocks -%}
+            <div class="trade-spec__row" {{ block.shopify_attributes }}>
+              <dt class="trade-spec__term">{{ block.settings.title }}</dt>
+              <dd class="trade-spec__detail rte">{{ block.settings.text }}</dd>
+            </div>
+          {%- endfor -%}
+        </dl>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
 </div>
 
 {% schema %}
@@ -80,18 +88,18 @@
   "class": "section",
   "settings": [
     { "type": "header", "content": "Signed-out / retail" },
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Trade accounts" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Trade accounts for benchtop fabricators" },
     { "type": "richtext", "id": "intro", "label": "Intro" },
     { "type": "text", "id": "apply_label", "label": "Apply button", "default": "Apply for an account" },
     { "type": "url", "id": "apply_url", "label": "Apply link" },
-    { "type": "text", "id": "login_label", "label": "Log in button", "default": "Log in" },
+    { "type": "text", "id": "login_label", "label": "Log in link", "default": "Already have an account? Log in" },
     { "type": "header", "content": "Signed-in trade customer" },
     { "type": "text", "id": "signed_in_heading", "label": "Heading", "default": "Welcome back" },
     { "type": "richtext", "id": "signed_in_note", "label": "Note" },
-    { "type": "text", "id": "orders_label", "label": "Orders button", "default": "Orders & invoices" },
-    { "type": "text", "id": "matcher_label", "label": "Matcher button", "default": "Colour Matcher" },
+    { "type": "text", "id": "orders_label", "label": "Orders link", "default": "Orders and invoices" },
+    { "type": "text", "id": "matcher_label", "label": "Matcher button", "default": "Match a laminate" },
     { "type": "url", "id": "matcher_url", "label": "Matcher link" },
-    { "type": "text", "id": "shop_label", "label": "Shop button", "default": "Shop all" },
+    { "type": "text", "id": "shop_label", "label": "Shop button", "default": "Shop the range" },
     { "type": "url", "id": "shop_url", "label": "Shop link" },
     { "type": "header", "content": "Appearance" },
     { "type": "color_scheme", "id": "color_scheme", "label": "Colour scheme", "default": "scheme-1" },
@@ -103,7 +111,7 @@
       "step": 4,
       "unit": "px",
       "label": "Padding top",
-      "default": 40
+      "default": 56
     },
     {
       "type": "range",
@@ -113,7 +121,7 @@
       "step": 4,
       "unit": "px",
       "label": "Padding bottom",
-      "default": 52
+      "default": 64
     }
   ],
   "blocks": [
