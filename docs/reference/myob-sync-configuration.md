@@ -83,9 +83,35 @@ after Sep 1."*
 actioned.** Public reviews of the app in 2026 do report unanswered support and
 silent failures, but that is not what happened here.
 
-## Still to capture before deletion
+## Customers
 
-- [ ] **Customers** tab — how Shopify customers map to MYOB cards
-- [ ] **Returns** tab — refund and credit note handling
-- [ ] **Inventory** tab
-- [ ] **Schedule** — sync frequency
+| Setting | Value |
+| --- | --- |
+| Create missing customer cards for new orders | On |
+
+That was the entire tab. No matching or de-duplication rules, and no way to
+direct a B2B order to a company card rather than an individual's card.
+
+## Returns
+
+| Setting | Value |
+| --- | --- |
+| Returns (Pro plan) | **Off** |
+
+**Refunds and credit notes never reached MYOB.** Every refund since the
+integration was set up exists in Shopify only.
+
+## Inventory
+
+| Setting | Value |
+| --- | --- |
+| Sync inventory from MYOB | Off |
+| MYOB quantity type / Shopify location | *(both empty)* |
+| Use multiple locations (Pro plan) | Off |
+
+Not a problem — Shopify is the source of truth for stock. Worth keeping off.
+
+## Schedule
+
+Frequency was never selected. A single hourly slot at `:00` was configured.
+
