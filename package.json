@@ -5,36 +5,26 @@
   "type": "module",
   "scripts": {
     "prepare": "husky install",
-    "build": "vite build --minify",
-    "watch": "vite build --watch",
     "dev": "shopify theme dev",
     "pull": "shopify theme pull",
     "push:dev": "shopify theme push -e development",
     "check": "shopify theme check",
-    "format": "prettier --write \"**/*.{js,css,liquid}\" \"!(locales)/**/*.json\"",
-    "format:check": "prettier --check \"**/*.{js,css,liquid}\" \"!(locales)/**/*.json\"",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint": "npm run check && npm run format:check"
   },
   "devDependencies": {
     "@shopify/prettier-plugin-liquid": "^1.11.0",
-    "autoprefixer": "^10.4.20",
     "husky": "^8.0.0",
     "lint-staged": "^15.4.3",
-    "postcss": "^8.5.1",
-    "prettier": "^3.4.2",
-    "tailwindcss": "^3.4.1",
-    "vite": "^6.0.11"
+    "prettier": "^3.4.2"
   },
   "lint-staged": {
-    "*.{js,css}": [
-      "prettier --write"
-    ],
-    "*.liquid": [
-      "prettier --write"
-    ],
-    "!(locales)/**/*.json": [
-      "prettier --write"
+    "*.{js,css,liquid,json}": [
+      "prettier --write --ignore-unknown"
     ]
   },
-  "packageManager": "yarn@3.2.3+sha512.f26f951f67de0c6a33ee381e5ff364709c87e70eb5e65c694e4facde3512f1fa80b8679e6ba31ce7d340fbb46f08dd683af9457e240f25a204be7427940d767e"
+  "engines": {
+    "node": ">=20"
+  }
 }

@@ -14,6 +14,12 @@ the live storefront immediately.** There is no staging step in between.
 
 Work on a branch. Preview with an unpublished dev theme. Merge only when you mean it.
 
+**The sync has failed silently before.** The integration stopped committing live
+changes back to git for 17 months (Apr 2025 – Jan 2026), so this repo held stale
+content while the store had moved on. Merging would have reverted it.
+
+**Run `npm run pull` before you start and before you merge.** Commit any drift first.
+
 ---
 
 ## Setup
@@ -29,39 +35,31 @@ Create an unpublished development theme in the Shopify admin, then put its ID in
 
 ## Everyday commands
 
-| Command | What it does |
-|---|---|
-| `npm run dev` | Local dev server with hot reload against the store |
-| `npm run watch` | Rebuild Tailwind on change |
-| `npm run build` | Build `styles/index.css` → `assets/app.css` (minified) |
-| `npm run push:dev` | Push to the **unpublished dev theme** — safe |
-| `npm run pull` | Pull current theme state down from Shopify |
-| `npm run check` | Shopify Theme Check |
-| `npm run lint` | Theme Check + Prettier check |
-| `npm run format` | Auto-format JS/CSS/JSON |
+| Command            | What it does                                           |
+| ------------------ | ------------------------------------------------------ |
+| `npm run dev`      | Local dev server with hot reload against the store     |
+| `npm run watch`    | Rebuild Tailwind on change                             |
+| `npm run build`    | Build `styles/index.css` → `assets/app.css` (minified) |
+| `npm run push:dev` | Push to the **unpublished dev theme** — safe           |
+| `npm run pull`     | Pull current theme state down from Shopify             |
+| `npm run check`    | Shopify Theme Check                                    |
+| `npm run lint`     | Theme Check + Prettier check                           |
+| `npm run format`   | Auto-format JS/CSS/JSON                                |
 
-## CSS build (currently inactive)
+## Styling
 
-Tailwind is configured but **not wired into the theme**. There are zero `tw-` classes
-in any Liquid file, `assets/app.css` does not exist, and `layout/theme.liquid` never
-references it. The theme runs entirely on Dawn's stock stylesheets.
+This theme follows **Dawn's** conventions. There is no CSS build step — Tailwind,
+PostCSS and Vite were removed because they were configured but never used.
 
-The toolchain is kept because Phase 2 (trade order grid, Colour Matcher) will use it.
-To activate:
+For new UI:
 
-```bash
-npm install
-npm run build                     # styles/index.css -> assets/app.css
-```
-
-then add to `layout/theme.liquid` alongside the other stylesheets:
-
-```liquid
-{{ 'app.css' | asset_url | stylesheet_tag }}
-```
-
-`assets/app.css` is a build artifact but **must be committed** — Shopify does not run
-builds. Rebuild and commit it after any change to `styles/index.css`.
+- Section-scoped rules go in a `{% style %}` block (41 sections already do this).
+- Shared component styles go in `assets/*.css`, loaded with
+  `{{ 'component-x.css' | asset_url | stylesheet_tag }}`.
+- **Respect the colour scheme.** 37 of 57 sections expose a `color_scheme` setting and
+  render `color-{{ section.settings.color_scheme }}`. That is what allows recolouring
+  from the theme editor. Use Dawn's CSS custom properties rather than literal colours,
+  or the section silently loses a capability the rest of the theme has.
 
 ## Structure
 

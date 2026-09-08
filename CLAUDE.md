@@ -6,13 +6,19 @@ distribution rights).
 
 Store: `unika-nz.myshopify.com` · Dawn-based · Tailwind (prefixed `tw-`) + Vite.
 
-## ⚠️ `main` deploys to the live store
+## ⚠️ `main` deploys to the live store — and the sync has failed before
 
 The Shopify GitHub integration is wired to `main`. **Any commit to `main` goes live to
 customers immediately.** All work happens on branches; merge to `main` is a deploy.
+Preview with `npm run push:dev` (unpublished dev theme).
 
-Never push theme changes straight to `main`. Use `npm run push:dev` (unpublished dev
-theme) to preview.
+**The integration silently stopped syncing live → git for 17 months** (last automatic
+commit 16 Apr 2025; theme last saved 13 Jan 2026). Nine months of theme-editor work
+existed only on the store. Merging any branch during that window would have reverted
+real customer-facing content, including the announcement bar.
+
+**Therefore: run `npm run pull` and commit any drift BEFORE starting work, and again
+before merging to `main`.** Do not assume this repo reflects the live theme.
 
 ## What this business actually is
 
@@ -27,8 +33,8 @@ prices display **ex-GST**, which is a trade convention already in place.
 ## Current project: NZ trade portal
 
 Building B2B ("trade") alongside the existing retail store, as a **blended store**
-— one store, shared inventory, shared orders, shared fulfilment. Only *who the
-customer is* and *what price they see* differ.
+— one store, shared inventory, shared orders, shared fulfilment. Only _who the
+customer is_ and _what price they see_ differ.
 
 **Platform decision: stay on Shopify, Grow plan, native B2B.** Considered and
 rejected: Shopify Advanced ($399/mo, only needed for AU multi-currency), SparkLayer
@@ -43,6 +49,7 @@ orders — use **order-level automatic discounts scoped to the B2B market** inst
 so a cart of 8 different colours still earns its discount.
 
 ### Phases
+
 0. De-risk: test MYOB Sync against an **unpaid** order; remove duplicate sync app.
 1. Native B2B config + **classic → modern customer accounts migration** (the only
    genuinely risky step; modern accounts are mandatory for B2B).
@@ -53,6 +60,7 @@ so a cart of 8 different colours still earns its discount.
 4. AU: add market + catalog + location. Structure is built for this from day one.
 
 ### AU-readiness rules (apply to all new work)
+
 - Never hardcode NZD or `$` — always `money_with_currency`.
 - Drive inc/ex-GST display from the **market**, not a theme constant.
 - Trade pricing is a **rate per market**, never a hardcoded NZ number.
@@ -60,6 +68,7 @@ so a cart of 8 different colours still earns its discount.
 - Statements are keyed `{store, company, period, currency}` — never assume one store.
 
 ## Conventions
+
 - Tailwind classes are prefixed **`tw-`**.
 - Liquid uses double quotes (see `.prettierrc.json`); JS/CSS single quotes.
 - Tailwind is configured but **currently unused** — zero `tw-` classes exist and
@@ -68,7 +77,8 @@ so a cart of 8 different colours still earns its discount.
 - Run `npm run lint` before committing.
 
 ## Known issues / gotchas
-- `templates/page.wholesale-partner.json` is vestigial — it renders a *disabled*
+
+- `templates/page.wholesale-partner.json` is vestigial — it renders a _disabled_
   "Technical Documents" block. Verify no page uses it before deleting.
 - MYOB Sync ($19/mo) has 2026 reviews reporting outages and silent sync failures.
   All AR depends on it. Alternative: MYOB Integration by ERP Integrations ($25/mo).
@@ -77,5 +87,6 @@ so a cart of 8 different colours still earns its discount.
 - GoSweetSpot (3 apps) is **NZ-only**. Starshipit covers NZ + AU — switch when AU lands.
 
 ## Money
+
 Trade settles by **bank transfer**, a manual payment method, which incurs **no Shopify
 transaction fees**. Keep it that way — it is the core of the margin strategy.
