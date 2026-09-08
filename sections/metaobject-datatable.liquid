@@ -34,6 +34,11 @@
   <!-- DataTables CSS -->
   {{ 'datatables.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'datatables.js' | asset_url }}" defer="defer"></script>
+  {{ 'colour-matcher-cart.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'colour-matcher-cart.js' | asset_url }}" defer="defer"></script>
+  <script id="ColourMatcherVariants" type="application/json">
+    {%- render 'variant-code-map', product_handles: section.settings.orderable_handles -%}
+  </script>
 
   <div class="color-{{ section.settings.color_scheme }} gradient">
     <div class="colour-matcher-wrapper page-width section-{{ section.id }}-padding">
@@ -48,6 +53,7 @@
               {% endcomment %}
               <th>Sheet Name</th>
               <th>ColorFill Code</th>
+              <th class="colour-matcher-order-col">Order</th>
               <th class="hide-on-mobile">ColorFill Colour</th>
               <th>In Stock</th>
               <th>TopSeal Code</th>
@@ -75,6 +81,19 @@
                 {% if metaobject.reference %}
                   {% assign referenced_metaobject = metaobject.reference.value %}
                   <td>{{ referenced_metaobject.colorfill_code }}</td>
+                  <td class="colour-matcher-order-col">
+                    {%- assign cf_code = referenced_metaobject.colorfill_code | strip | upcase -%}
+                    {%- if cf_code != blank -%}
+                      <button
+                        type="button"
+                        class="colour-matcher-add"
+                        data-code="{{ cf_code | escape }}"
+                        aria-label="Add ColorFill {{ cf_code | escape }} to cart"
+                      >
+                        Add
+                      </button>
+                    {%- endif -%}
+                  </td>
                   <td
                     class="hide-on-mobile"
                     style="background-color: {{ referenced_metaobject.colorfill_hex | strip }}"
@@ -119,6 +138,13 @@
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "textarea",
+      "id": "orderable_handles",
+      "label": "Orderable product handles",
+      "info": "Comma-separated. The Add button matches a row's ColorFill code against the code segment of each variant SKU (e.g. 71101338-CF402 -> CF402). Update this when ColorFill products are added or removed.",
+      "default": "colorfill-box,colorfill-tube-black,colorfill-tube-black-aurora,colorfill-tube-brown,colorfill-tube-coffee-cream,colorfill-tube-cool-palette,colorfill-tube-doeskin,colorfill-tube-glacier-nimbus,colorfill-tube-grey-dust,colorfill-tube-grey-glint,colorfill-tube-grey-oak,colorfill-tube-grey-slate-effect,colorfill-tube-grey-vellum,colorfill-tube-grey-vellum-copy,colorfill-tube-linear-oak-effect,colorfill-tube-oak-woodmix,colorfill-tube-polar-white,colorfill-tube-riverwash-monserat,colorfill-tube-sarsen-grey,colorfill-tube-soft-white,colorfill-tube-tavira,colorfill-tube-white-granite-gloss,colorfill-tube-white-grey-marble-copy"
+    },
     {
       "type": "color_scheme",
       "id": "color_scheme",
