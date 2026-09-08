@@ -1,28 +1,31 @@
 {
   "name": "unika-theme",
   "version": "1.0.0",
-  "main": "index.js",
+  "private": true,
+  "type": "module",
   "scripts": {
     "prepare": "husky install",
-    "dev": "shopify theme dev -s unika-nz.myshopify.com",
-    "build": "vite build --minify",
-    "watch": "vite build --watch"
+    "dev": "shopify theme dev",
+    "pull": "shopify theme pull",
+    "push:dev": "shopify theme push -e development",
+    "check": "shopify theme check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "npm run check && npm run format:check",
+    "preview": "./scripts/preview.sh"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4.0.1",
-    "autoprefixer": "^10.4.20",
+    "@shopify/prettier-plugin-liquid": "^1.11.0",
     "husky": "^8.0.0",
-    "install": "^0.13.0",
     "lint-staged": "^15.4.3",
-    "npm": "^11.1.0",
-    "npm-run-all": "^4.1.5",
-    "postcss": "^8.5.1",
-    "tailwindcss": "^3.4.1",
-    "vite": "^6.0.11"
+    "prettier": "^3.4.2"
   },
   "lint-staged": {
-    "*.{js,css}": "prettier --write"
+    "*.{js,css,liquid,json,md}": [
+      "prettier --write --ignore-unknown"
+    ]
   },
-  "type": "module",
-  "packageManager": "yarn@3.2.3+sha512.f26f951f67de0c6a33ee381e5ff364709c87e70eb5e65c694e4facde3512f1fa80b8679e6ba31ce7d340fbb46f08dd683af9457e240f25a204be7427940d767e"
+  "engines": {
+    "node": ">=20"
+  }
 }

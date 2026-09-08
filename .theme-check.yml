@@ -1,4 +1,15 @@
-MatchingTranslations:
-  enabled: false
+# Shopify Theme Check — https://shopify.dev/docs/storefronts/themes/tools/theme-check
+extends: :recommended
+
+# Dawn ships long JSON templates; length is not a useful signal here.
 TemplateLength:
   enabled: false
+
+# Translations are managed via Shopify admin, not all locales stay in lockstep.
+MatchingTranslations:
+  enabled: false
+
+ignore:
+  - node_modules/
+  - styles/
+  - .github/

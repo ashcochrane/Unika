@@ -1,0 +1,53 @@
+/* Colour Matcher — order column.
+   Colours come from Dawn's scheme properties so the table stays recolourable. */
+
+.colour-matcher-order-col {
+  white-space: nowrap;
+  text-align: center;
+}
+
+.colour-matcher-add {
+  font: inherit;
+  font-size: 1.3rem;
+  line-height: 1;
+  padding: 0.6rem 1.4rem;
+  cursor: pointer;
+  color: rgb(var(--color-foreground));
+  background-color: rgb(var(--color-background));
+  border: 0.1rem solid rgba(var(--color-foreground), 0.35);
+  transition: border-color 0.12s ease, background-color 0.12s ease;
+}
+
+.colour-matcher-add:hover:not(:disabled) {
+  border-color: rgb(var(--color-foreground));
+}
+
+.colour-matcher-add:disabled {
+  cursor: default;
+}
+
+.colour-matcher-add[data-state='success'] {
+  border-color: #e1251b;
+  box-shadow: inset 0 -0.2rem 0 #e1251b;
+  font-weight: 600;
+}
+
+.colour-matcher-add[data-state='error'] {
+  opacity: 0.55;
+}
+
+.colour-matcher-add[data-state='busy'] {
+  opacity: 0.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .colour-matcher-add {
+    transition: none;
+  }
+}
+
+.colour-matcher-add[data-state='unstocked'] {
+  opacity: 0.45;
+  border-style: dashed;
+  cursor: default;
+}

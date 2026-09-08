@@ -1,0 +1,13 @@
+# Shopify CLI theme environments.
+#   npm run push:dev   -> pushes to the unpublished dev theme, never live
+#   npm run pull       -> pulls the live theme (do this before starting work)
+
+[environments.development]
+store = "unika-nz.myshopify.com"
+# Unpublished dev theme, confirmed 2026-09-08 as an old draft copy and safe to
+# overwrite. npm run push:dev targets this and never touches the live theme.
+theme = "130931064929"
+
+[environments.live]
+store = "unika-nz.myshopify.com"
+live = true

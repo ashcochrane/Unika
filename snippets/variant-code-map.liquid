@@ -1,0 +1,40 @@
+{% comment %}
+  Emits a JSON object mapping a SKU's code segment to its variant.
+
+  Variant SKUs are shaped "<internal>-<code>[-<packsize>]", e.g.
+  "71100961-CB402". The code is index 1 after splitting on "-". Codes are
+  unique within ColorFill; TopSeal has two variants per code (pack sizes),
+  so this is ColorFill-only until the value shape becomes an array.
+
+  Accepts:
+  - product_handles: {String} comma-separated product handles
+
+  Usage:
+  {% render 'variant-code-map', product_handles: 'colorfill-box' %}
+{% endcomment %}
+
+{%- liquid
+  assign handles = product_handles | split: ','
+  assign is_first = true
+-%}
+{
+{%- for handle in handles -%}
+  {%- assign handle_key = handle | strip -%}
+  {%- assign target = all_products[handle_key] -%}
+  {%- for variant in target.variants -%}
+    {%- assign parts = variant.sku | split: '-' -%}
+    {%- if parts.size > 1 -%}
+      {%- assign code = parts[1] | strip | upcase -%}
+      {%- unless is_first %},{% endunless -%}
+      {%- assign label = target.title -%}
+      {%- if target.variants.size > 1 -%}
+        {%- assign label = target.title | append: ' — ' | append: variant.title -%}
+      {%- endif -%}
+      {{ code | json }}:{"id":{{ variant.id }},"available":{{ variant.available }},"title":{{ label | json }},"price":
+      {{- variant.price | money_with_currency | json -}}
+      }
+      {%- assign is_first = false -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+}

@@ -1,0 +1,21 @@
+{% comment %}
+  Renders the tax note beneath a price.
+
+  Trade customers think and buy in GST-exclusive terms; consumers expect to know
+  GST is added. This makes the note accurate for each audience.
+
+  Note: this changes the LABEL only, not the price. Whether retail prices should
+  render GST-inclusive is a tax-presentation decision with NZ consumer-law
+  implications — see the spec's open questions.
+
+  Usage:
+  {% render 'price-tax-note' %}
+{% endcomment %}
+
+<span class="price__tax caption">
+  {%- if customer.b2b? -%}
+    GST Excl.
+  {%- else -%}
+    GST Excl. — GST added at checkout
+  {%- endif -%}
+</span>

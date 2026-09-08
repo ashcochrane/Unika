@@ -1,0 +1,402 @@
+/* ---------------------------------------------------------------
+   Trade context bar
+
+   Sits directly beneath the header for signed-in B2B buyers. States
+   which company and location they are purchasing for, since that
+   choice drives catalog pricing and delivery.
+   --------------------------------------------------------------- */
+
+.trade-bar {
+  --trade-red: #e1251b;
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  background-color: rgba(var(--color-foreground), 0.03);
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+
+.trade-bar__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem 2rem;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+
+.trade-bar__account,
+.trade-bar__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem 1.6rem;
+  margin: 0;
+}
+
+.trade-bar__label {
+  padding-right: 0.8rem;
+  border-right: 0.2rem solid var(--trade-red);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1.1rem;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+.trade-bar__company {
+  font-weight: 600;
+  color: rgb(var(--color-foreground));
+}
+
+.trade-bar__location {
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.trade-bar__links a {
+  color: rgba(var(--color-foreground), 0.7);
+  text-decoration: none;
+}
+
+.trade-bar__links a:hover {
+  color: rgb(var(--color-foreground));
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+/* Location switcher — only rendered when there is more than one */
+
+.trade-bar__switch {
+  position: relative;
+}
+
+.trade-bar__summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.2rem 0.8rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.25);
+  color: rgba(var(--color-foreground), 0.85);
+}
+
+.trade-bar__summary::-webkit-details-marker {
+  display: none;
+}
+
+.trade-bar__summary::after {
+  content: '';
+  display: inline-block;
+  margin-left: 0.6rem;
+  border: 0.3rem solid transparent;
+  border-top-color: currentColor;
+  transform: translateY(0.15rem);
+}
+
+.trade-bar__list {
+  position: absolute;
+  z-index: 6;
+  margin: 0.4rem 0 0;
+  padding: 0.4rem 0;
+  min-width: 100%;
+  list-style: none;
+  background-color: rgb(var(--color-background));
+  border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  box-shadow: 0 0.4rem 1.2rem rgba(var(--color-foreground), 0.12);
+}
+
+.trade-bar__link {
+  display: block;
+  padding: 0.6rem 1.2rem;
+  white-space: nowrap;
+  color: rgb(var(--color-foreground));
+  text-decoration: none;
+}
+
+.trade-bar__link:hover {
+  background-color: rgba(var(--color-foreground), 0.06);
+}
+
+@media screen and (max-width: 749px) {
+  .trade-bar__links {
+    width: 100%;
+  }
+}
+
+/* Trade surfaces: location picker, trade hub, application form.
+   Colours come from Dawn's custom properties so every colour scheme works. */
+
+/* ---------------------------------------------------------------
+   Trade hub
+
+   The one bold element is the swatch band: real ColorFill colours
+   read from the laminate metaobjects. Everything else stays quiet.
+   All neutrals come from Dawn's colour-scheme custom properties so
+   merchants keep control of the palette.
+   --------------------------------------------------------------- */
+
+.trade {
+  --trade-rule: rgba(var(--color-foreground), 0.14);
+  --trade-red: #e1251b;
+}
+
+/* Swatch band ---------------------------------------------------- */
+
+.swatch-band {
+  display: flex;
+  width: 100%;
+  height: 1.2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .swatch-band {
+    height: 1.8rem;
+  }
+}
+
+.swatch-band__chip {
+  flex: 1 1 0;
+  background-color: var(--chip);
+}
+
+/* Lede ----------------------------------------------------------- */
+
+.trade-lede {
+  display: grid;
+  gap: 2.4rem;
+  align-items: start;
+}
+
+@media screen and (min-width: 990px) {
+  .trade-lede {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+    gap: 6rem;
+  }
+}
+
+.trade-lede__title {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.02;
+  font-size: clamp(3.4rem, 7vw, 6.8rem);
+  max-width: 14ch;
+}
+
+.trade-lede__intro {
+  margin: 0 0 2.4rem;
+  max-width: 46ch;
+  font-size: 1.7rem;
+  line-height: 1.55;
+  color: rgba(var(--color-foreground), 0.82);
+}
+
+.trade-lede__intro > :first-child {
+  margin-top: 0;
+}
+
+/* A single quiet line of fact, not a row of stat cards */
+
+.trade-facts {
+  margin: 4.8rem 0 0;
+  padding-top: 1.6rem;
+  border-top: 0.2rem solid var(--trade-red);
+  max-width: 62ch;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: rgba(var(--color-foreground), 0.72);
+}
+
+/* Spec list — trade-catalogue vernacular, not identical cards ----- */
+
+.trade-spec {
+  margin: 4rem 0 0;
+}
+
+.trade-spec__row {
+  display: grid;
+  gap: 0.4rem 4rem;
+  padding: 2rem 0;
+  border-top: 0.1rem solid var(--trade-rule);
+}
+
+.trade-spec__row:last-child {
+  border-bottom: 0.1rem solid var(--trade-rule);
+}
+
+@media screen and (min-width: 750px) {
+  .trade-spec__row {
+    grid-template-columns: minmax(0, 18rem) minmax(0, 1fr);
+    align-items: baseline;
+  }
+}
+
+.trade-spec__term {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.trade-spec__detail {
+  margin: 0;
+  max-width: 60ch;
+  color: rgba(var(--color-foreground), 0.78);
+  line-height: 1.55;
+}
+
+.trade-spec__detail > :first-child {
+  margin-top: 0;
+}
+
+.trade-spec__detail > :last-child {
+  margin-bottom: 0;
+}
+
+/* Actions -------------------------------------------------------- */
+
+.trade-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.6rem 2rem;
+}
+
+.trade-actions__quiet {
+  color: rgba(var(--color-foreground), 0.75);
+  text-underline-offset: 0.3rem;
+}
+
+.trade-actions__quiet:hover {
+  color: rgb(var(--color-foreground));
+}
+
+/* Signed-in welcome ---------------------------------------------- */
+
+.trade-welcome__title {
+  margin: 0 0 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  font-size: clamp(3rem, 5.5vw, 5.2rem);
+}
+
+.trade-welcome__company {
+  display: block;
+  color: var(--trade-red);
+}
+
+.trade-welcome__note {
+  margin: 0 0 2.8rem;
+  max-width: 52ch;
+  color: rgba(var(--color-foreground), 0.8);
+}
+
+.trade-welcome__note > :first-child {
+  margin-top: 0;
+}
+
+/* ---------------------------------------------------------------
+   Trade application
+
+   Grouped like a credit application rather than one long column,
+   so a fabricator can see how much is being asked before starting.
+   --------------------------------------------------------------- */
+
+.trade-apply {
+  max-width: 92rem;
+}
+
+.trade-apply__lede {
+  margin-bottom: 4.8rem;
+}
+
+.trade-apply__title {
+  margin: 0 0 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  font-size: clamp(3rem, 5.5vw, 5.2rem);
+  max-width: 16ch;
+}
+
+.trade-apply__intro {
+  margin: 0;
+  max-width: 54ch;
+  font-size: 1.7rem;
+  line-height: 1.55;
+  color: rgba(var(--color-foreground), 0.82);
+}
+
+.trade-apply__intro > :first-child {
+  margin-top: 0;
+}
+
+.trade-apply__group {
+  padding: 2.8rem 0 0.8rem;
+  border-top: 0.1rem solid var(--trade-rule);
+}
+
+.trade-apply__group-title {
+  margin: 0 0 1.6rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgba(var(--color-foreground), 0.66);
+}
+
+.trade-apply__fields {
+  display: grid;
+  gap: 0 2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .trade-apply__fields {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .trade-apply__fields--single {
+    grid-template-columns: 1fr;
+  }
+}
+
+.trade-apply__submit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.2rem 2rem;
+  padding-top: 2.8rem;
+  border-top: 0.2rem solid var(--trade-red);
+}
+
+.trade-apply__reassurance {
+  margin: 0;
+  font-size: 1.4rem;
+  color: rgba(var(--color-foreground), 0.68);
+}
+
+.trade-apply__errors {
+  margin-bottom: 2.4rem;
+  padding: 1.4rem 1.8rem;
+  border-left: 0.3rem solid var(--trade-red);
+  background-color: rgba(var(--color-foreground), 0.04);
+}
+
+.trade-apply__result {
+  padding: 3.2rem 0;
+  border-top: 0.2rem solid var(--trade-red);
+}
+
+.trade-apply__result-title {
+  margin: 0;
+  max-width: 46ch;
+  font-size: 2rem;
+  line-height: 1.4;
+}
+
+.trade-apply__form {
+  padding-top: 2.8rem;
+  border-top: 0.2rem solid var(--trade-red);
+}
+
+.trade-apply__empty {
+  padding: 2.4rem;
+  border: 0.1rem dashed rgba(var(--color-foreground), 0.35);
+  color: rgba(var(--color-foreground), 0.75);
+  max-width: 60ch;
+}

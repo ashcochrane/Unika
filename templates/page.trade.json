@@ -15,42 +15,42 @@
         "benefit-1": {
           "type": "benefit",
           "settings": {
-            "title": "Trade pricing",
-            "text": "<p>Account pricing across the full Unika range, with more off as your order grows.</p>"
+            "title": "Your pricing, applied",
+            "text": "<p>Account pricing shows on every page once you are signed in, and larger orders earn more off automatically. No codes to remember, no calling for a price.</p>"
           }
         },
         "benefit-2": {
           "type": "benefit",
           "settings": {
-            "title": "Buy on account",
-            "text": "<p>Order through the month and settle on one invoice.</p>"
+            "title": "One invoice a month",
+            "text": "<p>Order as often as you need through the month and settle it in one payment. Purchase order numbers go on at checkout for your accounts team.</p>"
           }
         },
         "benefit-3": {
           "type": "benefit",
           "settings": {
-            "title": "Order faster",
-            "text": "<p>Match a laminate and order every colour you need in one go.</p>"
+            "title": "Matched to the sheet",
+            "text": "<p>Look up the laminate you are working with and get the exact ColorFill and TopSeal codes that match it, then order every colour on the job in one go.</p>"
           }
         }
       },
       "block_order": ["benefit-1", "benefit-2", "benefit-3"],
       "settings": {
-        "heading": "Trade accounts",
-        "intro": "<p>Unika supplies benchtop fabricators across New Zealand. Open an account for trade pricing, monthly invoicing and faster reordering.</p>",
+        "heading": "Trade accounts for benchtop fabricators",
+        "intro": "<p>Unika supplies joinery shops across New Zealand with colour-matched jointing compounds, sealants and adhesives. Open an account for trade pricing and monthly invoicing.</p>",
         "apply_label": "Apply for an account",
         "apply_url": "/pages/trade-application",
-        "login_label": "Log in",
+        "login_label": "Already have an account? Log in",
         "signed_in_heading": "Welcome back",
-        "signed_in_note": "<p>Your account pricing is applied automatically at checkout.</p>",
-        "orders_label": "Orders & invoices",
-        "matcher_label": "Colour Matcher",
+        "signed_in_note": "<p>Your account pricing is already applied. Match a laminate to find the codes you need, or go straight to the range.</p>",
+        "orders_label": "Orders and invoices",
+        "matcher_label": "Match a laminate",
         "matcher_url": "/pages/colour-matcher",
-        "shop_label": "Shop all",
+        "shop_label": "Shop the range",
         "shop_url": "/collections/all",
         "color_scheme": "scheme-1",
-        "padding_top": 40,
-        "padding_bottom": 52
+        "padding_top": 56,
+        "padding_bottom": 64
       }
     }
   },

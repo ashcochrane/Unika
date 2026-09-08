@@ -1,2 +1,22 @@
+# Dev tooling — never upload to the theme
 package.json
 package-lock.json
+yarn.lock
+.prettierrc.json
+.theme-check.yml
+shopify.theme.toml
+CLAUDE.md
+README.md
+LICENSE.md
+node_modules/*
+.github/*
+.husky/*
+.vscode/*
+docs/*
+.editorconfig
+.env
+.env.example
+.prettierignore
+.gitignore
+scripts/*
+docs/reference/

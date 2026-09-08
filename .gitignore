@@ -9,3 +9,18 @@ ehthumbs.db
 Thumbs.db
 .shopify
 node_modules
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+
+# Build output / tooling
+dist
+.vite
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# Editor
+.idea
+*.swp
