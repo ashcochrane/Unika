@@ -1,4 +1,13 @@
-{% paginate shop.metaobjects.laminates.values by 250 %}
+{% comment %}
+  paginate by 300 exceeds the documented Shopify maximum of 250, but is load-bearing:
+  there are 299 laminate entries and all of them must reach the page, because
+  DataTables searches client-side over whatever was rendered. Dropping to 250 hides 49.
+
+  WARNING: at 299/300 this is one entry away from silently truncating. Before adding
+  more laminates, this section needs reworking — see CLAUDE.md.
+{% endcomment %}
+{% # theme-check-disable PaginationSize %}
+{% paginate shop.metaobjects.laminates.values by 300 %}
   {% assign metaobjects = shop.metaobjects.laminates.values %}
   {% assign count = shop.metaobjects.laminates.values_count %}
 
