@@ -1,11 +1,14 @@
 # Shopify CLI theme environments.
-# Usage: shopify theme push -e development   (never pushes to live)
-#        shopify theme pull -e live          (pull current live state)
+#   npm run push:dev   -> pushes to the unpublished dev theme, never live
+#   npm run pull       -> pulls the live theme (do this before starting work)
 
 [environments.development]
 store = "unika-nz.myshopify.com"
-# Set this to your unpublished dev theme ID once created:
-# theme = "123456789"
+# Set to a dedicated unpublished dev theme before using push:dev.
+# An unpublished theme already exists: "Copy of Unika/main" (130931064929).
+# Confirm it is not a backup someone relies on before targeting it, or create a
+# fresh one:  shopify theme push --unpublished --theme "Dev - trade portal"
+# theme = "130931064929"
 
 [environments.live]
 store = "unika-nz.myshopify.com"

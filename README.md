@@ -7,20 +7,23 @@ Store: `unika-nz.myshopify.com`
 
 ---
 
-## ⚠️ `main` is production
+## ⚠️ `main` is production — and it moves without you
 
-The Shopify GitHub integration is connected to `main`. **Merging to `main` deploys to
-the live storefront immediately.** There is no staging step in between.
+The Shopify GitHub integration is connected to `main` and syncs **both ways**:
 
-Work on a branch. Preview with an unpublished dev theme. Merge only when you mean it.
+- Saves in the theme editor are committed back automatically as `shopify[bot]`.
+- **Merging to `main` deploys to the live storefront immediately.** There is no
+  staging step in between.
 
-**The sync has failed silently before.** The integration stopped committing live
-changes back to git for 17 months (Apr 2025 – Jan 2026), so this repo held stale
-content while the store had moved on. Merging would have reverted it.
+Because Shopify pushes to `main` on its own, a local clone goes stale quickly. One was
+found 17 months behind (19 unfetched bot commits). Working from a stale clone and
+merging reverts live content.
 
-**Run `npm run pull` before you start and before you merge.** Commit any drift first.
+```bash
+git pull            # before you start, and again before you merge
+```
 
----
+Work on a branch. Preview on the unpublished dev theme. Merge only when you mean it.
 
 ## Setup
 

@@ -6,19 +6,24 @@ distribution rights).
 
 Store: `unika-nz.myshopify.com` · Dawn-based · Tailwind (prefixed `tw-`) + Vite.
 
-## ⚠️ `main` deploys to the live store — and the sync has failed before
+## ⚠️ `main` deploys to the live store — and always `git pull` first
 
-The Shopify GitHub integration is wired to `main`. **Any commit to `main` goes live to
-customers immediately.** All work happens on branches; merge to `main` is a deploy.
-Preview with `npm run push:dev` (unpublished dev theme).
+The Shopify GitHub integration is wired to `main` and **works in both directions**:
 
-**The integration silently stopped syncing live → git for 17 months** (last automatic
-commit 16 Apr 2025; theme last saved 13 Jan 2026). Nine months of theme-editor work
-existed only on the store. Merging any branch during that window would have reverted
-real customer-facing content, including the announcement bar.
+- Theme-editor saves are committed back automatically as `shopify[bot]`
+  ("Update from Shopify for theme Unika/main").
+- **Any commit you push to `main` deploys to the live storefront immediately.**
 
-**Therefore: run `npm run pull` and commit any drift BEFORE starting work, and again
-before merging to `main`.** Do not assume this repo reflects the live theme.
+So `main` moves without you. In Sept 2026 a local clone was found sitting 17 months
+behind `origin/main` (April 2025 vs January 2026, 19 unfetched bot commits). Working
+from it and merging would have reverted real customer-facing content — the announcement
+bar, product template ordering, `config/markets.json`.
+
+**Always `git fetch && git pull` before starting work and before merging.** Rebase
+feature branches onto the latest `main` rather than assuming your base is current.
+
+All work happens on branches; merging to `main` is a deploy. Preview with
+`npm run push:dev` against the unpublished dev theme.
 
 ## What this business actually is
 
