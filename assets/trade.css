@@ -1,59 +1,126 @@
-/* Trade surfaces: location picker, trade hub, application form.
-   Colours come from Dawn's custom properties so every colour scheme works. */
+/* ---------------------------------------------------------------
+   Trade context bar
 
-.trade-location {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
+   Sits directly beneath the header for signed-in B2B buyers. States
+   which company and location they are purchasing for, since that
+   choice drives catalog pricing and delivery.
+   --------------------------------------------------------------- */
+
+.trade-bar {
+  --trade-red: #e1251b;
+  border-bottom: 0.1rem solid rgba(var(--color-foreground), 0.12);
+  background-color: rgba(var(--color-foreground), 0.03);
   font-size: 1.3rem;
-  color: rgba(var(--color-foreground), 0.75);
+  line-height: 1.4;
 }
 
-.trade-location__company {
+.trade-bar__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.4rem 2rem;
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+
+.trade-bar__account,
+.trade-bar__links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem 1.6rem;
+  margin: 0;
+}
+
+.trade-bar__label {
+  padding-right: 0.8rem;
+  border-right: 0.2rem solid var(--trade-red);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1.1rem;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+.trade-bar__company {
   font-weight: 600;
   color: rgb(var(--color-foreground));
 }
 
-.trade-location__details {
+.trade-bar__location {
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.trade-bar__links a {
+  color: rgba(var(--color-foreground), 0.7);
+  text-decoration: none;
+}
+
+.trade-bar__links a:hover {
+  color: rgb(var(--color-foreground));
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+/* Location switcher — only rendered when there is more than one */
+
+.trade-bar__switch {
   position: relative;
 }
 
-.trade-location__summary {
+.trade-bar__summary {
   cursor: pointer;
   list-style: none;
-  padding: 0.2rem 0.6rem;
-  border: 0.1rem solid rgba(var(--color-foreground), 0.2);
-  border-radius: 0.4rem;
+  padding: 0.2rem 0.8rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.25);
+  color: rgba(var(--color-foreground), 0.85);
 }
 
-.trade-location__summary::-webkit-details-marker {
+.trade-bar__summary::-webkit-details-marker {
   display: none;
 }
 
-.trade-location__list {
+.trade-bar__summary::after {
+  content: '';
+  display: inline-block;
+  margin-left: 0.6rem;
+  border: 0.3rem solid transparent;
+  border-top-color: currentColor;
+  transform: translateY(0.15rem);
+}
+
+.trade-bar__list {
   position: absolute;
-  z-index: 5;
+  z-index: 6;
   margin: 0.4rem 0 0;
   padding: 0.4rem 0;
   min-width: 100%;
   list-style: none;
   background-color: rgb(var(--color-background));
   border: 0.1rem solid rgba(var(--color-foreground), 0.2);
-  border-radius: 0.4rem;
   box-shadow: 0 0.4rem 1.2rem rgba(var(--color-foreground), 0.12);
 }
 
-.trade-location__link {
+.trade-bar__link {
   display: block;
   padding: 0.6rem 1.2rem;
+  white-space: nowrap;
   color: rgb(var(--color-foreground));
   text-decoration: none;
-  white-space: nowrap;
 }
 
-.trade-location__link:hover {
+.trade-bar__link:hover {
   background-color: rgba(var(--color-foreground), 0.06);
 }
+
+@media screen and (max-width: 749px) {
+  .trade-bar__links {
+    width: 100%;
+  }
+}
+
+/* Trade surfaces: location picker, trade hub, application form.
+   Colours come from Dawn's custom properties so every colour scheme works. */
 
 /* ---------------------------------------------------------------
    Trade hub

@@ -87,8 +87,11 @@ so a cart of 8 different colours still earns its discount.
   "Technical Documents" block. Verify no page uses it before deleting.
 - MYOB Sync ($19/mo) has 2026 reviews reporting outages and silent sync failures.
   All AR depends on it. Alternative: MYOB Integration by ERP Integrations ($25/mo).
-- Apps to remove: the duplicate "Xero, QuickBooks or MYOB Sync"; PayRules ($4.99/mo)
-  once native B2B payment terms replace it.
+- App to remove: the duplicate "Xero, QuickBooks or MYOB Sync".
+- **PayRules stays.** There is no native way to hide card payment from B2B
+  customers — Shopify offers only Checkout Blocks, a third-party app, or the
+  Payment Customization Function API. PayRules is how the bank-transfer margin
+  strategy is actually enforced.
 - GoSweetSpot (3 apps) is **NZ-only**. Starshipit covers NZ + AU — switch when AU lands.
 
 ## Money

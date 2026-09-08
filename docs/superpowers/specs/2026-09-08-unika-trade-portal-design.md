@@ -294,15 +294,26 @@ Consequence: when a joinery shop wants a second buyer, staff add them in the
 Shopify admin. At this scale that is a two-minute job, and most distributors
 prefer that control. It is a known limitation, not an oversight.
 
-### Setup consequence: lock B2B payment methods
+### Restricting B2B payment methods needs an app — PayRules stays
 
 The "Pay now" button offers whatever payment methods are enabled. A trade
-customer paying by **card** costs 2.45% + $0.30 — precisely the margin that the
-bank-transfer strategy in section 5 exists to protect.
+customer paying by **card** costs 2.45% + $0.30, which defeats the bank-transfer
+margin strategy in section 5 entirely.
 
-**Phase 1 must restrict B2B company-location payment methods to bank transfer
-before any trade customer sees a "Pay now" button.** Verify this replaces
-PayRules before uninstalling it, not after.
+**There is no native way to prevent this.** Shopify's own documentation states
+that in blended stores "payment methods that you set up are available to all
+customers by default", and offers only three routes: the Checkout Blocks app, a
+third-party app, or the Payment Customization Function API.
+
+Earlier drafts of this spec listed **PayRules ($4.99/mo) as removable** once
+native B2B payment terms were configured. That was wrong. PayRules conditionally
+hides and shows payment methods, which is precisely and only how this is solved.
+**It stays.** Verify it can target B2B customers or companies; if it cannot, use
+Checkout Blocks instead.
+
+Note the plan nuance: the Payment Customization Function API is documented as
+available on all plans, but _custom_ apps containing Functions are Plus-only. An
+App Store app using that API works here; writing one does not.
 
 ## 9. Storefront work — required for "easy to use", not optional
 

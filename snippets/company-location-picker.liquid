@@ -1,38 +1,58 @@
 {% comment %}
-  Company location picker for B2B customers.
+  Trade context bar.
 
-  A B2B buyer may have access to several company locations. The selected one
-  drives catalog pricing and the delivery address, so it must be switchable.
+  Signals to a signed-in B2B buyer which company and location they are
+  purchasing for — that choice drives catalog pricing and the delivery
+  address, so it must be visible and switchable on every page.
 
-  Renders nothing at all for non-B2B customers.
+  Renders nothing at all for retail customers.
 
-  Usage:
+  Usage, once, directly beneath the header:
   {% render 'company-location-picker' %}
 {% endcomment %}
 
 {%- if customer.b2b? -%}
-  <div class="trade-location">
-    <span class="trade-location__company">{{ customer.current_company.name }}</span>
+  {{ 'trade.css' | asset_url | stylesheet_tag }}
 
-    {%- if customer.company_available_locations.size > 1 -%}
-      <details class="trade-location__details">
-        <summary class="trade-location__summary">
-          {{ customer.current_location.name }}
-        </summary>
-        <ul class="trade-location__list" role="list">
-          {%- for location in customer.company_available_locations -%}
-            {%- unless location.current? -%}
-              <li>
-                <a class="trade-location__link" href="{{ location.url_to_set_as_current }}">
-                  {{ location.name }}
-                </a>
-              </li>
-            {%- endunless -%}
-          {%- endfor -%}
-        </ul>
-      </details>
-    {%- else -%}
-      <span class="trade-location__single">{{ customer.current_location.name }}</span>
-    {%- endif -%}
+  {%- liquid
+    assign company_name = customer.current_company.name | strip
+    assign location_name = customer.current_location.name | strip
+    assign multi_location = false
+    if customer.company_available_locations.size > 1
+      assign multi_location = true
+    endif
+  -%}
+
+  <div class="trade-bar">
+    <div class="page-width trade-bar__inner">
+      <p class="trade-bar__account">
+        <span class="trade-bar__label">Trade account</span>
+        <span class="trade-bar__company">{{ company_name }}</span>
+
+        {%- if multi_location -%}
+          <details class="trade-bar__switch">
+            <summary class="trade-bar__summary">{{ location_name }}</summary>
+            <ul class="trade-bar__list" role="list">
+              {%- for location in customer.company_available_locations -%}
+                {%- unless location.current? -%}
+                  <li>
+                    <a class="trade-bar__link" href="{{ location.url_to_set_as_current }}">
+                      {{ location.name }}
+                    </a>
+                  </li>
+                {%- endunless -%}
+              {%- endfor -%}
+            </ul>
+          </details>
+        {%- elsif location_name != blank and location_name != company_name -%}
+          <span class="trade-bar__location">{{ location_name }}</span>
+        {%- endif -%}
+      </p>
+
+      <p class="trade-bar__links">
+        <a href="/pages/trade">Trade home</a>
+        <a href="{{ routes.account_url }}">Orders &amp; invoices</a>
+      </p>
+    </div>
   </div>
 {%- endif -%}
