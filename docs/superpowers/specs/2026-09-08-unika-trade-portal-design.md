@@ -387,6 +387,37 @@ Trial and configure the invoice/statement app per section 7.
 
 ## 11. AU readiness
 
+### ✅ RESOLVED 2026-09-08: AUD works on Grow
+
+Tested directly rather than researched, because Shopify's documentation
+contradicts itself. An Australia market with AUD currency was created on the live
+store and the storefront rendered `Australia | AUD $` with prices as `$15.00 AUD`,
+`$74.00 AUD`. **No plan upgrade is required for Australian currency.**
+
+Consequences:
+
+- **One store, two markets.** A second Shopify store (~$2,328/yr) and Shopify
+  Advanced (~$3,588/yr) are both unnecessary. Total stays at ~$1,488/yr.
+- AU trade runs from `unika.co.nz`, sidestepping the `unika.com.au` trademark
+  problem entirely.
+- Catalog 2 is reserved for AU Trade as planned.
+
+### ⚠️ Open: nothing is purchasable in the AU market
+
+During the same test, every product showed **Sold out** in the AU market while NZ
+showed 22 of 22 ColorFill variants available. Verified: 9 "Sold out" badges with
+`?country=AU` against 1 on the NZ homepage.
+
+Most likely cause is **no shipping zone covering Australia** — shipping rates are
+explicitly "NZ Only" and the entire courier stack is GoSweetSpot, which does not
+operate there. Shopify marks products unavailable to a market it cannot ship to.
+
+To resolve when AU is built:
+
+1. Settings → Shipping and delivery → add a zone containing Australia
+2. Settings → Markets → Australia → Products → confirm products are published
+3. Assign the AU warehouse as a fulfilment location and set order routing
+
 Apply to all work from Phase 1:
 
 - Never hardcode NZD or `$` — always `money_with_currency`.

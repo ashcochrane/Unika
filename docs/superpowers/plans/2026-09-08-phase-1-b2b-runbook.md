@@ -29,23 +29,23 @@ fees**.
 Nothing here changes the customer experience. Do all of it before committing to
 anything.
 
-### 1.1 Settle the Australian currency question
+### 1.1 ✅ DONE — Australian currency confirmed working
 
-Documentation contradicts itself on whether Grow supports market currencies. Test
-rather than research.
+Tested 2026-09-08. An Australia market with AUD currency rendered
+`Australia | AUD $` and prices as `$15.00 AUD` on the live storefront.
 
-- [ ] Settings → **Markets** → Add market → Australia
-- [ ] Set its currency to **AUD**
-- [ ] View the storefront with an Australian address or VPN
+**AUD works on Grow. No plan upgrade needed.** One store, two markets,
+~$1,488/yr. A second store and Advanced are both off the table.
 
-**Record the answer:**
+**Follow-up found during the test:** every product showed **Sold out** in the AU
+market (9 badges with `?country=AU`, versus 1 on NZ, where 22 of 22 ColorFill
+variants are available). Almost certainly **no shipping zone covers Australia** —
+rates are "NZ Only" and GoSweetSpot does not operate there. Resolve during AU
+build, not now:
 
-| Result                 | Meaning                                                                              |
-| ---------------------- | ------------------------------------------------------------------------------------ |
-| Prices show in **AUD** | AU runs on Grow. One store, two markets. ~$1,488/yr total.                           |
-| Prices stay in **NZD** | AU needs a second store (~$2,328/yr) or Advanced. Becomes a separately funded phase. |
-
-- [ ] Delete the test market afterwards if you are not proceeding with AU yet.
+1. Settings → Shipping and delivery → add an Australia zone
+2. Settings → Markets → Australia → Products → confirm publication
+3. Assign the AU warehouse as a location and set order routing
 
 ### 1.2 Replace the accounting sync
 
