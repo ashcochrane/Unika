@@ -262,41 +262,99 @@ products, pricing and inventory. It is also still in beta.
 problem that should be maintained by someone else — the same reasoning that
 applies to invoices and statements in section 7.
 
-## 8. Portal UI
+## 8. Portal UI — what buyers actually get
 
-**No custom extension is built.** Shopify's hosted customer accounts provide
-order history, reorder and addresses. Sufio (or AReceivables) adds invoice and
-statement access to the same surface via its own extension.
+**No custom extension is built.** The portal is Shopify's hosted customer accounts,
+extended by the invoice/statement app from section 7.
 
-If a genuine gap appears after launch, customer account UI extensions remain
-available on all plans and support external network calls — but do not build one
-speculatively.
+### Native, verified
 
-## 9. Storefront work
+| Capability                                                 | Native                      |
+| ---------------------------------------------------------- | --------------------------- |
+| Trade prices while browsing                                | Yes — storefront, automatic |
+| Order history                                              | Yes                         |
+| Reorder past purchases                                     | Yes                         |
+| Amount owed and due date, per order                        | Yes                         |
+| Order shows **Overdue** once the term expires              | Yes                         |
+| **Buyer pays an outstanding order themselves — "Pay now"** | Yes                         |
+| Pay by card **or manual method such as bank deposit**      | Yes                         |
+| Automated payment reminders, up to five                    | Yes                         |
+| PO number at checkout                                      | Yes                         |
+| Order tracking and fulfilment status                       | Yes                         |
+| Multiple buyers at one company sharing order visibility    | Yes                         |
 
-Theme changes, in `feature/trade-portal`. Follows Dawn conventions: component
-CSS in `assets/`, `{% style %}` for section-scoped rules, and **always honour
-`color_scheme`** (37 of 57 sections do).
+Shopify's docs are explicit that a buyer can "log in to customer accounts, select
+an order, and pay for it" any time before the due date. Combined with automated
+reminders, most of receivables is handled without an app.
 
-1. **ColorFill order grid.** `sections/quick-order-list.liquid` and
-   `snippets/quick-order-product-row.liquid` already exist and are unreferenced
-   (theme-check reports the snippet as orphaned). Wire them up. 23 colours behind
-   a dropdown is the single worst thing on the site for the target customer.
-2. **Colour Matcher → add to cart.** Currently a dead-end lookup table; a
-   fabricator finds "Formica → CF402" then hunts the product manually. Making it
-   an ordering surface is the highest-value differentiator in this project.
-3. **Contextual GST display** — driven by market, not a theme constant.
-4. **Trade-aware navigation** — a trade entry point exists nowhere today.
+### Gaps, and what closes them
+
+| Gap                                                           | Closed by                        |
+| ------------------------------------------------------------- | -------------------------------- |
+| Invoice PDF download                                          | Sufio / AReceivables (section 7) |
+| Consolidated monthly statement                                | AReceivables / PT2 (section 7)   |
+| Aggregate outstanding across all orders — native is per-order | AReceivables                     |
+| Saved lists, quick order by SKU                               | Theme work (section 9)           |
+| Credit limits                                                 | Not native; out of scope for v1  |
+
+### One gap that cannot be closed on this plan
+
+**A company admin cannot add their own colleagues.** The app built for this —
+B2B User/Location Admin Portal — is **$39/mo and requires Shopify Plus**, so it is
+unavailable at any price below Plus.
+
+Consequence: when a joinery shop wants a second buyer, staff add them in the
+Shopify admin. At this scale that is a two-minute job, and most distributors
+prefer that control. It is a known limitation, not an oversight.
+
+### Setup consequence: lock B2B payment methods
+
+The "Pay now" button offers whatever payment methods are enabled. A trade
+customer paying by **card** costs 2.45% + $0.30 — precisely the margin that the
+bank-transfer strategy in section 5 exists to protect.
+
+**Phase 1 must restrict B2B company-location payment methods to bank transfer
+before any trade customer sees a "Pay now" button.** Verify this replaces
+PayRules before uninstalling it, not after.
+
+## 9. Storefront work — required for "easy to use", not optional
+
+Native B2B makes trade **functional**. It does not make it **good**. Dawn 15.2.0 is
+already B2B-aware — volume pricing and quantity rules are handled across
+`main-product.liquid`, `price.liquid`, `card-product.liquid`, `cart-drawer.liquid`,
+`main-cart-items.liquid`, `buy-buttons.liquid`, `quantity-input.liquid` and
+`quick-order-list-row.liquid` — so trade pricing renders with **zero changes**.
+
+What is missing is the buying experience. Measured against trade commerce best
+practice, these are real gaps:
+
+| Gap                                   | Why it matters                                                                                                                                                                     | Effort |
+| ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| **ColorFill is a 23-option dropdown** | A joinery shop restocking eight colours runs the same loop eight times. Worst UX on the site, on the best-selling product. `quick-order-list` already exists in the theme, unused. | Small  |
+| **Colour Matcher is a dead end**      | A fabricator finds "Formica → CF402" then hunts the product manually. This tool is the business's genuine differentiator and it does not sell anything.                            | Medium |
+| **No trade entry point anywhere**     | A logged-in trade customer lands on the retail homepage. Reordering — the primary trade behaviour — is buried.                                                                     | Small  |
+| **No trade application flow**         | No way to become a trade customer. Shopify Forms (already installed, free) plus Flow covers it.                                                                                    | Small  |
+| **Ex-GST shown to everyone**          | Correct for trade, wrong for consumers. Must be driven by market.                                                                                                                  | Small  |
+
+Every one of these also improves the retail experience, and none of them block
+launch — but shipping trade without them delivers something functional rather than
+something good, which is not the goal.
+
+Follows Dawn conventions: `{% style %}` for section-scoped CSS, `assets/*.css` for
+shared, and **always honour `color_scheme`** (37 of 57 sections do).
 
 ### Colour Matcher caveat
 
 `sections/metaobject-datatable.liquid` paginates by 300 against a documented
-Shopify maximum of 250. It is load-bearing: there are **299** laminate entries
-and DataTables searches client-side over whatever Liquid rendered. **At 299/300
-this is one entry away from silently truncating.** Rework before adding
-laminates. jQuery is pulled in solely for DataTables here.
+maximum of 250. It is load-bearing: there are **299** laminate entries and
+DataTables searches client-side over whatever Liquid rendered. **At 299/300 this is
+one entry away from silently truncating.** Rework before adding laminates. jQuery
+is pulled in solely for DataTables here.
 
----
+### Implementation plan
+
+`docs/superpowers/plans/2026-09-08-colorfill-ordering-and-colour-matcher.md`
+covers the first two items. The remaining three need a follow-up plan.
 
 ## 10. Phases
 
@@ -316,7 +374,8 @@ Modern customer accounts migration. Companies, locations, buyers. NZ B2B market
   payment method. Order-level bulk discount bands. Trade application via Shopify
   Forms + approval via Flow.
 
-**Phase 2 — storefront** (section 9)
+**Phase 2 — storefront (section 9)**
+Required for the portal to be good rather than merely functional.
 
 **Phase 3 — AR (app configuration, not a build)**
 Trial and configure the invoice/statement app per section 7.
