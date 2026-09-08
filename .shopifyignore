@@ -19,3 +19,8 @@ styles/
 .husky/
 .vscode/
 docs/
+.editorconfig
+.env
+.env.example
+.prettierignore
+.gitignore

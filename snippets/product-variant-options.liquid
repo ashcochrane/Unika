@@ -64,8 +64,7 @@
       {{ label_unavailable }}
     {%- endcapture -%}
     {%- assign swatch_value = value | escape -%}
-    {%
-      render 'swatch-input',
+    {% render 'swatch-input',
       id: input_id,
       name: input_name,
       value: swatch_value,
