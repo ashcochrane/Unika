@@ -19,27 +19,92 @@
     {%- render 'colorfill-swatch-band', limit: 60 -%}
 
     <div class="page-width section-{{ section.id }}-padding">
-      <div class="trade-welcome">
-        <h1 class="trade-welcome__title">
-          {{ section.settings.signed_in_heading }}
-          {%- if customer.current_company.name -%}
-            <span class="trade-welcome__company">{{ customer.current_company.name }}</span>
-          {%- endif -%}
-        </h1>
+      <div class="trade-desk">
+        <div class="trade-desk__head">
+          <div>
+            <h1 class="trade-desk__title">{{ customer.current_company.name }}</h1>
+            <p class="trade-desk__meta">
+              {%- if customer.current_location.name != blank
+                and customer.current_location.name != customer.current_company.name
+              -%}
+                {{ customer.current_location.name }} ·
+              {%- endif -%}
+              Account pricing applied at checkout
+            </p>
+          </div>
+          <div class="trade-desk__actions">
+            <a class="button" href="{{ section.settings.matcher_url }}">{{ section.settings.matcher_label }}</a>
+            <a class="button button--secondary" href="{{ section.settings.shop_url }}">
+              {{- section.settings.shop_label -}}
+            </a>
+          </div>
+        </div>
 
-        {%- if section.settings.signed_in_note != blank -%}
-          <div class="trade-welcome__note rte">{{ section.settings.signed_in_note }}</div>
+        {%- assign unpaid_count = 0 -%}
+        {%- for order in customer.orders limit: 20 -%}
+          {%- unless order.financial_status == 'paid' or order.financial_status == 'refunded' -%}
+            {%- assign unpaid_count = unpaid_count | plus: 1 -%}
+          {%- endunless -%}
+        {%- endfor -%}
+
+        {%- if unpaid_count > 0 -%}
+          <p class="trade-desk__flag">
+            <strong>{{ unpaid_count }}</strong>
+            {% if unpaid_count == 1 %}order awaits{% else %}orders await{% endif %} payment.
+            <a href="{{ routes.account_url }}">View and pay</a>
+          </p>
         {%- endif -%}
 
-        <div class="trade-actions">
-          <a class="button" href="{{ section.settings.matcher_url }}">{{ section.settings.matcher_label }}</a>
-          <a class="button button--secondary" href="{{ section.settings.shop_url }}">
-            {{- section.settings.shop_label -}}
-          </a>
-          <a class="trade-actions__quiet" href="{{ routes.account_url }}">{{ section.settings.orders_label }}</a>
-        </div>
+        {%- if customer.orders.size > 0 -%}
+          <div class="trade-desk__orders">
+            <div class="trade-desk__orders-head">
+              <h2 class="trade-desk__subtitle">Recent orders</h2>
+              <a href="{{ routes.account_url }}">{{ section.settings.orders_label }}</a>
+            </div>
+
+            <table class="trade-orders">
+              <thead>
+                <tr>
+                  <th scope="col">Order</th>
+                  <th scope="col">Date</th>
+                  <th scope="col">Payment</th>
+                  <th scope="col" class="trade-orders__hide-mobile">Delivery</th>
+                  <th scope="col" class="trade-orders__right">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {%- for order in customer.orders limit: 5 -%}
+                  <tr>
+                    <td data-label="Order">
+                      <a href="{{ order.customer_url }}">{{ order.name }}</a>
+                    </td>
+                    <td data-label="Date">{{ order.created_at | date: '%-d %b %Y' }}</td>
+                    <td data-label="Payment">
+                      {%- if order.financial_status == 'paid' -%}
+                        {{ order.financial_status_label }}
+                      {%- else -%}
+                        <span class="trade-orders__due">{{ order.financial_status_label }}</span>
+                      {%- endif -%}
+                    </td>
+                    <td data-label="Delivery" class="trade-orders__hide-mobile">
+                      {{ order.fulfillment_status_label }}
+                    </td>
+                    <td data-label="Total" class="trade-orders__right">
+                      {{ order.total_net_amount | money_with_currency }}
+                    </td>
+                  </tr>
+                {%- endfor -%}
+              </tbody>
+            </table>
+          </div>
+        {%- else -%}
+          <p class="trade-desk__empty">
+            No orders yet. Match a laminate to find the codes you need, or browse the range.
+          </p>
+        {%- endif -%}
       </div>
     </div>
+
   {%- else -%}
     {%- render 'colorfill-swatch-band', limit: 60 -%}
 

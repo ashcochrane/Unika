@@ -267,29 +267,147 @@
   color: rgb(var(--color-foreground));
 }
 
-/* Signed-in welcome ---------------------------------------------- */
+/* ---------------------------------------------------------------
+   Trade desk — the signed-in view
 
-.trade-welcome__title {
-  margin: 0 0 1.6rem;
+   A working surface rather than a greeting. The company name sits at
+   normal heading weight; the recent orders table is the substance.
+   --------------------------------------------------------------- */
+
+.trade-desk__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  padding-bottom: 2.4rem;
+  border-bottom: 0.2rem solid var(--trade-red);
+}
+
+.trade-desk__title {
+  margin: 0 0 0.6rem;
   text-transform: uppercase;
   letter-spacing: -0.01em;
   line-height: 1.05;
-  font-size: clamp(3rem, 5.5vw, 5.2rem);
+  font-size: clamp(2.6rem, 4vw, 4rem);
 }
 
-.trade-welcome__company {
-  display: block;
+.trade-desk__meta {
+  margin: 0;
+  font-size: 1.4rem;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.trade-desk__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+.trade-desk__flag {
+  margin: 2.4rem 0 0;
+  padding: 1.4rem 1.8rem;
+  border-left: 0.3rem solid var(--trade-red);
+  background-color: rgba(var(--color-foreground), 0.04);
+  font-size: 1.5rem;
+}
+
+.trade-desk__flag a {
+  margin-left: 0.6rem;
+}
+
+.trade-desk__orders {
+  margin-top: 3.6rem;
+}
+
+.trade-desk__orders-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.trade-desk__subtitle {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(var(--color-foreground), 0.65);
+}
+
+.trade-desk__empty {
+  margin-top: 3.2rem;
+  max-width: 52ch;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+/* Recent orders table */
+
+.trade-orders {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.5rem;
+}
+
+.trade-orders th {
+  padding: 0 0 1rem;
+  text-align: left;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(var(--color-foreground), 0.55);
+  border-bottom: 0.1rem solid var(--trade-rule);
+}
+
+.trade-orders td {
+  padding: 1.4rem 0;
+  border-bottom: 0.1rem solid var(--trade-rule);
+}
+
+.trade-orders__right {
+  text-align: right;
+}
+
+.trade-orders__due {
+  font-weight: 600;
   color: var(--trade-red);
 }
 
-.trade-welcome__note {
-  margin: 0 0 2.8rem;
-  max-width: 52ch;
-  color: rgba(var(--color-foreground), 0.8);
-}
+@media screen and (max-width: 749px) {
+  .trade-orders__hide-mobile {
+    display: none;
+  }
 
-.trade-welcome__note > :first-child {
-  margin-top: 0;
+  .trade-orders thead {
+    display: none;
+  }
+
+  .trade-orders tr {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.2rem 1rem;
+    padding: 1.2rem 0;
+    border-bottom: 0.1rem solid var(--trade-rule);
+  }
+
+  .trade-orders td {
+    padding: 0;
+    border: 0;
+  }
+
+  .trade-orders td::before {
+    content: attr(data-label) ': ';
+    color: rgba(var(--color-foreground), 0.55);
+  }
+
+  .trade-orders td[data-label='Order']::before,
+  .trade-orders td[data-label='Total']::before {
+    content: none;
+  }
 }
 
 /* ---------------------------------------------------------------
