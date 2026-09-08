@@ -155,34 +155,21 @@ is the one thing built here.
 
 ---
 
-## 6. The customer accounts migration
+## 6. Customer accounts — already modern
 
-**Native B2B requires modern customer accounts. Legacy accounts are explicitly
-unsupported.** This is the only step with customer-visible disruption and the
-single largest risk in the project.
+**Verified 2026-09-08:** `/account/login` 302-redirects to
+`account.unika.co.nz`. The store is on modern customer accounts already, so the
+B2B prerequisite is met and no migration is required.
 
-Consequences:
+This section previously described the migration as the project's largest risk,
+with a rollback plan and a customer comms requirement. All of that was
+unnecessary. The assumption came from `templates/customers/*.json` existing in
+the repo; those are leftovers from before the store was migrated, not evidence
+of the current account system.
 
-- `templates/customers/*.json` and `sections/main-account.liquid` become dead.
-- The account surface becomes Shopify-hosted and is no longer themeable in
-  Liquid; it is extended with customer account UI extensions.
-- Existing customers experience a changed login flow.
-
-**Do this early** — before investing in theme work, not after.
-
-### Rollback
-
-Modern accounts can be switched back to legacy in admin, which is the escape
-hatch if login breakage is discovered. But B2B data (companies, catalogs) is
-unusable while on legacy. So:
-
-1. Enable on a quiet day, with a support inbox watched.
-2. Announce to existing customers in advance with a "how to log in now" note.
-3. Keep the legacy templates in git (do not delete) until 30 days have passed
-   without incident.
-4. Only then remove `templates/customers/*` and `main-account.liquid`.
-
----
+`templates/customers/*.json` and `sections/main-account.liquid` are dead code
+and can be removed. Deleting them is a live change on merge, so treat it as its
+own deliberate step.
 
 ## 7. Invoices and statements — buy, do not build
 

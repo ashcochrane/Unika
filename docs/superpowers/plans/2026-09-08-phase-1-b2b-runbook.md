@@ -100,52 +100,25 @@ Two things break on migration and both are silent.
 
 ---
 
-## Stage 2 — Customer accounts migration ⚠️
+## Stage 2 — ✅ NOT NEEDED: already on modern customer accounts
 
-**The only step in this project that affects existing customers.** Do it on a quiet
-weekday morning, not a Friday.
+**Verified 2026-09-08.** `unika.co.nz/account/login` returns a 302 to
+`account.unika.co.nz`, the Shopify-hosted modern customer account surface.
+Legacy accounts would render the theme's `templates/customers/login.json`
+with a 200.
 
-### What actually changes for customers
+The store was already migrated before this project began. **There is no
+migration to perform, no customer comms to send, and no rollback window to
+manage.** B2B can be enabled immediately.
 
-| Before (legacy)  | After (modern)                                 |
-| ---------------- | ---------------------------------------------- |
-| Email + password | **One-time 6-digit code emailed each sign-in** |
-| —                | No password exists at all                      |
+Earlier drafts of this runbook treated the migration as the largest risk in the
+project. That was based on the presence of `templates/customers/*.json` in the
+repo, which are leftovers rather than evidence of the account system in use.
+Checking the redirect would have settled it in seconds.
 
-Existing passwords stop mattering entirely. Customers who try their saved password
-will be confused. **This needs an email before, not after.**
-
-### Why it is not optional
-
-Legacy customer accounts are **deprecated** — unavailable to new stores, receiving
-no further updates, with a sunset date to be announced during 2026. You are
-choosing when, not whether. Doing it deliberately inside a 30-day rollback window
-is strictly better than being forced later.
-
-### Steps
-
-- [ ] **Send the customer email first.** Explain: no more password, a 6-digit code
-      arrives by email, here is where to sign in. Do this a few days ahead.
-- [ ] Settings → **Customer accounts** → upgrade to customer accounts
-- [ ] Sign in yourself as a test customer end to end
-- [ ] Place a test retail order as that customer
-- [ ] Confirm order history still shows historical orders
-- [ ] Watch the support inbox for **48 hours**
-
-### Rollback
-
-**You can revert within 30 days.** After that the door closes.
-
-If logins break in a way you cannot resolve: Settings → Customer accounts →
-revert. B2B is unusable on legacy, so reverting also means pausing Phase 1 —
-that is the correct trade, customers come first.
-
-- [ ] **Do not delete `templates/customers/*` or `sections/main-account.liquid`
-      until 30 days have passed without incident.** They are dead code but they
-      are also the rollback path.
-- [ ] Rebuild any Flow workflows identified in 1.4.
-
----
+Consequence: `templates/customers/*.json` and `sections/main-account.liquid`
+are dead code today. Nothing renders them. They can be deleted, but that is a
+live change on merge, so do it deliberately rather than as a side effect.
 
 ## Stage 3 — B2B configuration
 
