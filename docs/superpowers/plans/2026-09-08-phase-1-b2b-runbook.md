@@ -37,7 +37,12 @@ Tested 2026-09-08. An Australia market with AUD currency rendered
 **AUD works on Grow. No plan upgrade needed.** One store, two markets,
 ~$1,488/yr. A second store and Advanced are both off the table.
 
-**Follow-up found during the test:** every product showed **Sold out** in the AU
+**Decision: AU is deferred until stock is held in Australia.** Not a technical
+blocker — the capability is proven. The test market and the country selector were
+both reverted afterwards; left active they would show Australian visitors AUD
+prices with everything marked Sold out.
+
+**Cause of the sold-out state, confirmed:** every product showed **Sold out** in the AU
 market (9 badges with `?country=AU`, versus 1 on NZ, where 22 of 22 ColorFill
 variants are available). Almost certainly **no shipping zone covers Australia** —
 rates are "NZ Only" and GoSweetSpot does not operate there. Resolve during AU

@@ -402,7 +402,21 @@ Consequences:
   problem entirely.
 - Catalog 2 is reserved for AU Trade as planned.
 
-### ⚠️ Open: nothing is purchasable in the AU market
+### Decision 2026-09-08: AU deferred until stock is held in Australia
+
+Confirmed with the business. Australia is **not** blocked technically — the
+currency test above proved it works on the current plan. It is deferred because
+the business is not ready to stock or fulfil from Australia yet.
+
+Nothing needs configuring now. When AU stock exists, the market takes about a
+minute to recreate and the AU-readiness rules below mean the rest is data entry
+rather than rework.
+
+**The test market was removed after testing.** Left active it would show
+Australian visitors AUD prices with every product marked Sold out — worse than
+the prior state, where they at least saw prices they could not check out with.
+
+### ⚠️ Known: nothing is purchasable in the AU market until shipping exists
 
 During the same test, every product showed **Sold out** in the AU market while NZ
 showed 22 of 22 ColorFill variants available. Verified: 9 "Sold out" badges with
