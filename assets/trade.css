@@ -55,20 +55,6 @@
   background-color: rgba(var(--color-foreground), 0.06);
 }
 
-/* Application form */
-
-.trade-form__grid {
-  display: grid;
-  gap: 0;
-}
-
-@media screen and (min-width: 750px) {
-  .trade-form__grid {
-    grid-template-columns: repeat(2, 1fr);
-    column-gap: 1.6rem;
-  }
-}
-
 /* ---------------------------------------------------------------
    Trade hub
 
@@ -237,4 +223,101 @@
 
 .trade-welcome__note > :first-child {
   margin-top: 0;
+}
+
+/* ---------------------------------------------------------------
+   Trade application
+
+   Grouped like a credit application rather than one long column,
+   so a fabricator can see how much is being asked before starting.
+   --------------------------------------------------------------- */
+
+.trade-apply {
+  max-width: 92rem;
+}
+
+.trade-apply__lede {
+  margin-bottom: 4.8rem;
+}
+
+.trade-apply__title {
+  margin: 0 0 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  font-size: clamp(3rem, 5.5vw, 5.2rem);
+  max-width: 16ch;
+}
+
+.trade-apply__intro {
+  margin: 0;
+  max-width: 54ch;
+  font-size: 1.7rem;
+  line-height: 1.55;
+  color: rgba(var(--color-foreground), 0.82);
+}
+
+.trade-apply__intro > :first-child {
+  margin-top: 0;
+}
+
+.trade-apply__group {
+  padding: 2.8rem 0 0.8rem;
+  border-top: 0.1rem solid var(--trade-rule);
+}
+
+.trade-apply__group-title {
+  margin: 0 0 1.6rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgba(var(--color-foreground), 0.66);
+}
+
+.trade-apply__fields {
+  display: grid;
+  gap: 0 2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .trade-apply__fields {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .trade-apply__fields--single {
+    grid-template-columns: 1fr;
+  }
+}
+
+.trade-apply__submit {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.2rem 2rem;
+  padding-top: 2.8rem;
+  border-top: 0.2rem solid var(--trade-red);
+}
+
+.trade-apply__reassurance {
+  margin: 0;
+  font-size: 1.4rem;
+  color: rgba(var(--color-foreground), 0.68);
+}
+
+.trade-apply__errors {
+  margin-bottom: 2.4rem;
+  padding: 1.4rem 1.8rem;
+  border-left: 0.3rem solid var(--trade-red);
+  background-color: rgba(var(--color-foreground), 0.04);
+}
+
+.trade-apply__result {
+  padding: 3.2rem 0;
+  border-top: 0.2rem solid var(--trade-red);
+}
+
+.trade-apply__result-title {
+  margin: 0;
+  max-width: 46ch;
+  font-size: 2rem;
+  line-height: 1.4;
 }

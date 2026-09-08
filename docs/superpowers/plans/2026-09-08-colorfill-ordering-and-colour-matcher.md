@@ -181,11 +181,11 @@ curl -sL "https://unika.co.nz/products/colorfill-box?preview_theme_id=$DEV_THEME
 
 Expected: `1` or more.
 
-Also confirm all 22 variants render as rows:
+Also confirm all 22 variants render as rows. **The row class is `variant-item`,
+not `quick-order-list__row`** — verified against the rendered page:
 
 ```bash
-curl -sL "https://unika.co.nz/products/colorfill-box?preview_theme_id=$DEV_THEME_ID" \
-  | grep -o 'quick-order-list__row' | wc -l
+./scripts/preview.sh /products/colorfill-box | grep -oc 'class="variant-item"'
 ```
 
 Expected: `22`.
@@ -603,8 +603,7 @@ Only after Task 1 is confirmed working. Removing the picker before the grid is p
 - [ ] **Step 1: Confirm the grid works**
 
 ```bash
-curl -sL "https://unika.co.nz/products/colorfill-box?preview_theme_id=$DEV_THEME_ID" \
-  | grep -o 'quick-order-list__row' | wc -l
+./scripts/preview.sh /products/colorfill-box | grep -oc 'class="variant-item"'
 ```
 
 Expected: `22`. If not, stop and fix Task 1.

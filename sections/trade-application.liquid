@@ -14,97 +14,132 @@
   }
 {%- endstyle -%}
 
-<div class="color-{{ section.settings.color_scheme }} gradient">
-  <div class="page-width page-width--narrow section-{{ section.id }}-padding">
-    <h1>{{ section.settings.heading }}</h1>
+<div class="trade color-{{ section.settings.color_scheme }} gradient">
+  {%- render 'colorfill-swatch-band', limit: 60 -%}
 
-    {%- if section.settings.intro != blank -%}
-      <div class="rte">{{ section.settings.intro }}</div>
-    {%- endif -%}
+  <div class="page-width section-{{ section.id }}-padding">
+    {%- form 'contact', id: 'TradeApplication', class: 'trade-apply' -%}
+      <div class="trade-apply__lede">
+        <h1 class="trade-apply__title">{{ section.settings.heading }}</h1>
+        {%- if section.settings.intro != blank -%}
+          <div class="trade-apply__intro rte">{{ section.settings.intro }}</div>
+        {%- endif -%}
+      </div>
 
-    {%- form 'contact', id: 'TradeApplication', class: 'trade-form' -%}
       {%- if form.posted_successfully? -%}
-        <div class="form-status form-status-list form__message" role="status">
-          {{ section.settings.success_message }}
+        <div class="trade-apply__result" role="status">
+          <p class="trade-apply__result-title">{{ section.settings.success_message }}</p>
         </div>
-      {%- elsif form.errors -%}
-        <div class="form__message" role="alert">
-          {{ form.errors | default_errors }}
+      {%- else -%}
+        {%- if form.errors -%}
+          <div class="trade-apply__errors" role="alert">
+            {{ form.errors | default_errors }}
+          </div>
+        {%- endif -%}
+
+        <input type="hidden" name="contact[Enquiry type]" value="Trade account application">
+
+        <div class="trade-apply__group">
+          <h2 class="trade-apply__group-title">Your business</h2>
+          <div class="trade-apply__fields">
+            <div class="field">
+              <input
+                class="field__input"
+                type="text"
+                id="TradeBusiness"
+                name="contact[Business name]"
+                required
+                autocomplete="organization"
+                placeholder=" "
+              >
+              <label class="field__label" for="TradeBusiness">Business name</label>
+            </div>
+            <div class="field">
+              <input class="field__input" type="text" id="TradeGst" name="contact[GST number]" placeholder=" ">
+              <label class="field__label" for="TradeGst">GST number</label>
+            </div>
+            <div class="field">
+              <input
+                class="field__input"
+                type="text"
+                id="TradeCity"
+                name="contact[City]"
+                autocomplete="address-level2"
+                placeholder=" "
+              >
+              <label class="field__label" for="TradeCity">Town or city</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="trade-apply__group">
+          <h2 class="trade-apply__group-title">Who we talk to</h2>
+          <div class="trade-apply__fields">
+            <div class="field">
+              <input
+                class="field__input"
+                type="text"
+                id="TradeName"
+                name="contact[Contact name]"
+                required
+                autocomplete="name"
+                placeholder=" "
+              >
+              <label class="field__label" for="TradeName">Your name</label>
+            </div>
+            <div class="field">
+              <input
+                class="field__input"
+                type="email"
+                id="TradeEmail"
+                name="contact[email]"
+                required
+                spellcheck="false"
+                autocapitalize="off"
+                autocomplete="email"
+                placeholder=" "
+              >
+              <label class="field__label" for="TradeEmail">Email</label>
+            </div>
+            <div class="field">
+              <input
+                class="field__input"
+                type="tel"
+                id="TradePhone"
+                name="contact[Phone]"
+                autocomplete="tel"
+                placeholder=" "
+              >
+              <label class="field__label" for="TradePhone">Phone</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="trade-apply__group">
+          <h2 class="trade-apply__group-title">What you fabricate</h2>
+          <div class="trade-apply__fields trade-apply__fields--single">
+            <div class="field">
+              <textarea
+                rows="4"
+                class="text-area field__input"
+                id="TradeNotes"
+                name="contact[Notes]"
+                placeholder=" "
+              ></textarea>
+              <label class="form__label field__label" for="TradeNotes">
+                Surfaces you work with, and roughly how much you get through
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="trade-apply__submit">
+          <button type="submit" class="button">{{ section.settings.submit_label }}</button>
+          {%- if section.settings.reassurance != blank -%}
+            <p class="trade-apply__reassurance">{{ section.settings.reassurance }}</p>
+          {%- endif -%}
         </div>
       {%- endif -%}
-
-      <input type="hidden" name="contact[Enquiry type]" value="Trade account application">
-
-      <div class="trade-form__grid">
-        <div class="field">
-          <input
-            class="field__input"
-            type="text"
-            id="TradeBusiness"
-            name="contact[Business name]"
-            required
-            placeholder=" "
-          >
-          <label class="field__label" for="TradeBusiness">Business name</label>
-        </div>
-
-        <div class="field">
-          <input class="field__input" type="text" id="TradeGst" name="contact[GST number]" placeholder=" ">
-          <label class="field__label" for="TradeGst">GST number</label>
-        </div>
-
-        <div class="field">
-          <input class="field__input" type="text" id="TradeName" name="contact[Contact name]" required placeholder=" ">
-          <label class="field__label" for="TradeName">Your name</label>
-        </div>
-
-        <div class="field">
-          <input
-            class="field__input"
-            type="email"
-            id="TradeEmail"
-            name="contact[email]"
-            required
-            spellcheck="false"
-            autocapitalize="off"
-            autocomplete="email"
-            placeholder=" "
-          >
-          <label class="field__label" for="TradeEmail">Email</label>
-        </div>
-
-        <div class="field">
-          <input
-            class="field__input"
-            type="tel"
-            id="TradePhone"
-            name="contact[Phone]"
-            autocomplete="tel"
-            placeholder=" "
-          >
-          <label class="field__label" for="TradePhone">Phone</label>
-        </div>
-
-        <div class="field">
-          <input class="field__input" type="text" id="TradeCity" name="contact[City]" placeholder=" ">
-          <label class="field__label" for="TradeCity">City</label>
-        </div>
-      </div>
-
-      <div class="field">
-        <textarea
-          rows="4"
-          class="text-area field__input"
-          id="TradeNotes"
-          name="contact[Notes]"
-          placeholder=" "
-        ></textarea>
-        <label class="form__label field__label" for="TradeNotes">
-          What do you fabricate, and roughly how much do you use?
-        </label>
-      </div>
-
-      <button type="submit" class="button">{{ section.settings.submit_label }}</button>
     {%- endform -%}
   </div>
 </div>
@@ -115,14 +150,20 @@
   "tag": "section",
   "class": "section",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Heading", "default": "Apply for a trade account" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Open a trade account" },
     { "type": "richtext", "id": "intro", "label": "Intro" },
-    { "type": "text", "id": "submit_label", "label": "Submit button", "default": "Submit application" },
+    { "type": "text", "id": "submit_label", "label": "Submit button", "default": "Send application" },
+    {
+      "type": "text",
+      "id": "reassurance",
+      "label": "Note under the button",
+      "default": "We usually reply within one working day."
+    },
     {
       "type": "text",
       "id": "success_message",
       "label": "Success message",
-      "default": "Thanks — we'll be in touch within one business day."
+      "default": "Application received. We will be in touch within one working day."
     },
     { "type": "color_scheme", "id": "color_scheme", "label": "Colour scheme", "default": "scheme-1" },
     {
@@ -133,7 +174,7 @@
       "step": 4,
       "unit": "px",
       "label": "Padding top",
-      "default": 40
+      "default": 56
     },
     {
       "type": "range",
@@ -143,7 +184,7 @@
       "step": 4,
       "unit": "px",
       "label": "Padding bottom",
-      "default": 52
+      "default": 64
     }
   ],
   "presets": [{ "name": "Trade application" }]

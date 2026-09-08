@@ -12,13 +12,14 @@
     "main": {
       "type": "trade-application",
       "settings": {
-        "heading": "Apply for a trade account",
-        "intro": "<p>Tell us about your business and we'll set you up with trade pricing and monthly invoicing. Approval usually takes one business day.</p>",
-        "submit_label": "Submit application",
-        "success_message": "Thanks — we'll be in touch within one business day.",
+        "heading": "Open a trade account",
+        "intro": "<p>Tell us who you are and what you fabricate. Once you are set up, your pricing shows automatically when you sign in, and you settle one invoice a month.</p>",
+        "submit_label": "Send application",
+        "reassurance": "We usually reply within one working day.",
+        "success_message": "Application received. We will be in touch within one working day.",
         "color_scheme": "scheme-1",
-        "padding_top": 40,
-        "padding_bottom": 52
+        "padding_top": 56,
+        "padding_bottom": 64
       }
     }
   },
