@@ -368,6 +368,7 @@ covers the first two items. The remaining three need a follow-up plan.
 - Create or confirm a dedicated unpublished dev theme.
 
 **Phase 1 — native B2B core (mostly config)**
+Runbook: `docs/superpowers/plans/2026-09-08-phase-1-b2b-runbook.md`
 Modern customer accounts migration. Companies, locations, buyers. NZ B2B market
 
 - NZ Trade catalog. Payment terms. PO numbers. Quantity rules. Bank transfer
