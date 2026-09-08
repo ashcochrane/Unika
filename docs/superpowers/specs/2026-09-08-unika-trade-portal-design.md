@@ -71,7 +71,7 @@ price they see**.
 | Orders, fulfilment, dispatch (GoSweetSpot) | Monthly statement generation and email |
 | Companies, locations, buyers               | —                                      |
 | Catalogs and trade pricing                 | —                                      |
-| Customer accounts UI (hosted)              | One full-page extension for AR         |
+| Customer accounts UI (hosted)              | —                                      |
 | Accounting handoff (sync app — see 7a)     | —                                      |
 
 **One inventory pool.** A trade order and a retail order decrement the same
@@ -128,15 +128,16 @@ variant as required.
 
 A deliberate goal: everyday operation should not require a developer.
 
-| Everyday staff, in Shopify admin          | Requires a developer        |
-| ----------------------------------------- | --------------------------- |
-| Trade prices (catalog % or per-variant)   | ColorFill order grid        |
-| Bulk discount bands (automatic discounts) | Colour Matcher → cart       |
-| Companies, locations, buyers              | Statement / invoice service |
-| Payment terms per company location        | Customer account extension  |
-| Quantity rules, 9-pack increments         | Contextual GST display      |
-| Approving trade applications              |                             |
-| Products, inventory, orders (as today)    |                             |
+| Everyday staff, in Shopify admin               | Requires a developer   |
+| ---------------------------------------------- | ---------------------- |
+| Trade prices (catalog % or per-variant)        | Contextual GST display |
+| Bulk discount bands (automatic discounts)      | Trade-aware navigation |
+| Companies, locations, buyers                   | ColorFill order grid   |
+| Payment terms per company location             | Colour Matcher → cart  |
+| Quantity rules, 9-pack increments              |                        |
+| Approving trade applications                   |                        |
+| Invoice and statement app settings (section 7) |                        |
+| Products, inventory, orders (as today)         |                        |
 
 Anything in the left column is a setting. If a change that ought to be
 operational needs a code change, the design has gone wrong.
@@ -183,39 +184,43 @@ unusable while on legacy. So:
 
 ---
 
-## 7. Statement and invoice service
+## 7. Invoices and statements — buy, do not build
 
-The only genuinely custom component.
+An earlier draft of this spec proposed building a Node service for invoice and
+statement PDFs plus a custom customer account extension. **That was wrong.**
+Off-the-shelf apps cover it, and the project is better without a codebase to
+maintain.
 
-**Source of truth: Shopify order data.** MYOB stays the accounting ledger but is
-_not_ a runtime dependency — the MYOB API does not expose customer statements
-(invoice CRUD and an `/email` endpoint exist; statements do not appear in the
-documented API). Coupling the customer-facing portal to MYOB would add OAuth and
-company-file auth for no gain.
+| App                       | Cost                   | Invoices                                                       | Statements                 | Customer self-serve                          | B2B Companies              |
+| ------------------------- | ---------------------- | -------------------------------------------------------------- | -------------------------- | -------------------------------------------- | -------------------------- |
+| **Sufio**                 | $19–49/mo              | Wholesale pricing, PO numbers, synced to Shopify payment terms | No                         | **Embedded in customer accounts, all plans** | Yes                        |
+| **AReceivables**          | $25.99/mo (Enterprise) | Yes                                                            | Periodic statements        | Storefront-facing on Enterprise              | Purpose-built              |
+| **PT2 Statement Printer** | $30/mo (Plus tier)     | Yes                                                            | Yes, plus AR aging reports | Merchant-side only                           | Plus tier                  |
+| Streamlined               | —                      | Yes                                                            | Monthly                    | —                                            | Syncs QuickBooks, not MYOB |
 
-### Contract
+### Recommendation
 
-```
-GET  /api/companies/:companyId/summary   -> { outstanding, currency, overdueCount }
-GET  /api/companies/:companyId/invoices  -> [ { orderId, number, date, total, status, url } ]
-GET  /api/companies/:companyId/statements-> [ { period, total, url } ]
-GET  /api/documents/:documentId          -> PDF (signed, short-lived URL)
-```
+**Trial AReceivables Enterprise first** — one app covering statements, invoices,
+reminders, outstanding balance and customer-facing access. Caveat: 3.2 stars
+from only five reviews, so trial rather than commit.
 
-Statements are keyed `{store, company, period, currency}` — never assume one
-store or one currency.
+**Fallback: Sufio + PT2 Statement Printer ($49/mo combined).** Sufio is far more
+established and owns invoicing and the customer account surface properly; PT2
+handles statements and AR aging.
 
-### Stack
+### Acceptance test
 
-Next.js on ~$25/mo hosting · Postgres · Shopify Admin GraphQL via a custom app ·
-Postmark or Resend · React-PDF · R2/S3 for documents. Kept deliberately boring.
+The same test as the accounting sync in section 7a:
 
-### Monthly job
+> An order with payment terms, left unpaid — does the app see it, invoice it at
+> trade pricing, and roll it into a month-end statement?
 
-On the 1st: for each company with orders in the prior month, aggregate, render a
-PDF, store it, email the billing contact. Idempotent — safe to re-run.
+### Consequence
 
----
+**The trade portal has no custom code.** What was Phase 3 — a Node service with
+Postgres, object storage and hosting, plus a bespoke customer account extension
+— is now app configuration. The only custom work left in the whole project is
+the storefront theme work in section 9.
 
 ## 7a. Accounting sync — replace MYOB Sync
 
@@ -253,24 +258,19 @@ capability being built.
 and pushes into Shopify — the inverse of this design, where Shopify owns
 products, pricing and inventory. It is also still in beta.
 
-**Do not build this.** MYOB's API is available and a statement service is being
-built anyway, but accounting sync is a solved problem that should be maintained
-by someone else.
+**Do not build this.** MYOB's API is available, but accounting sync is a solved
+problem that should be maintained by someone else — the same reasoning that
+applies to invoices and statements in section 7.
 
 ## 8. Portal UI
 
-One **customer account UI extension** (full-page). Available on all plans, and
-supports external network calls with `network_access = true` plus
-`Access-Control-Allow-Origin` on the endpoint (extensions run in a Web Worker
-with a null origin).
+**No custom extension is built.** Shopify's hosted customer accounts provide
+order history, reorder and addresses. Sufio (or AReceivables) adds invoice and
+statement access to the same surface via its own extension.
 
-Scope: outstanding balance, invoice list with download, statement history.
-Nothing else in v1.
-
-Everything else — order history, reorder, addresses — is Shopify's hosted
-account UI, free and maintained by them.
-
----
+If a genuine gap appears after launch, customer account UI extensions remain
+available on all plans and support external network calls — but do not build one
+speculatively.
 
 ## 9. Storefront work
 
@@ -318,7 +318,8 @@ Modern customer accounts migration. Companies, locations, buyers. NZ B2B market
 
 **Phase 2 — storefront** (section 9)
 
-**Phase 3 — AR** (sections 7 and 8)
+**Phase 3 — AR (app configuration, not a build)**
+Trial and configure the invoice/statement app per section 7.
 
 **Phase 4 — Australia** (section 11)
 
