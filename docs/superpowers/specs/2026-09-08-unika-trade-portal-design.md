@@ -72,11 +72,11 @@ price they see**.
 | Companies, locations, buyers               | —                                      |
 | Catalogs and trade pricing                 | —                                      |
 | Customer accounts UI (hosted)              | One full-page extension for AR         |
-| Accounting handoff (MYOB Sync)             | —                                      |
+| Accounting handoff (sync app — see 7a)     | —                                      |
 
 **One inventory pool.** A trade order and a retail order decrement the same
 stock, appear in the same Orders list, dispatch through the same flow, and book
-through the same MYOB Sync.
+through the same accounting sync.
 
 ---
 
@@ -111,13 +111,35 @@ TopSeal, cleaners, bolts. **Never put volume breaks on ColorFill colours.**
 ### Implementation
 
 Trade price = retail × (1 − market trade rate). Retail prices are already
-ex-GST, so this derives cleanly. Store the rate and the discount bands **as
-data**, not hardcoded, so AU is a new row rather than a code change.
+ex-GST, so this derives cleanly.
+
+**This is admin configuration, not code.** A B2B catalog applies either a
+percentage adjustment against base prices or explicit per-variant prices, set in
+the Shopify admin. Office staff change the trade rate whenever they like; no
+developer, no deploy. The rate therefore does **not** block the build — it is a
+value entered before launch.
 
 Quantity rules: enforce 9-pack increments on ColorFill tubes; minimums per
 variant as required.
 
 ---
+
+## 4a. Who manages what
+
+A deliberate goal: everyday operation should not require a developer.
+
+| Everyday staff, in Shopify admin          | Requires a developer        |
+| ----------------------------------------- | --------------------------- |
+| Trade prices (catalog % or per-variant)   | ColorFill order grid        |
+| Bulk discount bands (automatic discounts) | Colour Matcher → cart       |
+| Companies, locations, buyers              | Statement / invoice service |
+| Payment terms per company location        | Customer account extension  |
+| Quantity rules, 9-pack increments         | Contextual GST display      |
+| Approving trade applications              |                             |
+| Products, inventory, orders (as today)    |                             |
+
+Anything in the left column is a setting. If a change that ought to be
+operational needs a code change, the design has gone wrong.
 
 ## 5. Money
 
@@ -195,6 +217,46 @@ PDF, store it, email the billing contact. Idempotent — safe to re-run.
 
 ---
 
+## 7a. Accounting sync — replace MYOB Sync
+
+**MYOB Sync ($19/mo) must be replaced.** 2026 reviews report payment syncing
+broken since 12 March 2026, the app unsupported for over a month with developers
+not answering email, products duplicating in Shopify, and other products failing
+to sync. The trade launch cannot rest on it.
+
+### The single acceptance test
+
+> Create an order with payment terms, leave it unpaid. Does it appear in MYOB as
+> an **open invoice, with the correct due date and customer**?
+
+None of the candidates document net-terms behaviour, so this cannot be settled
+from documentation. It is also the exact failure mode that would break a trade
+launch: net-30 orders sit unpaid for a month, and a sync that only fires on
+payment leaves revenue unrecognised and no debtor ledger.
+
+### Candidates
+
+|                  | Cost                 | Model                | Verdict                     |
+| ---------------- | -------------------- | -------------------- | --------------------------- |
+| MYOB Sync        | $19/mo               | per-order            | Leave — broken, unsupported |
+| Amaka            | Free (≤60 orders/mo) | **daily summary**    | Rejected — see below        |
+| ERP Integrations | $25/mo               | per-order, real-time | **Lead candidate**          |
+| Dashi            | —                    | per-invoice          | Trial alongside             |
+| InSyncer         | —                    | ERP-level, beta      | Rejected — see below        |
+
+**Amaka is rejected despite being free.** It posts a daily _summary_ of sales as
+a single invoice. That suits retail, but trade on net terms needs a per-customer
+invoice with a due date for MYOB to carry a debtor ledger. Free would cost the
+capability being built.
+
+**InSyncer is rejected** because it treats AccountRight as the source of truth
+and pushes into Shopify — the inverse of this design, where Shopify owns
+products, pricing and inventory. It is also still in beta.
+
+**Do not build this.** MYOB's API is available and a statement service is being
+built anyway, but accounting sync is a solved problem that should be maintained
+by someone else.
+
 ## 8. Portal UI
 
 One **customer account UI extension** (full-page). Available on all plans, and
@@ -240,10 +302,10 @@ laminates. jQuery is pulled in solely for DataTables here.
 
 **Phase 0 — de-risk (no build)**
 
-- Test MYOB Sync against an **unpaid** order. Net-30 orders sit unpaid for a
-  month; if the sync only fires on payment, revenue recognition breaks on day
-  one. Highest-value cheap test in the project.
-- Remove the duplicate "Xero, QuickBooks or MYOB Sync" app.
+- **Replace the accounting sync** (section 7a). Trial ERP Integrations and Dashi
+  against the unpaid-order acceptance test; keep whichever passes.
+- Remove MYOB Sync and the duplicate "Xero, QuickBooks or MYOB Sync" app once a
+  replacement passes.
 - Confirm nothing uses `templates/page.wholesale-partner.json`.
 - Create or confirm a dedicated unpublished dev theme.
 
@@ -294,27 +356,27 @@ Apply to all work from Phase 1:
 
 ## 12. Risks
 
-| Risk                                                                                     | Severity | Mitigation                                                            |
-| ---------------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------------- |
-| MYOB Sync mishandles unpaid orders                                                       | **High** | Phase 0 test before anything else                                     |
-| MYOB Sync reliability — 2026 reviews report outages, silent failures, unanswered support | **High** | Evaluate MYOB Integration (ERP Integrations, $25/mo) as fallback      |
-| Accounts migration breaks customer login                                                 | **High** | Section 6 rollback plan                                               |
-| Colour Matcher truncation at 300                                                         | Medium   | Documented; rework before adding laminates                            |
-| Local clone drifts from `origin/main`                                                    | Medium   | `git pull` before work and before merge — now a documented convention |
-| Merging to `main` deploys instantly                                                      | Medium   | Branch + unpublished dev theme; PR template check                     |
+| Risk                                                                         | Severity | Mitigation                                                            |
+| ---------------------------------------------------------------------------- | -------- | --------------------------------------------------------------------- |
+| Accounting sync mishandles unpaid orders                                     | **High** | Section 7a — the single Phase 0 acceptance test                       |
+| MYOB Sync is actively broken (payment sync down since Mar 2026, unsupported) | **High** | Replace it — section 7a                                               |
+| Accounts migration breaks customer login                                     | **High** | Section 6 rollback plan                                               |
+| Colour Matcher truncation at 300                                             | Medium   | Documented; rework before adding laminates                            |
+| Local clone drifts from `origin/main`                                        | Medium   | `git pull` before work and before merge — now a documented convention |
+| Merging to `main` deploys instantly                                          | Medium   | Branch + unpublished dev theme; PR template check                     |
 
 ---
 
 ## 13. Open questions
 
-1. Does MYOB Sync handle unpaid orders? _(Phase 0 — blocks Phase 1)_
+1. Which accounting sync passes the section 7a acceptance test — ERP
+   Integrations or Dashi? _(Phase 0 — blocks Phase 1)_
 2. Is "Copy of Unika/main" (130931064929) a backup, or usable as the dev theme?
 3. Does any live page use `templates/page.wholesale-partner.json`?
 4. What Net terms — Net 30, or 20th of the month following (NZ convention)?
 5. Credit limits per company in v1, or deferred?
-6. **What is the trade rate?** Section 4 defines trade price as
-   `retail × (1 − market trade rate)` but the rate itself is a business input and
-   is not yet decided. Needed before Phase 1 catalog setup.
+6. **What is the trade rate?** Not blocking — it is a value staff enter into the
+   catalog in the admin (section 4). Needed before launch, not before build.
 7. **What are the bulk discount bands?** Layer 2 needs concrete thresholds — e.g.
    spend $1,000 → 5%, $2,500 → 10%. Values are a commercial decision; the
    mechanism does not depend on them, so this does not block design.
