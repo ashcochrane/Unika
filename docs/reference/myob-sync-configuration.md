@@ -5,33 +5,33 @@ replacement can be configured identically. Susan will need this.
 
 ## Connection
 
-| Setting | Value |
-| --- | --- |
-| Shopify account | `unika-nz` |
-| MYOB account | `Unika` |
+| Setting          | Value                             |
+| ---------------- | --------------------------------- |
+| Shopify account  | `unika-nz`                        |
+| MYOB account     | `Unika`                           |
 | **Company file** | **Beauty Craft Surfaces Limited** |
 
 ## Tax codes
 
-| Setting | Value |
-| --- | --- |
-| Taxed order line tax code | **`S15`** (NZ GST 15%) |
-| Tax free order line tax code | **`Z`** |
-| Taxed freight tax code | *(empty)* |
-| Tax free freight tax code | *(empty)* |
+| Setting                      | Value                  |
+| ---------------------------- | ---------------------- |
+| Taxed order line tax code    | **`S15`** (NZ GST 15%) |
+| Tax free order line tax code | **`Z`**                |
+| Taxed freight tax code       | _(empty)_              |
+| Tax free freight tax code    | _(empty)_              |
 
 Freight tax codes being blank is worth questioning with Susan — freight is
 normally GST-taxable in NZ, so this may have been under-taxing shipping.
 
 ## Orders
 
-| Setting | Value |
-| --- | --- |
-| Create MYOB quotes | Off |
-| Create MYOB orders | Off |
-| **Create MYOB invoices** | **On** |
+| Setting                           | Value          |
+| --------------------------------- | -------------- |
+| Create MYOB quotes                | Off            |
+| Create MYOB orders                | Off            |
+| **Create MYOB invoices**          | **On**         |
 | Invoice fulfillment status filter | **Any status** |
-| Invoice financial status filter | **Any status** |
+| Invoice financial status filter   | **Any status** |
 
 **"Any status" on the financial filter is the important one.** It means invoices
 were created regardless of whether the order was paid — which is exactly the
@@ -40,14 +40,14 @@ unpaid Net 45 orders will not reach MYOB until they are paid.
 
 ## Payments
 
-| Setting | Value |
-| --- | --- |
-| Create payments | On |
-| **Default payment account** | **ANZ Cheque Account (1-0100)** |
-| Shopify payment status filter | **Success** |
-| Multicurrency payments — currency | *(empty)* |
-| Multicurrency payments — use order total | Off |
-| Payment method mapping | *(none configured)* |
+| Setting                                  | Value                           |
+| ---------------------------------------- | ------------------------------- |
+| Create payments                          | On                              |
+| **Default payment account**              | **ANZ Cheque Account (1-0100)** |
+| Shopify payment status filter            | **Success**                     |
+| Multicurrency payments — currency        | _(empty)_                       |
+| Multicurrency payments — use order total | Off                             |
+| Payment method mapping                   | _(none configured)_             |
 
 Multicurrency being empty matters for Australia later — see the AU section of the
 spec.
@@ -75,9 +75,9 @@ before it is removed.
 
 ## Why it stopped
 
-The app displayed: *"Action required: Following MYOB's API update, reconnect your
+The app displayed: _"Action required: Following MYOB's API update, reconnect your
 MYOB account and select the new connection in Settings to keep your sync running
-after Sep 1."*
+after Sep 1."_
 
 **The integration was not abandoned — a required reconnection was never
 actioned.** Public reviews of the app in 2026 do report unanswered support and
@@ -85,17 +85,17 @@ silent failures, but that is not what happened here.
 
 ## Customers
 
-| Setting | Value |
-| --- | --- |
-| Create missing customer cards for new orders | On |
+| Setting                                      | Value |
+| -------------------------------------------- | ----- |
+| Create missing customer cards for new orders | On    |
 
 That was the entire tab. No matching or de-duplication rules, and no way to
 direct a B2B order to a company card rather than an individual's card.
 
 ## Returns
 
-| Setting | Value |
-| --- | --- |
+| Setting            | Value   |
+| ------------------ | ------- |
 | Returns (Pro plan) | **Off** |
 
 **Refunds and credit notes never reached MYOB.** Every refund since the
@@ -103,15 +103,14 @@ integration was set up exists in Shopify only.
 
 ## Inventory
 
-| Setting | Value |
-| --- | --- |
-| Sync inventory from MYOB | Off |
-| MYOB quantity type / Shopify location | *(both empty)* |
-| Use multiple locations (Pro plan) | Off |
+| Setting                               | Value          |
+| ------------------------------------- | -------------- |
+| Sync inventory from MYOB              | Off            |
+| MYOB quantity type / Shopify location | _(both empty)_ |
+| Use multiple locations (Pro plan)     | Off            |
 
 Not a problem — Shopify is the source of truth for stock. Worth keeping off.
 
 ## Schedule
 
 Frequency was never selected. A single hourly slot at `:00` was configured.
-

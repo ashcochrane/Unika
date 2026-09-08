@@ -7,7 +7,7 @@ whether to move on.
 
 ## Phase A — Before the call with Susan
 
-*You alone. About an hour. Do A1 today.*
+_You alone. About an hour. Do A1 today._
 
 ### A1. 🔴 Recover the MYOB backlog — time sensitive
 
@@ -68,7 +68,7 @@ Agenda is in `myob-sync-target-configuration.md`. Six questions; three matter mo
 
 ## Phase C — Replace the sync
 
-*Needs Susan's answers to A/B.*
+_Needs Susan's answers to A/B._
 
 1. Install **Dashi** (free trial). **Leave MySync installed but stopped** — do not
    delete yet
@@ -76,7 +76,7 @@ Agenda is in `myob-sync-target-configuration.md`. Six questions; three matter mo
    code Susan specified and **returns switched on**
 3. Run the acceptance test in that document against `Ash Test Company`
 4. Only once it passes: **delete MySync**, then delete the duplicate
-   *"Xero, QuickBooks or MYOB Sync"*
+   _"Xero, QuickBooks or MYOB Sync"_
 
 **Done when:** an unpaid Net 45 order appears in MYOB as an open invoice against
 the **company**, with taxed freight and no payment — and marking it paid in

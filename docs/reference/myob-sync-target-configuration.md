@@ -15,12 +15,12 @@ was minimal, and it predates B2B. Three things it did not do now matter.
 only invoices on payment leaves that revenue unrecognised and gives no debtor
 ledger — which is the entire reason for doing this.
 
-The old app achieved it with *invoice financial status filter → any status*.
+The old app achieved it with _invoice financial status filter → any status_.
 The replacement must do the same.
 
 ### 2. Create payments only when payment actually succeeds
 
-The old app filtered payments to *success*, which is correct. An unpaid order must
+The old app filtered payments to _success_, which is correct. An unpaid order must
 produce an **open invoice and no payment**, so the invoice sits in debtors until
 the bank transfer arrives.
 
@@ -36,9 +36,9 @@ show the invoice against **Ash Test Company**. If it lands against "Ashton
 Cochrane", the debtor ledger is per-person rather than per-business, statements
 are wrong, and reconciliation breaks.
 
-Shopify itself warns about this on non-Plus plans: *"Some apps may not attribute
+Shopify itself warns about this on non-Plus plans: _"Some apps may not attribute
 B2B orders correctly on your current plan. Check that B2B orders are assigned to a
-company, not just an individual customer."*
+company, not just an individual customer."_
 
 **Test this explicitly before trusting the sync.**
 
@@ -46,12 +46,12 @@ company, not just an individual customer."*
 
 ## Fix what the old setup got wrong
 
-| Area | Old | Target |
-| --- | --- | --- |
-| **Freight tax codes** | Both blank | Set. Freight is GST-taxable in NZ, so shipping was likely going in untaxed — ask Susan to check historically, not just going forward |
-| **Returns / credit notes** | Off | **On.** A credit note against an open invoice is how a trade bill gets corrected before payment |
-| **Schedule** | Frequency unset | Set deliberately. Hourly is fine; the point is that it is chosen |
-| **Customer cards** | Auto-create, no rules | Needs a company-aware strategy — see above |
+| Area                       | Old                   | Target                                                                                                                               |
+| -------------------------- | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| **Freight tax codes**      | Both blank            | Set. Freight is GST-taxable in NZ, so shipping was likely going in untaxed — ask Susan to check historically, not just going forward |
+| **Returns / credit notes** | Off                   | **On.** A credit note against an open invoice is how a trade bill gets corrected before payment                                      |
+| **Schedule**               | Frequency unset       | Set deliberately. Hourly is fine; the point is that it is chosen                                                                     |
+| **Customer cards**         | Auto-create, no rules | Needs a company-aware strategy — see above                                                                                           |
 
 Keep off: product sync, inventory sync. Shopify is the source of truth for both.
 
@@ -59,12 +59,12 @@ Keep off: product sync, inventory sync. Shopify is the source of truth for both.
 
 ## Carry across unchanged
 
-| Setting | Value |
-| --- | --- |
-| Company file | Beauty Craft Surfaces Limited |
-| Taxed order line tax code | `S15` |
-| Tax free order line tax code | `Z` |
-| Default payment account | ANZ Cheque Account (1-0100) |
+| Setting                      | Value                         |
+| ---------------------------- | ----------------------------- |
+| Company file                 | Beauty Craft Surfaces Limited |
+| Taxed order line tax code    | `S15`                         |
+| Tax free order line tax code | `Z`                           |
+| Default payment account      | ANZ Cheque Account (1-0100)   |
 
 ---
 
