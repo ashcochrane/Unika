@@ -4,11 +4,9 @@
 
 [environments.development]
 store = "unika-nz.myshopify.com"
-# Set to a dedicated unpublished dev theme before using push:dev.
-# An unpublished theme already exists: "Copy of Unika/main" (130931064929).
-# Confirm it is not a backup someone relies on before targeting it, or create a
-# fresh one:  shopify theme push --unpublished --theme "Dev - trade portal"
-# theme = "130931064929"
+# Unpublished dev theme, confirmed 2026-09-08 as an old draft copy and safe to
+# overwrite. npm run push:dev targets this and never touches the live theme.
+theme = "130931064929"
 
 [environments.live]
 store = "unika-nz.myshopify.com"

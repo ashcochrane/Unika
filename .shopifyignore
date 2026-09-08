@@ -18,3 +18,4 @@ docs/
 .env.example
 .prettierignore
 .gitignore
+scripts/

@@ -1,0 +1,38 @@
+{% comment %}
+  Company location picker for B2B customers.
+
+  A B2B buyer may have access to several company locations. The selected one
+  drives catalog pricing and the delivery address, so it must be switchable.
+
+  Renders nothing at all for non-B2B customers.
+
+  Usage:
+  {% render 'company-location-picker' %}
+{% endcomment %}
+
+{%- if customer.b2b? -%}
+  <div class="trade-location">
+    <span class="trade-location__company">{{ customer.current_company.name }}</span>
+
+    {%- if customer.company_available_locations.size > 1 -%}
+      <details class="trade-location__details">
+        <summary class="trade-location__summary">
+          {{ customer.current_location.name }}
+        </summary>
+        <ul class="trade-location__list" role="list">
+          {%- for location in customer.company_available_locations -%}
+            {%- unless location.current? -%}
+              <li>
+                <a class="trade-location__link" href="{{ location.url_to_set_as_current }}">
+                  {{ location.name }}
+                </a>
+              </li>
+            {%- endunless -%}
+          {%- endfor -%}
+        </ul>
+      </details>
+    {%- else -%}
+      <span class="trade-location__single">{{ customer.current_location.name }}</span>
+    {%- endif -%}
+  </div>
+{%- endif -%}

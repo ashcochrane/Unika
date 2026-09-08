@@ -1,0 +1,109 @@
+/* Trade surfaces: location picker, trade hub, application form.
+   Colours come from Dawn's custom properties so every colour scheme works. */
+
+.trade-location {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.trade-location__company {
+  font-weight: 600;
+  color: rgb(var(--color-foreground));
+}
+
+.trade-location__details {
+  position: relative;
+}
+
+.trade-location__summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.2rem 0.6rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  border-radius: 0.4rem;
+}
+
+.trade-location__summary::-webkit-details-marker {
+  display: none;
+}
+
+.trade-location__list {
+  position: absolute;
+  z-index: 5;
+  margin: 0.4rem 0 0;
+  padding: 0.4rem 0;
+  min-width: 100%;
+  list-style: none;
+  background-color: rgb(var(--color-background));
+  border: 0.1rem solid rgba(var(--color-foreground), 0.2);
+  border-radius: 0.4rem;
+  box-shadow: 0 0.4rem 1.2rem rgba(var(--color-foreground), 0.12);
+}
+
+.trade-location__link {
+  display: block;
+  padding: 0.6rem 1.2rem;
+  color: rgb(var(--color-foreground));
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.trade-location__link:hover {
+  background-color: rgba(var(--color-foreground), 0.06);
+}
+
+/* Trade hub */
+
+.trade-hub__title {
+  margin-top: 0;
+}
+
+.trade-hub__benefits {
+  display: grid;
+  gap: 2.4rem;
+  margin: 3.2rem 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media screen and (min-width: 750px) {
+  .trade-hub__benefits {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.trade-hub__benefit-title {
+  margin: 0 0 0.8rem;
+  font-size: 1.8rem;
+}
+
+.trade-hub__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  margin: 2.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.trade-hub__note {
+  margin-top: 2.4rem;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+/* Application form */
+
+.trade-form__grid {
+  display: grid;
+  gap: 0;
+}
+
+@media screen and (min-width: 750px) {
+  .trade-form__grid {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.6rem;
+  }
+}

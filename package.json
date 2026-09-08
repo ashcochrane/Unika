@@ -11,7 +11,8 @@
     "check": "shopify theme check",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "lint": "npm run check && npm run format:check"
+    "lint": "npm run check && npm run format:check",
+    "preview": "./scripts/preview.sh"
   },
   "devDependencies": {
     "@shopify/prettier-plugin-liquid": "^1.11.0",
