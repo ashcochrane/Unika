@@ -1,0 +1,151 @@
+{{ 'trade.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width page-width--narrow section-{{ section.id }}-padding">
+    <h1>{{ section.settings.heading }}</h1>
+
+    {%- if section.settings.intro != blank -%}
+      <div class="rte">{{ section.settings.intro }}</div>
+    {%- endif -%}
+
+    {%- form 'contact', id: 'TradeApplication', class: 'trade-form' -%}
+      {%- if form.posted_successfully? -%}
+        <div class="form-status form-status-list form__message" role="status">
+          {{ section.settings.success_message }}
+        </div>
+      {%- elsif form.errors -%}
+        <div class="form__message" role="alert">
+          {{ form.errors | default_errors }}
+        </div>
+      {%- endif -%}
+
+      <input type="hidden" name="contact[Enquiry type]" value="Trade account application">
+
+      <div class="trade-form__grid">
+        <div class="field">
+          <input
+            class="field__input"
+            type="text"
+            id="TradeBusiness"
+            name="contact[Business name]"
+            required
+            placeholder=" "
+          >
+          <label class="field__label" for="TradeBusiness">Business name</label>
+        </div>
+
+        <div class="field">
+          <input class="field__input" type="text" id="TradeGst" name="contact[GST number]" placeholder=" ">
+          <label class="field__label" for="TradeGst">GST number</label>
+        </div>
+
+        <div class="field">
+          <input class="field__input" type="text" id="TradeName" name="contact[Contact name]" required placeholder=" ">
+          <label class="field__label" for="TradeName">Your name</label>
+        </div>
+
+        <div class="field">
+          <input
+            class="field__input"
+            type="email"
+            id="TradeEmail"
+            name="contact[email]"
+            required
+            spellcheck="false"
+            autocapitalize="off"
+            autocomplete="email"
+            placeholder=" "
+          >
+          <label class="field__label" for="TradeEmail">Email</label>
+        </div>
+
+        <div class="field">
+          <input
+            class="field__input"
+            type="tel"
+            id="TradePhone"
+            name="contact[Phone]"
+            autocomplete="tel"
+            placeholder=" "
+          >
+          <label class="field__label" for="TradePhone">Phone</label>
+        </div>
+
+        <div class="field">
+          <input class="field__input" type="text" id="TradeCity" name="contact[City]" placeholder=" ">
+          <label class="field__label" for="TradeCity">City</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <textarea
+          rows="4"
+          class="text-area field__input"
+          id="TradeNotes"
+          name="contact[Notes]"
+          placeholder=" "
+        ></textarea>
+        <label class="form__label field__label" for="TradeNotes">
+          What do you fabricate, and roughly how much do you use?
+        </label>
+      </div>
+
+      <button type="submit" class="button">{{ section.settings.submit_label }}</button>
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trade application",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Apply for a trade account" },
+    { "type": "richtext", "id": "intro", "label": "Intro" },
+    { "type": "text", "id": "submit_label", "label": "Submit button", "default": "Submit application" },
+    {
+      "type": "text",
+      "id": "success_message",
+      "label": "Success message",
+      "default": "Thanks — we'll be in touch within one business day."
+    },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Colour scheme", "default": "scheme-1" },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 52
+    }
+  ],
+  "presets": [{ "name": "Trade application" }]
+}
+{% endschema %}

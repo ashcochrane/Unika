@@ -1,0 +1,58 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "trade-hub",
+      "blocks": {
+        "benefit-1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Trade pricing",
+            "text": "<p>Account pricing across the full Unika range, with more off as your order grows.</p>"
+          }
+        },
+        "benefit-2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Buy on account",
+            "text": "<p>Order through the month and settle on one invoice.</p>"
+          }
+        },
+        "benefit-3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Order faster",
+            "text": "<p>Match a laminate and order every colour you need in one go.</p>"
+          }
+        }
+      },
+      "block_order": ["benefit-1", "benefit-2", "benefit-3"],
+      "settings": {
+        "heading": "Trade accounts",
+        "intro": "<p>Unika supplies benchtop fabricators across New Zealand. Open an account for trade pricing, monthly invoicing and faster reordering.</p>",
+        "apply_label": "Apply for an account",
+        "apply_url": "/pages/trade-application",
+        "login_label": "Log in",
+        "signed_in_heading": "Welcome back",
+        "signed_in_note": "<p>Your account pricing is applied automatically at checkout.</p>",
+        "orders_label": "Orders & invoices",
+        "matcher_label": "Colour Matcher",
+        "matcher_url": "/pages/colour-matcher",
+        "shop_label": "Shop all",
+        "shop_url": "/collections/all",
+        "color_scheme": "scheme-1",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": ["main"]
+}
