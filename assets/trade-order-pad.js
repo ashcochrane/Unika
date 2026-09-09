@@ -38,10 +38,21 @@
   const cartAddUrl = root.dataset.cartAddUrl;
   const cartUrl = root.dataset.cartUrl;
 
-  const money = new Intl.NumberFormat(root.dataset.locale || undefined, {
+  // Liquid renders the Price column with `money_with_currency` ("$16.25 NZD").
+  // Intl's default gives "NZ$16.25", so the same row disagreed with itself.
+  // Take the narrow symbol and append the code to match Liquid exactly, in
+  // whichever currency the market is running.
+  const currencyCode = root.dataset.currency || 'NZD';
+  const amountFormat = new Intl.NumberFormat(root.dataset.locale || undefined, {
     style: 'currency',
-    currency: root.dataset.currency || 'NZD',
+    currency: currencyCode,
+    currencyDisplay: 'narrowSymbol',
   });
+  const money = {
+    format: function (amount) {
+      return amountFormat.format(amount) + ' ' + currencyCode;
+    },
+  };
 
   const canStore = (function () {
     try {

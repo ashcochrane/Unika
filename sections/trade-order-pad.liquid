@@ -140,9 +140,19 @@
                     endif
 
                     assign step = variant.quantity_rule.increment | default: 1
+                    comment
+                      Pack sizes come through as variant titles of "1" and "10", which say
+                      nothing on their own. A bare number gets its option name for context;
+                      titles that already read as names, like the ColorFill colours, are
+                      left alone rather than padded out across 22 rows.
+                    endcomment
                     assign row_label = product.title
                     if product.variants.size > 1
                       assign row_label = variant.title
+                      assign title_as_number = variant.title | plus: 0
+                      if title_as_number > 0 and product.options.size == 1
+                        assign row_label = product.options.first | append: ': ' | append: variant.title
+                      endif
                     endif
                   -%}
 
