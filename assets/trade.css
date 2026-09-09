@@ -203,6 +203,59 @@
   color: rgba(var(--color-foreground), 0.72);
 }
 
+/* Trading terms — the numbers a fabricator decides on, set as a
+   counter-ticket run rather than a row of cards. */
+
+.trade-terms {
+  display: grid;
+  gap: 0;
+  margin: 4rem 0 0;
+  border-top: 0.1rem solid var(--trade-rule);
+  border-bottom: 0.1rem solid var(--trade-rule);
+}
+
+@media screen and (min-width: 750px) {
+  .trade-terms {
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+  }
+}
+
+.trade-terms__item {
+  padding: 1.6rem 0;
+}
+
+@media screen and (min-width: 750px) {
+  .trade-terms__item {
+    padding-inline: 2rem;
+    border-left: 0.1rem solid var(--trade-rule);
+  }
+
+  .trade-terms__item:first-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+}
+
+@media screen and (max-width: 749px) {
+  .trade-terms__item + .trade-terms__item {
+    border-top: 0.1rem solid var(--trade-rule);
+  }
+}
+
+.trade-terms__label {
+  margin: 0 0 0.4rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(var(--color-foreground), 0.55);
+}
+
+.trade-terms__value {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
 /* Spec list — trade-catalogue vernacular, not identical cards ----- */
 
 .trade-spec {
@@ -314,6 +367,18 @@
 
 .trade-desk__flag a {
   margin-left: 0.6rem;
+}
+
+.trade-desk__again {
+  margin: 2.4rem 0 0;
+  font-size: 1.5rem;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.trade-desk__again a {
+  margin-left: 0.4rem;
+  color: rgb(var(--color-foreground));
+  text-underline-offset: 0.3rem;
 }
 
 .trade-desk__orders {
@@ -460,7 +525,8 @@
 
 .trade-apply__fields {
   display: grid;
-  gap: 0 2rem;
+  gap: 2rem;
+  align-items: end;
 }
 
 @media screen and (min-width: 750px) {
@@ -471,6 +537,21 @@
   .trade-apply__fields--single {
     grid-template-columns: 1fr;
   }
+}
+
+/* A select has no placeholder, so Dawn's floating label cannot work on it.
+   Stack the label instead and align the row on the inputs' baseline. */
+
+.trade-apply__field-stacked .form__label {
+  font-size: 1.4rem;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+/* The form already opens on a red rule; the first group does not need a second. */
+
+.trade-apply__form > .trade-apply__group:first-of-type {
+  padding-top: 0;
+  border-top: 0;
 }
 
 .trade-apply__submit {
@@ -517,4 +598,22 @@
   border: 0.1rem dashed rgba(var(--color-foreground), 0.35);
   color: rgba(var(--color-foreground), 0.75);
   max-width: 60ch;
+}
+
+/* The band is the range itself, so where there is somewhere to send a
+   fabricator it behaves like a door rather than a picture. */
+
+.swatch-band--link {
+  transition: height var(--duration-short) ease;
+}
+
+.swatch-band--link:hover,
+.swatch-band--link:focus-visible {
+  height: 2.6rem;
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+  .swatch-band--link {
+    transition: none;
+  }
 }

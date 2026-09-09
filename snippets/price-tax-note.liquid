@@ -1,21 +1,38 @@
 {% comment %}
   Renders the tax note beneath a price.
 
-  Trade customers think and buy in GST-exclusive terms; consumers expect to know
-  GST is added. This makes the note accurate for each audience.
+  Four audiences share this storefront — NZ trade, NZ retail, AU trade, AU retail —
+  and they must not all be told the same thing. Rather than branching on customer
+  type, this reads the market's own tax setting through `cart.taxes_included`, so
+  the note always states what Shopify is actually doing. Switch a market to
+  tax-inclusive pricing in Settings → Taxes and the wording follows on its own,
+  with no theme change and no second place to keep in step.
 
-  Note: this changes the LABEL only, not the price. Whether retail prices should
-  render GST-inclusive is a tax-presentation decision with NZ consumer-law
-  implications — see the spec's open questions.
+  Trade buyers think and quote in GST-exclusive terms and need no explanation.
+  Consumers do, so they are told where the GST appears.
+
+  Accepts:
+  - class: {String} extra classes for the wrapper (optional)
 
   Usage:
   {% render 'price-tax-note' %}
 {% endcomment %}
 
-<span class="price__tax caption">
-  {%- if customer.b2b? -%}
-    GST Excl.
+{%- liquid
+  case localization.country.iso_code
+    when 'NZ', 'AU'
+      assign tax_name = 'GST'
+    else
+      assign tax_name = 'tax'
+  endcase
+-%}
+
+<span class="price__tax caption{% if class != blank %} {{ class }}{% endif %}">
+  {%- if cart.taxes_included -%}
+    Incl. {{ tax_name }}
+  {%- elsif customer.b2b? -%}
+    Excl. {{ tax_name }}
   {%- else -%}
-    GST Excl. — GST added at checkout
+    Excl. {{ tax_name }} — added at checkout
   {%- endif -%}
 </span>

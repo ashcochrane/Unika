@@ -1,0 +1,393 @@
+/* ---------------------------------------------------------------
+   Trade order pad
+
+   A counter order docket, not a shop. Dense, tabular, keyboard-first:
+   a fabricator restocking wants to run down a list and type numbers,
+   not click through 22 product pages.
+
+   The one chromatic element is the colour chip, taken from the same
+   laminate metaobjects as the Colour Matcher — a real ColorFill colour
+   beside its code. Everything else is hairlines and the trade red.
+   --------------------------------------------------------------- */
+
+.order-pad {
+  --pad-rule: rgba(var(--color-foreground), 0.14);
+}
+
+/* Head ----------------------------------------------------------- */
+
+.order-pad__head {
+  display: grid;
+  gap: 2.4rem;
+  align-items: end;
+  padding-bottom: 2.4rem;
+  border-bottom: 0.2rem solid var(--trade-red);
+}
+
+@media screen and (min-width: 990px) {
+  .order-pad__head {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 34rem);
+    gap: 4rem;
+  }
+}
+
+.order-pad__title {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  font-size: clamp(2.8rem, 5vw, 4.4rem);
+}
+
+.order-pad__intro {
+  margin: 1.2rem 0 0;
+  max-width: 54ch;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  color: rgba(var(--color-foreground), 0.78);
+}
+
+.order-pad__intro > :first-child {
+  margin-top: 0;
+}
+
+.order-pad__intro > :last-child {
+  margin-bottom: 0;
+}
+
+.order-pad__find-label {
+  display: block;
+  margin-bottom: 0.6rem;
+  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.order-pad__find-input {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.3);
+  border-radius: var(--inputs-radius);
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-body-family);
+  font-size: 1.6rem;
+}
+
+.order-pad__count {
+  margin: 0.6rem 0 0;
+  min-height: 1.8rem;
+  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+/* Saved lists ---------------------------------------------------- */
+
+.order-pad__lists {
+  margin-top: 2.4rem;
+}
+
+.order-pad__lists-title {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(var(--color-foreground), 0.6);
+}
+
+.order-pad__list-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.order-pad__chip-item {
+  display: flex;
+  align-items: stretch;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.25);
+}
+
+.order-pad__chip-load,
+.order-pad__chip-drop {
+  border: 0;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0.6rem 1rem;
+}
+
+.order-pad__chip-load:hover {
+  background-color: rgba(var(--color-foreground), 0.06);
+}
+
+.order-pad__chip-drop {
+  padding-inline: 0.8rem;
+  border-left: 0.1rem solid rgba(var(--color-foreground), 0.18);
+  color: rgba(var(--color-foreground), 0.55);
+}
+
+.order-pad__chip-drop:hover {
+  color: var(--trade-red);
+}
+
+/* Table ---------------------------------------------------------- */
+
+.order-pad__table {
+  width: 100%;
+  margin-top: 3.2rem;
+  border-collapse: collapse;
+  font-size: 1.5rem;
+}
+
+.order-pad__table th {
+  text-align: left;
+  font-weight: 600;
+}
+
+.order-pad__table thead th {
+  padding: 0 1.6rem 1rem 0;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(var(--color-foreground), 0.55);
+  border-bottom: 0.1rem solid var(--pad-rule);
+}
+
+.order-pad__group-head th {
+  padding: 2.4rem 0 0.8rem;
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.order-pad__group-head a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.order-pad__group-head a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.order-pad__row td {
+  padding: 1rem 1.6rem 1rem 0;
+  border-bottom: 0.1rem solid var(--pad-rule);
+  vertical-align: middle;
+}
+
+.order-pad__row--out td {
+  color: rgba(var(--color-foreground), 0.45);
+}
+
+.order-pad__col-item {
+  width: 42%;
+}
+
+.order-pad__col-price,
+.order-pad__col-total {
+  white-space: nowrap;
+}
+
+.order-pad__col-total {
+  text-align: right;
+  padding-right: 0 !important;
+  font-variant-numeric: tabular-nums;
+}
+
+.order-pad__col-code {
+  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.65);
+  white-space: nowrap;
+}
+
+.order-pad__chip {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+  vertical-align: -0.4rem;
+  background-color: var(--chip);
+  border: 0.1rem solid rgba(var(--color-foreground), 0.15);
+}
+
+.order-pad__name a {
+  color: inherit;
+}
+
+.order-pad__rule {
+  display: block;
+  font-size: 1.2rem;
+  color: rgba(var(--color-foreground), 0.55);
+}
+
+.order-pad__qty {
+  width: 7rem;
+  padding: 0.6rem 0.8rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.3);
+  border-radius: var(--inputs-radius);
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-body-family);
+  font-size: 1.5rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.order-pad__qty.is-set {
+  border-color: rgb(var(--color-foreground));
+  border-width: 0.2rem;
+}
+
+.order-pad__unavailable {
+  font-size: 1.3rem;
+}
+
+.order-pad__empty,
+.order-pad__notice,
+.order-pad__error {
+  margin: 2.4rem 0 0;
+  padding: 1.4rem 1.8rem;
+  border-left: 0.3rem solid var(--trade-red);
+  background-color: rgba(var(--color-foreground), 0.04);
+  max-width: 60ch;
+}
+
+/* Running tally -------------------------------------------------- */
+
+.order-pad__bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem 2rem;
+  margin-top: 2.4rem;
+  padding: 1.6rem 0;
+  border-top: 0.2rem solid var(--trade-red);
+  background-color: rgb(var(--color-background));
+}
+
+.order-pad__tally {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem 1.6rem;
+}
+
+.order-pad__tally-lines {
+  font-size: 1.4rem;
+  color: rgba(var(--color-foreground), 0.7);
+}
+
+.order-pad__tally-total {
+  font-size: 2.2rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Above the tally bar rather than inside it, so the sticky strip stays one
+   row deep on a phone and keeps its single job: what this order comes to. */
+
+.order-pad__save {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 2.4rem;
+}
+
+.order-pad__save-input {
+  width: 18rem;
+  padding: 0.6rem 1rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.3);
+  border-radius: var(--inputs-radius);
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-body-family);
+  font-size: 1.4rem;
+}
+
+.order-pad__actions {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+}
+
+.order-pad__clear {
+  border: 0;
+  background: none;
+  padding: 0;
+  color: rgba(var(--color-foreground), 0.7);
+  font-family: inherit;
+  font-size: 1.4rem;
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+  cursor: pointer;
+}
+
+.order-pad__clear:hover {
+  color: rgb(var(--color-foreground));
+}
+
+/* Stacked rows on small screens ---------------------------------- */
+
+@media screen and (max-width: 749px) {
+  .order-pad__table thead {
+    display: none;
+  }
+
+  .order-pad__row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.4rem 1.2rem;
+    padding: 1.2rem 0;
+    border-bottom: 0.1rem solid var(--pad-rule);
+  }
+
+  .order-pad__row td {
+    padding: 0;
+    border: 0;
+  }
+
+  .order-pad__col-item {
+    grid-column: 1 / -1;
+    width: auto;
+  }
+
+  .order-pad__col-qty {
+    grid-row: 3;
+    grid-column: 2;
+    justify-self: end;
+  }
+
+  .order-pad__col-total {
+    grid-row: 3;
+    grid-column: 1;
+    text-align: left;
+  }
+
+  .order-pad__col-code::before,
+  .order-pad__col-total::before {
+    content: attr(data-label) ': ';
+    color: rgba(var(--color-foreground), 0.55);
+  }
+
+  .order-pad__save-input {
+    flex: 1 1 auto;
+    width: auto;
+  }
+}
+
+/* These carry a display of their own, which would otherwise win over [hidden]. */
+
+.order-pad__row[hidden],
+.order-pad__save[hidden] {
+  display: none;
+}

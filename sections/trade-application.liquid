@@ -14,6 +14,16 @@
   }
 {%- endstyle -%}
 
+{%- liquid
+  assign has_app_form = false
+  for block in section.blocks
+    if block.type == '@app'
+      assign has_app_form = true
+      break
+    endif
+  endfor
+-%}
+
 <div class="trade color-{{ section.settings.color_scheme }} gradient">
   {%- render 'colorfill-swatch-band', limit: 60 -%}
 
@@ -26,27 +36,200 @@
         {%- endif -%}
       </div>
 
-      {%- if section.blocks.size > 0 -%}
+      {%- if has_app_form -%}
+        {%- comment -%}
+          Preferred path. A Shopify Forms "company account request" block creates the
+          company, location and customer automatically on submission, so no one has to
+          key the application in by hand.
+        {%- endcomment -%}
         <div class="trade-apply__form">
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when '@app' -%}
                 {%- render block -%}
               {%- when 'note' -%}
-                <p class="trade-apply__reassurance" {{ block.shopify_attributes }}>
-                  {{ block.settings.text }}
-                </p>
+                <p class="trade-apply__reassurance" {{ block.shopify_attributes }}>{{ block.settings.text }}</p>
             {%- endcase -%}
           {%- endfor -%}
         </div>
       {%- else -%}
-        <div class="trade-apply__empty">
-          <p>
-            Add the <strong>Shopify Forms</strong> block to this section in the theme editor. Use a
-            <em>company account request</em> form so a company, location and customer are created automatically on
-            submission.
-          </p>
-        </div>
+        {%- comment -%}
+          Fallback that still works. The application arrives as an email and staff open
+          the account by hand. Swap in the Shopify Forms block above to automate it.
+        {%- endcomment -%}
+        {%- form 'contact', id: 'TradeApplication', class: 'trade-apply__form' -%}
+          {%- if form.posted_successfully? -%}
+            <div class="trade-apply__result">
+              <h2 class="trade-apply__result-title" tabindex="-1" autofocus>
+                {{ section.settings.success_message }}
+              </h2>
+            </div>
+          {%- else -%}
+            {%- if form.errors -%}
+              <div class="trade-apply__errors" role="alert" tabindex="-1" autofocus>
+                <p>
+                  <strong>That did not send.</strong>
+                  {{ form.errors.translated_fields.email | capitalize }}
+                  {{ form.errors.messages.email }}.
+                </p>
+              </div>
+            {%- endif -%}
+
+            <div class="trade-apply__group">
+              <h2 class="trade-apply__group-title">Your business</h2>
+              <div class="trade-apply__fields">
+                <div class="field">
+                  <input
+                    class="field__input"
+                    type="text"
+                    id="TradeApplication-company"
+                    name="contact[Company]"
+                    autocomplete="organization"
+                    required
+                    placeholder="Company name"
+                  >
+                  <label class="field__label" for="TradeApplication-company">
+                    Company name <span aria-hidden="true">*</span>
+                  </label>
+                </div>
+
+                <div class="field">
+                  <input
+                    class="field__input"
+                    type="text"
+                    id="TradeApplication-registration"
+                    name="contact[NZBN or ABN]"
+                    placeholder="NZBN or ABN"
+                  >
+                  <label class="field__label" for="TradeApplication-registration">NZBN or ABN</label>
+                </div>
+
+                <div class="trade-apply__field-stacked">
+                  <label class="form__label" for="TradeApplication-country">Where you trade</label>
+                  <div class="select">
+                    {%- comment -%}
+                      Deliberately not `localization.available_countries`. Beauty Craft
+                      distributes in both New Zealand and Australia, and an Australian
+                      fabricator has to be able to apply before an Australian market
+                      exists — which is the order these things happen in. The visitor's
+                      own market only picks the default.
+                    {%- endcomment -%}
+                    <select class="select__select" id="TradeApplication-country" name="contact[Country]">
+                      <option
+                        value="New Zealand"
+                        {% if localization.country.iso_code != 'AU' %}
+                          selected
+                        {% endif %}
+                      >
+                        New Zealand
+                      </option>
+                      <option
+                        value="Australia"
+                        {% if localization.country.iso_code == 'AU' %}
+                          selected
+                        {% endif %}
+                      >
+                        Australia
+                      </option>
+                    </select>
+                    {{ 'icon-caret.svg' | inline_asset_content }}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="trade-apply__group">
+              <h2 class="trade-apply__group-title">Who we talk to</h2>
+              <div class="trade-apply__fields">
+                <div class="field">
+                  <input
+                    class="field__input"
+                    type="text"
+                    id="TradeApplication-name"
+                    name="contact[Name]"
+                    autocomplete="name"
+                    required
+                    placeholder="Your name"
+                  >
+                  <label class="field__label" for="TradeApplication-name">
+                    Your name <span aria-hidden="true">*</span>
+                  </label>
+                </div>
+
+                <div class="field">
+                  <input
+                    class="field__input"
+                    type="email"
+                    id="TradeApplication-email"
+                    name="contact[email]"
+                    value="{{ form.email }}"
+                    autocomplete="email"
+                    spellcheck="false"
+                    autocapitalize="off"
+                    aria-required="true"
+                    required
+                    {% if form.errors contains 'email' %}
+                      aria-invalid="true"
+                    {% endif %}
+                    placeholder="Email"
+                  >
+                  <label class="field__label" for="TradeApplication-email">
+                    Email <span aria-hidden="true">*</span>
+                  </label>
+                </div>
+
+                <div class="field">
+                  <input
+                    class="field__input"
+                    type="tel"
+                    id="TradeApplication-phone"
+                    name="contact[Phone]"
+                    autocomplete="tel"
+                    placeholder="Phone"
+                  >
+                  <label class="field__label" for="TradeApplication-phone">Phone</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="trade-apply__group">
+              <h2 class="trade-apply__group-title">What you fabricate</h2>
+              <div class="trade-apply__fields trade-apply__fields--single">
+                <div class="field">
+                  <textarea
+                    class="field__input text-area"
+                    rows="4"
+                    id="TradeApplication-work"
+                    name="contact[body]"
+                    placeholder="What you fabricate"
+                  >{{ form.body }}</textarea>
+                  <label class="field__label" for="TradeApplication-work">
+                    Benchtop materials you work with, roughly how much you get through, and anything else we should know
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="trade-apply__submit">
+              <button type="submit" class="button">{{ section.settings.submit_label }}</button>
+              {%- if section.settings.reassurance != blank -%}
+                <p class="trade-apply__reassurance">{{ section.settings.reassurance }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endform -%}
+
+        {%- if request.design_mode -%}
+          <div class="trade-apply__empty">
+            <p>
+              <strong>Editor note, not shown to customers.</strong>
+              This page is using the built-in form, which arrives by email and has to be keyed into the admin by hand.
+              Add the <strong>Shopify Forms</strong> block to this section and choose a
+              <em>company account request</em> form, and a company, location and customer are created automatically
+              instead.
+            </p>
+          </div>
+        {%- endif -%}
       {%- endif -%}
     </div>
   </div>
@@ -64,7 +247,7 @@
     {
       "type": "text",
       "id": "reassurance",
-      "label": "Note under the button",
+      "label": "Note beside the button",
       "default": "We usually reply within one working day."
     },
     {

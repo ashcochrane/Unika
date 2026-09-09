@@ -73,6 +73,20 @@
             "content": "<p>Will be calculated upon checkout</p>",
             "page": ""
           }
+        },
+        "sku": {
+          "type": "sku",
+          "settings": {
+            "text_style": "body"
+          }
+        },
+        "inventory": {
+          "type": "inventory",
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": false
+          }
         }
       },
       "block_order": [
@@ -80,8 +94,10 @@
         "title",
         "caption",
         "price",
+        "sku",
         "description",
         "variant_picker",
+        "inventory",
         "quantity_selector",
         "buy_buttons",
         "collapsible-row-3",

@@ -1,0 +1,44 @@
+{% comment %}
+  Emits a lookup string mapping a ColorFill or TopSeal code to its hex, read from
+  the same laminate metaobjects that power the Colour Matcher and the swatch band.
+
+  Liquid has no dictionaries, so the map is a delimited string and callers split it:
+
+    {%- capture hex_map -%}{%- render 'colorfill-hex-map' -%}{%- endcapture -%}
+    {%- assign tail = hex_map | strip | split: ';CB402=' -%}
+    {%- if tail.size > 1 -%}
+      {%- assign hex = tail[1] | split: ';' | first -%}
+    {%- endif -%}
+
+  Built once per page and split per row, which keeps a 90-row order pad to one
+  pass over the metaobjects rather than one pass per row.
+{% endcomment %}
+
+{%- liquid
+  assign map = ''
+
+  for laminate in shop.metaobjects.laminates.values limit: 250
+    assign match = laminate.reference.value
+
+    assign cf_code = match.colorfill_code | strip | upcase
+    assign cf_hex = match.colorfill_hex | strip
+    if cf_code != blank and cf_hex != blank
+      assign cf_key = ';' | append: cf_code | append: '='
+      unless map contains cf_key
+        assign map = map | append: cf_key | append: cf_hex
+      endunless
+    endif
+
+    assign ts_code = match.topseal_code | strip | upcase
+    assign ts_hex = match.topseal_hex | strip
+    if ts_code != blank and ts_hex != blank
+      assign ts_key = ';' | append: ts_code | append: '='
+      unless map contains ts_key
+        assign map = map | append: ts_key | append: ts_hex
+      endunless
+    endif
+  endfor
+
+  assign map = map | append: ';'
+-%}
+{{- map -}}

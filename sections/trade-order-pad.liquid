@@ -1,0 +1,275 @@
+{% # theme-check-disable PaginationSize %}
+{{ 'trade.css' | asset_url | stylesheet_tag }}
+{{ 'trade-order-pad.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'trade-order-pad.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+{%- liquid
+  assign pad_collection = collections[section.settings.collection]
+  if pad_collection == blank or pad_collection.products_count == 0
+    assign pad_collection = collections.all
+  endif
+-%}
+
+{%- capture hex_map -%}{%- render 'colorfill-hex-map' -%}{%- endcapture -%}
+{%- assign hex_map = hex_map | strip -%}
+
+<div class="trade color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    <div
+      class="order-pad"
+      data-order-pad
+      data-cart-add-url="{{ routes.cart_add_url }}"
+      data-cart-url="{{ routes.cart_url }}"
+      data-currency="{{ cart.currency.iso_code }}"
+      data-locale="{{ request.locale.iso_code }}"
+    >
+      <div class="order-pad__head">
+        <div>
+          <h1 class="order-pad__title">{{ section.settings.heading }}</h1>
+          {%- if section.settings.intro != blank -%}
+            <div class="order-pad__intro rte">{{ section.settings.intro }}</div>
+          {%- endif -%}
+        </div>
+
+        <div class="order-pad__find">
+          <label class="order-pad__find-label" for="OrderPadFind">Find a product or code</label>
+          <input
+            class="order-pad__find-input"
+            type="search"
+            id="OrderPadFind"
+            autocomplete="off"
+            placeholder="ColorFill, CB402, TopSeal…"
+            data-order-pad-find
+          >
+          <p class="order-pad__count" data-order-pad-count aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="order-pad__lists" data-order-pad-lists hidden>
+        <h2 class="order-pad__lists-title">Saved lists</h2>
+        <ul class="order-pad__list-chips" role="list" data-order-pad-list-chips></ul>
+      </div>
+
+      <form
+        class="order-pad__form"
+        method="post"
+        action="{{ routes.cart_add_url }}"
+        data-order-pad-form
+      >
+        <noscript>
+          <p class="order-pad__notice">
+            The order pad adds a whole list to the cart in one go, which needs JavaScript. With it switched off, order
+            from the product pages instead.
+          </p>
+        </noscript>
+
+        <table class="order-pad__table">
+          <caption class="visually-hidden">
+            Every product available on your account, with a quantity box for each
+          </caption>
+          <thead>
+            <tr>
+              <th scope="col" class="order-pad__col-item">Item</th>
+              <th scope="col" class="order-pad__col-code">Code</th>
+              <th scope="col" class="order-pad__col-price">Price</th>
+              <th scope="col" class="order-pad__col-qty">Quantity</th>
+              <th scope="col" class="order-pad__col-total">Line total</th>
+            </tr>
+          </thead>
+
+          {%- comment -%}
+            Without a paginate wrapper `collection.products` stops at 50, which would
+            silently drop products from a pad whose whole promise is that everything is
+            on one screen. Paginated high and rendered as a single page deliberately:
+            the filter searches client-side over whatever Liquid rendered, so a second
+            page would hide items from search rather than merely move them.
+          {%- endcomment -%}
+          {%- paginate pad_collection.products by 250 -%}
+            {%- for product in pad_collection.products -%}
+              <tbody class="order-pad__group" data-order-pad-group>
+                {%- if product.variants.size > 1 -%}
+                  <tr class="order-pad__group-head">
+                    <th scope="colgroup" colspan="5">
+                      <a href="{{ product.url }}">{{ product.title }}</a>
+                    </th>
+                  </tr>
+                {%- endif -%}
+
+                {%- for variant in product.variants -%}
+                  {%- liquid
+                    assign parts = variant.sku | split: '-'
+                    assign code = ''
+                    if parts.size > 1
+                      assign code = parts[1] | strip | upcase
+                    endif
+
+                    assign chip = ''
+                    if code != blank
+                      assign needle = ';' | append: code | append: '='
+                      assign tail = hex_map | split: needle
+                      if tail.size > 1
+                        assign chip = tail[1] | split: ';' | first
+                      endif
+                    endif
+
+                    assign step = variant.quantity_rule.increment | default: 1
+                    assign row_label = product.title
+                    if product.variants.size > 1
+                      assign row_label = variant.title
+                    endif
+                  -%}
+
+                  <tr
+                    class="order-pad__row{% unless variant.available %} order-pad__row--out{% endunless %}"
+                    data-order-pad-row
+                    data-search="{{ product.title | append: ' ' | append: variant.title | append: ' ' | append: variant.sku | downcase | escape }}"
+                  >
+                    <td class="order-pad__col-item" data-label="Item">
+                      {%- if chip != blank -%}
+                        <span class="order-pad__chip" style="--chip: {{ chip }}"></span>
+                      {%- endif -%}
+                      <span class="order-pad__name">
+                        {%- if product.variants.size > 1 -%}
+                          {{ row_label }}
+                        {%- else -%}
+                          <a href="{{ product.url }}">{{ row_label }}</a>
+                        {%- endif -%}
+                      </span>
+                    </td>
+
+                    <td class="order-pad__col-code" data-label="Code">{{ variant.sku }}</td>
+
+                    <td class="order-pad__col-price" data-label="Price">
+                      {{ variant.price | money_with_currency }}
+                      {%- if step > 1 -%}
+                        <span class="order-pad__rule">Sold in {{ step }}s</span>
+                      {%- endif -%}
+                    </td>
+
+                    <td class="order-pad__col-qty" data-label="Quantity">
+                      {%- if variant.available -%}
+                        <label class="visually-hidden" for="OrderPad-{{ variant.id }}">
+                          Quantity of {{ product.title }}
+                          {{ variant.title }}
+                        </label>
+                        <input
+                          class="order-pad__qty"
+                          type="number"
+                          inputmode="numeric"
+                          id="OrderPad-{{ variant.id }}"
+                          name="quantity-{{ variant.id }}"
+                          value="0"
+                          min="0"
+                          step="{{ step }}"
+                          {% if variant.quantity_rule.max != null %}
+                            max="{{ variant.quantity_rule.max }}"
+                          {% endif %}
+                          data-order-pad-qty
+                          data-variant-id="{{ variant.id }}"
+                          data-price="{{ variant.price }}"
+                        >
+                      {%- else -%}
+                        <span class="order-pad__unavailable">Out of stock</span>
+                      {%- endif -%}
+                    </td>
+
+                    <td class="order-pad__col-total" data-label="Line total" data-order-pad-line></td>
+                  </tr>
+                {%- endfor -%}
+              </tbody>
+            {%- endfor -%}
+          {%- endpaginate -%}
+        </table>
+
+        <p class="order-pad__empty" data-order-pad-empty hidden>
+          Nothing matches that. Try a colour name or a code such as CB402.
+        </p>
+
+        <div class="order-pad__save" data-order-pad-save hidden>
+          <label class="visually-hidden" for="OrderPadListName">Name this list</label>
+          <input
+            class="order-pad__save-input"
+            type="text"
+            id="OrderPadListName"
+            placeholder="Name this list"
+            autocomplete="off"
+            maxlength="40"
+            data-order-pad-list-name
+          >
+          <button type="button" class="button button--secondary" data-order-pad-save-button>Save list</button>
+        </div>
+
+        <div class="order-pad__bar" data-order-pad-bar>
+          <div class="order-pad__tally">
+            <span class="order-pad__tally-lines" data-order-pad-lines>No lines yet</span>
+            <span class="order-pad__tally-total" data-order-pad-total></span>
+          </div>
+
+          <div class="order-pad__actions">
+            <button type="button" class="order-pad__clear" data-order-pad-clear hidden>Clear</button>
+            <button type="submit" class="button" data-order-pad-submit disabled>
+              {{ section.settings.submit_label }}
+            </button>
+          </div>
+        </div>
+
+        <p class="order-pad__error" role="alert" data-order-pad-error hidden></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trade order pad",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Order pad" },
+    { "type": "richtext", "id": "intro", "label": "Intro" },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Products to list",
+      "info": "Leave empty to list everything."
+    },
+    { "type": "text", "id": "submit_label", "label": "Submit button", "default": "Add to cart" },
+    { "type": "color_scheme", "id": "color_scheme", "label": "Colour scheme", "default": "scheme-1" },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding bottom",
+      "default": 64
+    }
+  ],
+  "presets": [{ "name": "Trade order pad" }]
+}
+{% endschema %}
