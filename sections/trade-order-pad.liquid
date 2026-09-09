@@ -126,6 +126,19 @@
                       endif
                     endif
 
+                    comment
+                      The laminate data is keyed on tube codes (CF402). The box sells the
+                      same colours as CB402, and the box is exactly where picking by eye
+                      matters most, so a CB code falls back to its CF twin.
+                    endcomment
+                    if chip == blank and code contains 'CB'
+                      assign alt_needle = code | replace_first: 'CB', 'CF' | prepend: ';' | append: '='
+                      assign alt_tail = hex_map | split: alt_needle
+                      if alt_tail.size > 1
+                        assign chip = alt_tail[1] | split: ';' | first
+                      endif
+                    endif
+
                     assign step = variant.quantity_rule.increment | default: 1
                     assign row_label = product.title
                     if product.variants.size > 1

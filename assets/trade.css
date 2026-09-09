@@ -617,3 +617,29 @@
     transition: none;
   }
 }
+
+/* Dawn sizes the select caret per component rather than globally, so the
+   trade application has to state it or the icon renders at its natural size.
+   The select is also matched to the height and type size of the text inputs
+   beside it, which base.css sets smaller and fainter by default. */
+
+.trade-apply__field-stacked .select {
+  position: relative;
+  display: flex;
+}
+
+.trade-apply__field-stacked .select__select {
+  height: 4.5rem;
+  padding: 0 4rem 0 1.5rem;
+  font-size: 1.6rem;
+  color: rgb(var(--color-foreground));
+}
+
+.trade-apply__field-stacked .icon-caret {
+  position: absolute;
+  right: 1.5rem;
+  top: calc(50% - 0.3rem);
+  width: 1rem;
+  height: 0.6rem;
+  pointer-events: none;
+}
