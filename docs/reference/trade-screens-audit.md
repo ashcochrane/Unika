@@ -383,3 +383,41 @@ Verified against the unpublished dev theme (#130931064929) on 2026-09-09.
 
 Technical documents and SDS on products (§5.4) need the files or metafields to point at.
 Invoices, statements and aggregate balance remain Phase 3 app configuration (§5, items 6–8).
+
+---
+
+## 9. What real use found, after §8
+
+Six defects surfaced only once the screens were rendered and used. None were
+reachable by reading the code, and none were caught by theme-check or Prettier.
+
+| Found by                     | Defect                                                                           |
+| ---------------------------- | -------------------------------------------------------------------------------- |
+| Desktop screenshot           | ColorFill Box rows had no colour chips — box uses `CB` codes, laminate data `CF` |
+| Desktop screenshot           | Select caret rendered at natural size, swallowing the field                      |
+| Signing in as a B2B customer | **"4 orders are awaiting payment" over four Voided orders**                      |
+| Adding to cart               | Same row read `$16.25 NZD` and `NZ$32.50` — Liquid and Intl disagreeing          |
+| Adding to cart               | Rows reading bare `1` and `10` — variant titles with no context                  |
+| Mobile capture               | **No quantity box on a phone** — the table never stopped being a table           |
+
+A seventh was self-inflicted: `git add -A` swept a temporary preview swap into two
+commits, leaving the branch carrying an order pad where `page.technical-documents.json`
+should be. A merge would have replaced that live page. Stage explicit paths while a
+deliberate temporary change is in the tree.
+
+### The lesson worth keeping
+
+Every one of these is a rendering or real-data defect. The repo has no test script
+and no rendering harness, so the only way any of them could be found was a person
+opening the page. That is the gap to close before more screens are added — the
+plans in `docs/superpowers/plans/` all begin with "write the failing test" against
+infrastructure that does not exist.
+
+### Outstanding at handover
+
+- Mobile layout of both order tables: fixed on the third attempt, **unverified**.
+- The trade application has never been submitted end to end.
+- Quantity rules are not configured, so nothing enforces the 9-pack increments.
+- Dead account code (`templates/customers/*`, `main-account.liquid`,
+  `main-order.liquid`, `page.wholesale-partner.json`) is untouched — the spec calls
+  its removal a deliberate step of its own, so it was left alone.
