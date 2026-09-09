@@ -339,6 +339,25 @@
 /* Stacked rows on small screens ---------------------------------- */
 
 @media screen and (max-width: 749px) {
+  /* Turning rows into grids is not enough on its own. The table keeps laying
+     out at its natural column width, which pushes the page sideways and carries
+     Price and Quantity off-screen, so table and tbody stop being table boxes.
+
+     The group heading has to come with them: a lone table-cell left inside a
+     block parent makes the browser generate an anonymous table around it, which
+     brings the whole overflow straight back.
+
+     Rows and cells are deliberately left out of this rule — `.order-pad__table tr`
+     would out-specify `.order-pad__row`'s grid, and grid items are blockified
+     anyway. */
+
+  .order-pad__table,
+  .order-pad__table > tbody,
+  .order-pad__group-head,
+  .order-pad__group-head th {
+    display: block;
+  }
+
   .order-pad__table thead {
     display: none;
   }

@@ -453,6 +453,15 @@
     display: none;
   }
 
+  /* Same as the order pad: the rows cannot become grids while the table is
+     still a table, or the row overflows the viewport instead of stacking. */
+
+  .trade-orders,
+  .trade-orders tbody,
+  .trade-orders td {
+    display: block;
+  }
+
   .trade-orders thead {
     display: none;
   }
