@@ -3,7 +3,13 @@
 
   Signals to a signed-in B2B buyer which company and location they are
   purchasing for — that choice drives catalog pricing and the delivery
-  address, so it must be visible and switchable on every page.
+  address, so it must be visible and switchable on every page — and carries
+  the two links a trade buyer wants from anywhere: the order pad and their
+  orders.
+
+  Page links resolve through the `pages` object rather than a literal path, so
+  they survive a localised URL prefix when the Australian market lands, and
+  disappear rather than 404 if a page is unpublished.
 
   Renders nothing at all for retail customers.
 
@@ -21,9 +27,12 @@
     if customer.company_available_locations.size > 1
       assign multi_location = true
     endif
+
+    assign trade_page = pages.trade
+    assign pad_page = pages['order-pad']
   -%}
 
-  <div class="trade-bar">
+  <nav class="trade-bar" aria-label="Trade account">
     <div class="page-width trade-bar__inner">
       <p class="trade-bar__account">
         <span class="trade-bar__label">Trade account</span>
@@ -50,9 +59,14 @@
       </p>
 
       <p class="trade-bar__links">
-        <a href="/pages/trade">Trade home</a>
+        {%- if pad_page != blank -%}
+          <a href="{{ pad_page.url }}">Order pad</a>
+        {%- endif -%}
+        {%- if trade_page != blank -%}
+          <a href="{{ trade_page.url }}">Trade home</a>
+        {%- endif -%}
         <a href="{{ routes.account_url }}">Orders &amp; invoices</a>
       </p>
     </div>
-  </div>
+  </nav>
 {%- endif -%}

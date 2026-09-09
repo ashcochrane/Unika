@@ -32,17 +32,43 @@
             "title": "Matched to the sheet",
             "text": "<p>Look up the laminate you are working with and get the exact ColorFill and TopSeal codes that match it, then order every colour on the job in one go.</p>"
           }
+        },
+        "term-payment": {
+          "type": "term",
+          "settings": {
+            "label": "Payment terms",
+            "value": ""
+          }
+        },
+        "term-minimum": {
+          "type": "term",
+          "settings": {
+            "label": "Minimum order",
+            "value": ""
+          }
+        },
+        "term-freight": {
+          "type": "term",
+          "settings": {
+            "label": "Freight",
+            "value": ""
+          }
         }
       },
-      "block_order": ["benefit-1", "benefit-2", "benefit-3"],
+      "block_order": [
+        "term-payment",
+        "term-minimum",
+        "term-freight",
+        "benefit-1",
+        "benefit-2",
+        "benefit-3"
+      ],
       "settings": {
         "heading": "Trade accounts for benchtop fabricators",
         "intro": "<p>Unika supplies joinery shops across New Zealand with colour-matched jointing compounds, sealants and adhesives. Open an account for trade pricing and monthly invoicing.</p>",
         "apply_label": "Apply for an account",
         "apply_url": "/pages/trade-application",
         "login_label": "Already have an account? Log in",
-        "signed_in_heading": "Welcome back",
-        "signed_in_note": "<p>Your account pricing is already applied. Match a laminate to find the codes you need, or go straight to the range.</p>",
         "orders_label": "Orders and invoices",
         "matcher_label": "Match a laminate",
         "matcher_url": "/pages/colour-matcher",
@@ -50,9 +76,15 @@
         "shop_url": "/collections/all",
         "color_scheme": "scheme-1",
         "padding_top": 56,
-        "padding_bottom": 64
+        "padding_bottom": 64,
+        "pad_label": "Order pad",
+        "pad_url": "/pages/order-pad",
+        "reorder_label": "Open",
+        "signed_in_fallback": "Your trade account"
       }
     }
   },
-  "order": ["main"]
+  "order": [
+    "main"
+  ]
 }

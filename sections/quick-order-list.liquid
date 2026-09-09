@@ -20,11 +20,25 @@
   }
 {%- endstyle -%}
 
-{% render 'quick-order-list',
-  product: product,
-  show_image: section.settings.show_image,
-  show_sku: section.settings.show_sku
-%}
+{%- comment -%}
+  A quick order list is a way through a long variant list. On a single-variant
+  product it renders a one-row table under the buy button that already does the
+  job, so it is skipped rather than left to a merchant to notice.
+{%- endcomment -%}
+{%- if product.variants.size > 1 -%}
+  {% render 'quick-order-list',
+    product: product,
+    show_image: section.settings.show_image,
+    show_sku: section.settings.show_sku
+  %}
+{%- elsif request.design_mode -%}
+  <div class="page-width section-{{ section.id }}-padding">
+    <p>
+      Editor note, not shown to customers. This product has one variant, so the quick order list is hidden. It appears
+      on products with several variants.
+    </p>
+  </div>
+{%- endif -%}
 
 {% schema %}
 {
