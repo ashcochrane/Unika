@@ -47,14 +47,33 @@
 
         {%- paginate customer.orders by 50 -%}
           {%- liquid
+            comment
+              Name the states that actually owe money rather than excluding the ones that
+              do not. A deny list counted "voided" as awaiting payment, which told a
+              customer with four cancelled orders that they owed on all four.
+            endcomment
+            assign owing = 'pending,partially_paid' | split: ','
+
             assign unpaid_count = 0
             assign first_unpaid = null
             for order in customer.orders
-              unless order.financial_status == 'paid' or order.financial_status == 'refunded'
+              if owing contains order.financial_status
                 assign unpaid_count = unpaid_count | plus: 1
                 if first_unpaid == null
                   assign first_unpaid = order
                 endif
+              endif
+            endfor
+
+            comment
+              A cancelled order is a poor thing to offer as "buy this again", so the
+              reorder line points at the most recent order that still stands.
+            endcomment
+            assign reorder_target = null
+            for order in customer.orders
+              unless order.cancelled or order.financial_status == 'voided'
+                assign reorder_target = order
+                break
               endunless
             endfor
           -%}
@@ -81,15 +100,15 @@
           {%- endif -%}
 
           {%- if customer.orders.size > 0 -%}
-            {%- assign last_order = customer.orders.first -%}
-
-            <p class="trade-desk__again">
-              Buying the same again?
-              <a href="{{ last_order.customer_url }}">
-                {{- section.settings.reorder_label }}
-                {{ last_order.name -}}
-              </a>
-            </p>
+            {%- if reorder_target != null -%}
+              <p class="trade-desk__again">
+                Buying the same again?
+                <a href="{{ reorder_target.customer_url }}">
+                  {{- section.settings.reorder_label }}
+                  {{ reorder_target.name -}}
+                </a>
+              </p>
+            {%- endif -%}
 
             <div class="trade-desk__orders">
               <div class="trade-desk__orders-head">
@@ -127,10 +146,12 @@
                         {{ order.created_at | time_tag: format: 'date' }}
                       </td>
                       <td role="cell" headers="TradeRow{{ order.id }} TradeColPayment" data-label="Payment">
-                        {%- if order.financial_status == 'paid' -%}
-                          {{ order.financial_status_label }}
-                        {%- else -%}
+                        {%- if owing contains order.financial_status -%}
                           <span class="trade-orders__due">{{ order.financial_status_label }}</span>
+                        {%- elsif order.cancelled or order.financial_status == 'voided' -%}
+                          <span class="trade-orders__void">{{ order.financial_status_label }}</span>
+                        {%- else -%}
+                          {{ order.financial_status_label }}
                         {%- endif -%}
                       </td>
                       <td

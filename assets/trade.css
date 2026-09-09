@@ -442,6 +442,12 @@
   color: var(--trade-red);
 }
 
+/* Cancelled is a closed matter, not something to chase. */
+
+.trade-orders__void {
+  color: rgba(var(--color-foreground), 0.5);
+}
+
 @media screen and (max-width: 749px) {
   .trade-orders__hide-mobile {
     display: none;
