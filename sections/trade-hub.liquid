@@ -22,7 +22,9 @@
       <div class="trade-desk">
         <div class="trade-desk__head">
           <div>
-            <h1 class="trade-desk__title">{{ customer.current_company.name }}</h1>
+            <h1 class="trade-desk__title">
+              {{- customer.current_company.name | default: section.settings.signed_in_fallback -}}
+            </h1>
             <p class="trade-desk__meta">
               {%- if customer.current_location.name != blank
                 and customer.current_location.name != customer.current_company.name
@@ -233,6 +235,13 @@
     { "type": "url", "id": "apply_url", "label": "Apply link" },
     { "type": "text", "id": "login_label", "label": "Log in link", "default": "Already have an account? Log in" },
     { "type": "header", "content": "Signed-in trade customer" },
+    {
+      "type": "text",
+      "id": "signed_in_fallback",
+      "label": "Heading fallback",
+      "default": "Your trade account",
+      "info": "Shown in place of the company name if it is ever missing, so the page never renders without a heading."
+    },
     {
       "type": "text",
       "id": "pad_label",

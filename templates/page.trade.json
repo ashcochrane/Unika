@@ -79,7 +79,8 @@
         "padding_bottom": 64,
         "pad_label": "Order pad",
         "pad_url": "/pages/order-pad",
-        "reorder_label": "Open"
+        "reorder_label": "Open",
+        "signed_in_fallback": "Your trade account"
       }
     }
   },
