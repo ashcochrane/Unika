@@ -380,6 +380,22 @@
     width: auto;
   }
 
+  /* Price and the quantity box share a line, so the number being typed sits
+     beside the number it multiplies. The line total gets its own line below,
+     and only once there is one — an empty cell captioned "Line total:" next to
+     an input reads as though the input were the total. */
+
+  .order-pad__col-code {
+    grid-row: 2;
+    grid-column: 1 / -1;
+  }
+
+  .order-pad__col-price {
+    grid-row: 3;
+    grid-column: 1;
+    align-self: center;
+  }
+
   .order-pad__col-qty {
     grid-row: 3;
     grid-column: 2;
@@ -387,9 +403,13 @@
   }
 
   .order-pad__col-total {
-    grid-row: 3;
-    grid-column: 1;
+    grid-row: 4;
+    grid-column: 1 / -1;
     text-align: left;
+  }
+
+  .order-pad__col-total:empty {
+    display: none;
   }
 
   .order-pad__col-code::before,
